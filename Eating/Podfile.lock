@@ -1,0 +1,69 @@
+PODS:
+  - Alamofire (5.4.1)
+  - KakaoSDK (2.4.0):
+    - KakaoSDKAuth (= 2.4.0)
+    - KakaoSDKCommon (= 2.4.0)
+    - KakaoSDKLink (= 2.4.0)
+    - KakaoSDKNavi (= 2.4.0)
+    - KakaoSDKStory (= 2.4.0)
+    - KakaoSDKTalk (= 2.4.0)
+    - KakaoSDKTemplate (= 2.4.0)
+    - KakaoSDKUser (= 2.4.0)
+  - KakaoSDKAuth (2.4.0):
+    - KakaoSDKCommon (= 2.4.0)
+  - KakaoSDKCommon (2.4.0):
+    - KakaoSDKCommon/Common (= 2.4.0)
+    - KakaoSDKCommon/Network (= 2.4.0)
+  - KakaoSDKCommon/Common (2.4.0)
+  - KakaoSDKCommon/Network (2.4.0):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.4.0)
+  - KakaoSDKLink (2.4.0):
+    - KakaoSDKCommon (= 2.4.0)
+    - KakaoSDKTemplate (= 2.4.0)
+  - KakaoSDKNavi (2.4.0):
+    - KakaoSDKCommon/Common (= 2.4.0)
+  - KakaoSDKStory (2.4.0):
+    - KakaoSDKAuth (= 2.4.0)
+    - KakaoSDKCommon (= 2.4.0)
+  - KakaoSDKTalk (2.4.0):
+    - KakaoSDKAuth (= 2.4.0)
+    - KakaoSDKCommon (= 2.4.0)
+    - KakaoSDKTemplate (= 2.4.0)
+  - KakaoSDKTemplate (2.4.0):
+    - KakaoSDKCommon/Common (= 2.4.0)
+  - KakaoSDKUser (2.4.0):
+    - KakaoSDKAuth (= 2.4.0)
+    - KakaoSDKCommon (= 2.4.0)
+
+DEPENDENCIES:
+  - KakaoSDK
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - KakaoSDK
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKLink
+    - KakaoSDKNavi
+    - KakaoSDKStory
+    - KakaoSDKTalk
+    - KakaoSDKTemplate
+    - KakaoSDKUser
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  KakaoSDK: bb8b4fd4644eda2d9c8d95dafbb5cc1b72edb670
+  KakaoSDKAuth: f0e4c40f76bb5ba9e975ea2cb205279fefa29986
+  KakaoSDKCommon: 0e27a4819da0e5d29eec661c12e63b990c34a6f9
+  KakaoSDKLink: 7c2861cf88afa9361219194e0e5a9b7aaeebf83e
+  KakaoSDKNavi: 46ad21f9edc774f5485f65e4611c04513a922797
+  KakaoSDKStory: 4d2135f1b649d796d47c6b70926591d41acba767
+  KakaoSDKTalk: e46333d15ef63efcef3b2e20b9ce73f60abae4dd
+  KakaoSDKTemplate: 35ac030b5c821289e0269b0c27f166dbcf86c957
+  KakaoSDKUser: f68503fc60dd2a8bf0fd5ad37192db9e542af5dd
+
+PODFILE CHECKSUM: b91949d0bb51ead7406861b9cf09e6f1cb926907
+
+COCOAPODS: 1.10.0
