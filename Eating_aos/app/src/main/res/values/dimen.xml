@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="fragment_top_title_height">55dp</dimen>
+
+    <dimen name="view_post_horizontal_margin">25dp</dimen>
+    <dimen name="post_horizontal_margin">20dp</dimen>
+    <dimen name="post_relative_height">55dp</dimen>
+
+</resources>

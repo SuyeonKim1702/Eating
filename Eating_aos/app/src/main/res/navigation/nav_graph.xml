@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="desla.aos.eating.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_postActivity"
+            app:destination="@id/postActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_viewActivity"
+            app:destination="@id/viewActivity" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="desla.aos.eating.ui.user.UserFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_user" />
+    <activity
+        android:id="@+id/postActivity"
+        android:name="desla.aos.eating.ui.post.PostActivity"
+        android:label="PostActivity" />
+    <activity
+        android:id="@+id/viewActivity"
+        android:name="desla.aos.eating.ui.view.ViewActivity"
+        android:label="activity_view"
+        tools:layout="@layout/activity_view" />
+
+</navigation>

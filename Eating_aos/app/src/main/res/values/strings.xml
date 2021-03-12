@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Eating</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kakao_app_key">0fce2f07500b8e890cc4833713e488d9</string>
+
+
+</resources>
