@@ -75,8 +75,8 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
     }
 
 
-    private val _addressList = MutableLiveData<AddressAPI>()
-    val addressList : LiveData<AddressAPI>
+    private val _addressList = MutableLiveData<List<AddressAPI.Document>>()
+    val addressList : LiveData<List<AddressAPI.Document>>
         get() = _addressList
 
     fun getLocationList(query: String){
@@ -87,7 +87,7 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
 
-                    _addressList.value = it
+                    _addressList.value = it.documents
                 }, {
                 })
         addDisposable(disposable)

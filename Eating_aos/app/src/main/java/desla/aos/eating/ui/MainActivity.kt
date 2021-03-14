@@ -25,5 +25,7 @@ class MainActivity : AppCompatActivity() {
         // Setting Navigation Controller with the BottomNavigationView
         bottomNavView.setupWithNavController(navController)
 
+        bottomNavView.itemIconTintList = null
     }
+
 }

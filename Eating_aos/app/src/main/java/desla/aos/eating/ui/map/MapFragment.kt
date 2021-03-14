@@ -87,23 +87,25 @@ class MapFragment :  BaseFragment<FragmentMapBinding>() {
         }
 
         viewModel.addressList.observe(this, Observer {
-            if(it.documents.isNotEmpty()){
-                it.documents[0].let { v ->
-                    if(v.roadAddress.addressName.isNotEmpty()){
-                        viewDataBinding.etvAddress.text = v.roadAddress.addressName
-                    }else{
-                        viewDataBinding.etvAddress.text = v.address.addressName
-                    }
 
-                    removeMarker()
 
-                    val mapPoint = MapPoint.mapPointWithGeoCoord(v.y.toDouble(), v.x.toDouble())
-                    addMarker(mapPoint)
-                    viewModel.mapView.setMapCenterPointAndZoomLevel(mapPoint, 2 , true)
-
-                }
-
-            }
+//            if(it.documents.isNotEmpty()){
+//                it.documents[0].let { v ->
+//                    if(v.roadAddress.addressName.isNotEmpty()){
+//                        viewDataBinding.etvAddress.text = v.roadAddress.addressName
+//                    }else{
+//                        viewDataBinding.etvAddress.text = v.address.addressName
+//                    }
+//
+//                    removeMarker()
+//
+//                    val mapPoint = MapPoint.mapPointWithGeoCoord(v.y.toDouble(), v.x.toDouble())
+//                    addMarker(mapPoint)
+//                    viewModel.mapView.setMapCenterPointAndZoomLevel(mapPoint, 2 , true)
+//
+//                }
+//
+//            }
         })
 
         viewModel.address.observe(this, Observer {

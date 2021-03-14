@@ -49,7 +49,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@+id/imageView3"
             app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:srcCompat="@drawable/emotion_best" />
+            app:srcCompat="@drawable/ic_emotion_best" />
 
         <ImageView
             android:id="@+id/imageView5"
@@ -67,7 +67,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/ic__41"
+            android:background="@drawable/background_white_rounded"
             android:ems="10"
             android:fontFamily="@font/nanum_square_round_b"
             android:paddingHorizontal="20dp"
@@ -121,7 +121,7 @@
             android:id="@+id/imageButton6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_transparent"
+            android:background="@android:color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
             app:layout_constraintStart_toStartOf="parent"

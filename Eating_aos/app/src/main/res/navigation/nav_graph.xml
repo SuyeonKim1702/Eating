@@ -18,6 +18,11 @@
             app:destination="@id/viewActivity" />
     </fragment>
 
+    <fragment
+        android:id="@+id/likeFragment"
+        android:name="desla.aos.eating.ui.like.LikeFragment"
+        android:label="LikeFragment"
+        tools:layout="@layout/fragment_like" />
 
     <fragment
         android:id="@+id/userFragment"
@@ -33,5 +38,6 @@
         android:name="desla.aos.eating.ui.view.ViewActivity"
         android:label="activity_view"
         tools:layout="@layout/activity_view" />
+
 
 </navigation>

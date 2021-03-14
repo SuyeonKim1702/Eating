@@ -56,7 +56,7 @@
                 android:id="@+id/imageView7"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/emotion_best" />
+                app:srcCompat="@drawable/ic_emotion_best" />
 
             <TextView
                 android:id="@+id/title_view"
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/background_transparent"
+                android:background="@android:color/transparent"
                 app:srcCompat="@drawable/ic_fi_rr_angle_small_right" />
         </LinearLayout>
 
@@ -163,7 +163,7 @@
                             android:id="@+id/textView13"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/ic__383"
+                            android:background="@drawable/background_yellow_rounded_tag"
                             android:fontFamily="@font/nanum_square_round_eb"
                             android:gravity="center"
                             android:letterSpacing="0.01"
@@ -177,7 +177,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="6dp"
-                            android:background="@drawable/ic__383"
+                            android:background="@drawable/background_yellow_rounded_tag"
                             android:fontFamily="@font/nanum_square_round_eb"
                             android:gravity="center"
                             android:letterSpacing="0.01"
@@ -227,7 +227,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/view_post_horizontal_margin"
                     android:layout_marginTop="19dp"
-                    android:background="@drawable/ic__91">
+                    android:background="@drawable/background_white_stroke_rounded">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -330,7 +330,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="@dimen/view_post_horizontal_margin"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/ic__76"
+            android:background="@drawable/background_yellow_rounded2"
             android:fontFamily="@font/jalnan_otf"
             android:gravity="center"
             android:letterSpacing="0.02"

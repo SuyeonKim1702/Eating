@@ -1,9 +1,12 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="330dp"
-    android:height="56dp"
-    android:viewportWidth="330"
-    android:viewportHeight="56">
-  <path
-      android:pathData="M28,0L302,0A28,28 0,0 1,330 28L330,28A28,28 0,0 1,302 56L28,56A28,28 0,0 1,0 28L0,28A28,28 0,0 1,28 0z"
-      android:fillColor="#ffeb00"/>
-</vector>
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:shape="rectangle" >
+
+  <solid android:color="@color/login_btn" />
+  <corners android:radius="27dp"/>
+  <size android:width="312dp" android:height="54dp"/>
+
+
+</shape>

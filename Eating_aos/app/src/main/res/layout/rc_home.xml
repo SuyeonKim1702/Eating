@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,9 +11,6 @@
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -62,23 +61,45 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_marginRight="4dp"
+            android:background="@drawable/background_gray_rounded"
+            android:fontFamily="@font/nanum_square_otfb"
+            android:gravity="center"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="1sp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:text="배달비 1/N"
+            android:textColor="@color/greyish_brown"
+            android:textSize="11sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_gray_rounded"
+            android:fontFamily="@font/nanum_square_otfb"
+            android:gravity="center"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="1sp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:text="중간"
+            android:textColor="@color/greyish_brown"
+            android:textSize="11sp"
+            android:textStyle="normal" />
+
     </LinearLayout>
 
     <TextView
@@ -91,9 +112,24 @@
         android:textColor="#fc4914"
         android:textSize="11sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        tools:text="28:43 남음" />
+        tools:text="28:43" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="1sp"
+        android:textColor="#757575"
+        android:textSize="11sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        tools:text="남음" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -107,6 +143,16 @@
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="1명/2명" />
+        android:text="1명/2명" />
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:srcCompat="@drawable/ic_fi_rr_heart" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
