@@ -1,12 +1,16 @@
 package desla.aos.eating.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.bumptech.glide.Glide
 import desla.aos.eating.R
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setupViews()
+        updateStatusBarColor("#ffffff")
     }
 
 
@@ -28,4 +33,11 @@ class MainActivity : AppCompatActivity() {
         bottomNavView.itemIconTintList = null
     }
 
+    private fun updateStatusBarColor(color: String) { // Color must be in hexadecimal fromat
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = Color.parseColor(color)
+        }
+    }
 }

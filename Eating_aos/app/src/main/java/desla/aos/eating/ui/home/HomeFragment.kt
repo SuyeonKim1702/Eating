@@ -56,9 +56,10 @@ class HomeFragment :  BaseFragment<FragmentHomeBinding>() {
 
     private fun initRc(){
         rc_home.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        rc_home.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
         rc_home.setHasFixedSize(true)
         rc_home.adapter = HomeRCAdapter(posts)
     }
+
+
 
 }

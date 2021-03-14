@@ -12,8 +12,5 @@ class HomeViewModel(
 ) : BaseViewModel() {
 
 
-        fun startPostActivity(v: View){
-                v.context.getActivity()!!.startPostActivity()
-        }
 
 }
