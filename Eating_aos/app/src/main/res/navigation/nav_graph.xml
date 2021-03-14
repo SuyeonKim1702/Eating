@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_viewActivity"
             app:destination="@id/viewActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
     </fragment>
 
     <fragment
@@ -38,6 +41,11 @@
         android:name="desla.aos.eating.ui.view.ViewActivity"
         android:label="activity_view"
         tools:layout="@layout/activity_view" />
+
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="desla.aos.eating.ui.home.filter.FilterFragment"
+        android:label="FilterFragment" />
 
 
 </navigation>

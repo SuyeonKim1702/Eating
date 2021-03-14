@@ -51,6 +51,10 @@ class HomeFragment :  BaseFragment<FragmentHomeBinding>() {
             view?.findNavController()?.navigate(R.id.action_homeFragment_to_postActivity)
         }
 
+        viewDataBinding.btnFilter.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_filterFragment)
+        }
+
     }
 
 

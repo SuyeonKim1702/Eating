@@ -17,13 +17,6 @@
         tools:context=".ui.post.PostActivity"
         android:background="@color/background">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.08" />
-
 
         <TextView
             android:id="@+id/login_title"
@@ -36,7 +29,7 @@
             android:textColor="@color/greyish_brown"
             android:textSize="18sp"
             android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintBottom_toTopOf="@+id/view4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,22 +38,23 @@
             android:id="@+id/view4"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="@dimen/top_title_box_height"
             android:background="@drawable/ic_im_bg_whtite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
+            android:layout_marginTop="10dp"
             android:id="@+id/scrollView2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_finish"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline4">
+            app:layout_constraintTop_toTopOf="@+id/view4">
 
             <LinearLayout
                 android:id="@+id/linearLayout5"
@@ -71,9 +65,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/post_horizontal_margin"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:gravity="center_vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -111,7 +104,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/post_horizontal_margin"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -151,7 +144,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/post_horizontal_margin"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -191,7 +184,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/post_horizontal_margin"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -241,7 +234,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/post_horizontal_margin"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -281,7 +274,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/post_horizontal_margin"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -315,13 +308,68 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
 
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/background_gray_rounded_tag"
+                        android:fontFamily="@font/nanum_square_round_r"
+                        android:gravity="center"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="2sp"
+                        android:text="본인부담"
+                        android:textColor="@color/brown_grey"
+                        android:textSize="14sp"
+                        android:textStyle="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView17"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/background_gray_rounded_tag"
+                        android:fontFamily="@font/nanum_square_round_r"
+                        android:gravity="center"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="2sp"
+                        android:text="1/N"
+                        android:textColor="@color/brown_grey"
+                        android:textSize="14sp"
+                        android:textStyle="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView18"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_gray_rounded_tag"
+                        android:fontFamily="@font/nanum_square_round_r"
+                        android:textStyle="normal"
+                        android:textSize="14sp"
+                        android:textColor="@color/brown_grey"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="2sp"
+                        android:text="없음"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/post_horizontal_margin"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -361,7 +409,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/post_horizontal_margin"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -395,6 +443,61 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
 
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/background_gray_rounded_tag"
+                        android:fontFamily="@font/nanum_square_round_r"
+                        android:gravity="center"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="2sp"
+                        android:text="호스트 쪽"
+                        android:textColor="@color/brown_grey"
+                        android:textSize="14sp"
+                        android:textStyle="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView20"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_gray_rounded_tag"
+                        android:fontFamily="@font/nanum_square_round_r"
+                        android:gravity="center"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="2sp"
+                        android:text="중간"
+                        android:layout_marginRight="4dp"
+                        android:textColor="@color/brown_grey"
+                        android:textSize="14sp"
+                        android:textStyle="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView21"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/textView21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_gray_rounded_tag"
+                        android:fontFamily="@font/nanum_square_round_r"
+                        android:textStyle="normal"
+                        android:textSize="14sp"
+                        android:textColor="@color/brown_grey"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="2sp"
+                        android:text="장소협의"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -409,7 +512,7 @@
                     android:id="@+id/editTextTextPersonName4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/post_horizontal_margin"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="16dp"
                     android:background="@android:color/transparent"
@@ -432,33 +535,20 @@
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/post_horizontal_margin"
+            android:layout_marginStart="@dimen/horizontal_margin"
             android:background="@android:color/transparent"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintBottom_toTopOf="@+id/view4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_fi_rr_angle_small_left" />
 
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline7"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.1" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline8"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9" />
-
         <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:id="@+id/btn_finish"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
             android:background="@drawable/ic_btn_complete"
             android:fontFamily="@font/jalnan_otf"
             android:gravity="center"
@@ -469,8 +559,8 @@
             android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="@+id/guideline7" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
 
