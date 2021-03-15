@@ -13,7 +13,7 @@ public class MemberDTO {
     @Builder
     public static class JoinOrLogin {
         private Long id;
-        private String kakao_id;
+        private String kakaoId;
         private String nickname;
         private MultipartFile profile;
         private String address;

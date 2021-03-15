@@ -9,12 +9,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
-    public BCryptPasswordEncoder encodePWD(){
+    public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 //    @Autowired
@@ -33,10 +34,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable() // csrf 토큰 비활성화(테스트시에는 걸어두는게 좋음)
+        http.csrf().disable() // csrf 토큰 비활성화(테스트시에는 걸어두는게 좋음
                 .authorizeRequests()
-                .anyRequest()
-                .permitAll();
-//                .authenticated();
+                .antMatchers("/member/**")
+                .permitAll()
+                .anyRequest() // 다른 주소들은 인증 필요
+                .authenticated();
+//                .permitAll();
     }
 }
