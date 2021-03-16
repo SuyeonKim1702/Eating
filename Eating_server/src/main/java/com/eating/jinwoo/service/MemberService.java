@@ -5,7 +5,7 @@ import com.eating.jinwoo.domain.Category;
 import com.eating.jinwoo.domain.Location;
 import com.eating.jinwoo.domain.Member;
 import com.eating.jinwoo.dto.MemberDTO;
-import com.eating.jinwoo.repository.MemberRepository;
+import com.eating.jinwoo.repository.memberRepository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,10 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
-import java.security.Principal;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +32,6 @@ public class MemberService {
                 throw new EatingException("이미 로그인 된 상태입니다.");
             }
         }
-
         memberRepository.findByKakaoId(userInfo.getKakaoId())
                 .ifPresentOrElse(
                         this::doLogin, () -> {
@@ -45,10 +41,7 @@ public class MemberService {
                             member.setNickname(userInfo.getNickname());
                             member.setPassword(passwordEncoder.encode(userInfo.getKakaoId()));
 
-                            Location location = new Location();
-                            location.setAddress(userInfo.getAddress());
-                            location.setLongitude(userInfo.getLongitude());
-                            location.setLatitude(userInfo.getLatitude());
+                            Location location = new Location(userInfo.getAddress(), userInfo.getLongitude(), userInfo.getLatitude());
                             member.setLocation(location);
 
                             Category category = new Category();
@@ -76,12 +69,18 @@ public class MemberService {
 
     public void logout() {
         Authentication principal = SecurityContextHolder.getContext().getAuthentication();
-        if(principal == null){
-            throw new EatingException("이미 로그아웃 된 상태입니다.");
-        }
-        else if (principal != null && principal.getPrincipal() == "anonymousUser"){
+        if(principal == null || (principal != null && principal.getPrincipal() == "anonymousUser")){
             throw new EatingException("이미 로그아웃 된 상태입니다.");
         }
         SecurityContextHolder.clearContext();
+    }
+
+    public MemberDTO.GetProfile getProfile() {
+        Authentication principal = SecurityContextHolder.getContext().getAuthentication();
+        if(principal == null || (principal != null && principal.getPrincipal() == "anonymousUser")){
+            throw new EatingException("회원이 아닙니다.");
+        }
+
+        return null;
     }
 }

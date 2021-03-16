@@ -1,12 +1,10 @@
 package com.eating.jinwoo.service;
 
 import com.eating.jinwoo.common.EatingException;
-import com.eating.jinwoo.domain.Category;
-import com.eating.jinwoo.domain.Location;
 import com.eating.jinwoo.domain.Member;
 import com.eating.jinwoo.dto.MemberDTO;
-import com.eating.jinwoo.repository.MemberRepository;
-import com.eating.jinwoo.repository.MemoryMemberRepository;
+import com.eating.jinwoo.repository.memberRepository.MemberRepository;
+import com.eating.jinwoo.repository.memberRepository.MemoryMemberRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.core.Authentication;
@@ -14,13 +12,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -31,8 +23,6 @@ public class MemberServiceTests {
     private MemberRepository memberRepository;
     private static PasswordEncoder passwordEncoder;
     private MemberDTO.JoinOrLogin joinMember;
-    private Location location;
-    private Category category;
 
     @BeforeAll
     static void beforeAll() {
@@ -42,12 +32,6 @@ public class MemberServiceTests {
     void beforeEach() {
         joinMember = MemberDTO.JoinOrLogin.builder()
                 .kakaoId("jinwoo").nickname("nick").address("where").profile(null).longitude(11.11).latitude(22.22).build();
-        location = new Location();
-        location.setId(1L);
-        location.setAddress(joinMember.getAddress());
-        location.setLongitude(joinMember.getLongitude());
-        location.setLatitude(joinMember.getLatitude());
-        category = new Category();
         memberRepository = new MemoryMemberRepository();
         when(passwordEncoder.encode(joinMember.getKakaoId())).thenReturn("encoded");
     }
@@ -59,7 +43,7 @@ public class MemberServiceTests {
 
     @Nested
     @DisplayName("회원가입")
-    class register {
+    class Register {
         @Test
         @DisplayName("회원가입 성공 - 사진 없이")
         void register_NoPic_O() {
@@ -90,7 +74,7 @@ public class MemberServiceTests {
     }
     @Nested
     @DisplayName("로그인")
-    class login {
+    class Login {
         @Test
         @DisplayName("로그인 성공")
         void login_O() {
@@ -128,7 +112,7 @@ public class MemberServiceTests {
     }
     @Nested
     @DisplayName("로그아웃")
-    class logout {
+    class Logout {
         @Test
         @DisplayName("로그아웃 성공")
         void logout_O() {

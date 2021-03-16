@@ -23,11 +23,17 @@ public class MemberController {
     @PostMapping("/member")
     public ResponseDTO<String> joinOrLogin(@RequestBody MemberDTO.JoinOrLogin userInfo) {
         memberService.joinOrLogin(userInfo);
-        return new ResponseDTO<String>(HttpStatus.OK, "로그인 성공", null);
+        return new ResponseDTO<>(HttpStatus.OK, "로그인 성공", null);
     }
     @PostMapping("/member/out")
     public ResponseDTO<String> logout() {
         memberService.logout();
-        return new ResponseDTO<String>(HttpStatus.OK, "로그아웃 성공", null);
+        return new ResponseDTO<>(HttpStatus.OK, "로그아웃 성공", null);
+    }
+
+    @GetMapping("/member")
+    public ResponseDTO<MemberDTO.GetProfile> getProfile() {
+        MemberDTO.GetProfile memberProfile = memberService.getProfile();
+        return new ResponseDTO<>(HttpStatus.OK, "프로필 정보 가져오기", memberProfile);
     }
 }

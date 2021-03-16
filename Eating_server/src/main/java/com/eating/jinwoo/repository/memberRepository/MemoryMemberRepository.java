@@ -1,10 +1,12 @@
-package com.eating.jinwoo.repository;
+package com.eating.jinwoo.repository.memberRepository;
 
 import com.eating.jinwoo.domain.Member;
+import com.eating.jinwoo.dto.MemberDTO;
+import com.eating.jinwoo.repository.memberRepository.MemberRepository;
 
 import java.util.*;
 
-public class MemoryMemberRepository implements MemberRepository{
+public class MemoryMemberRepository implements MemberRepository {
     Map<Long, Member> memberMap = new HashMap<>();
 
     static Long the_id = 0L;
@@ -18,6 +20,11 @@ public class MemoryMemberRepository implements MemberRepository{
             }
         }
         return Optional.empty();
+    }
+
+    @Override
+    public MemberDTO.GetProfile getProfile(String kakaoId) {
+        return null;
     }
 
     @Override

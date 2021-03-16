@@ -35,7 +35,7 @@ public class Member extends BaseAuditEntity {
 
     private double sugarScore; // 당도. 임의로 0~100 중 50을 초기값 갖도록 설정
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
