@@ -1,8 +1,6 @@
 package com.eating.jinwoo.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,6 +10,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Member extends BaseAuditEntity {
 
     @Id
@@ -19,29 +19,29 @@ public class Member extends BaseAuditEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String kakao_id;
+    private String kakaoId;
     private String nickname;
-    private String profile_url;
+    private String profileUrl;
     private String password;
 
     private int distance; // 반경. 초기값 500
 
-    private Long total_count; // 거래 카운트
+    private long totalCount; // 거래 카운트
 
-    private int time_good; // 시간이 빨라요
-    private int nice_guy; // 친절해요
-    private int food_divide; // 음식을 잘 나눠요
-    private int fast_answer; // 응답이 빨라요
+    private int timeGood; // 시간이 빨라요
+    private int niceGuy; // 친절해요
+    private int foodDivide; // 음식을 잘 나눠요
+    private int fastAnswer; // 응답이 빨라요
 
-    private double sugar_score; // 당도. 임의로 0~100 중 50을 초기값 갖도록 설정
+    private double sugarScore; // 당도. 임의로 0~100 중 50을 초기값 갖도록 설정
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Location location;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Category category;
 
     @OneToMany(mappedBy = "member") // member와 post는 다대다 관계이므로 MemberPost라는 중간 테이블 생성함
@@ -50,17 +50,17 @@ public class Member extends BaseAuditEntity {
     @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
     private List<Favorite> favoritePosts = new ArrayList<>();
 
-    public Member(String kakao_id, String nickname, String profile_url, String password) {
-        this.kakao_id = kakao_id;
+    public Member(String kakaoId, String nickname, String profileUrl, String password) {
+        this.kakaoId = kakaoId;
         this.nickname = nickname;
-        this.profile_url = profile_url;
+        this.profileUrl = profileUrl;
         this.password = password;
         this.distance = 500;
-        this.total_count = 0L;
-        this.time_good = 0;
-        this.nice_guy = 0;
-        this.food_divide = 0;
-        this.fast_answer = 0;
-        this.sugar_score = 50.0;
+        this.totalCount = 0;
+        this.timeGood = 0;
+        this.niceGuy = 0;
+        this.foodDivide = 0;
+        this.fastAnswer = 0;
+        this.sugarScore = 50.0;
     }
 }

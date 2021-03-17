@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Review {
+public class Review extends BaseAuditEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,4 +26,10 @@ public class Review {
     private Member member; // 리뷰의 대상자
 
     private String review;
+
+    public Review(Member sender, Member member, String review) {
+        this.sender = sender;
+        this.member = member;
+        this.review = review;
+    }
 }
