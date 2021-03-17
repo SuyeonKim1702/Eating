@@ -1,0 +1,12 @@
+<resources>
+    <dimen name="top_title_box_height">60dp</dimen>
+    <dimen name="horizontal_margin">15dp</dimen>
+    <dimen name="bottom_button_bottom_margin">40dp</dimen>
+
+    <dimen name="view_post_horizontal_margin">25dp</dimen>
+
+    <dimen name="post_relative_height">55dp</dimen>
+
+
+
+</resources>

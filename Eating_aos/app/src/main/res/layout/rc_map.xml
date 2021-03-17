@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="address"
+            type="desla.aos.eating.data.model.AddressAPI.Document" />
+    </data>
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_square_round_eb"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="2sp"
+            android:text="싹 영등포캠퍼스"
+            android:textColor="@color/greyish_brown"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:fontFamily="@font/nanum_square_round_b"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="2sp"
+            android:text="@{address.address.addressName}"
+            android:textColor="@color/brown_grey"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nanum_square_round_b"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="2sp"
+            android:text="(도로명) 선유로9길 30 싹 영등포 캠퍼스"
+            android:textColor="#bdbdbd"
+            android:textSize="14sp" />
+    </LinearLayout>
+</layout>
