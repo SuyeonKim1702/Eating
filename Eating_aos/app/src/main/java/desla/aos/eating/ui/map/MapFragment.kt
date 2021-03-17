@@ -1,26 +1,19 @@
 package desla.aos.eating.ui.map
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import desla.aos.eating.R
-import desla.aos.eating.data.repositories.UserRepository
 import desla.aos.eating.databinding.FragmentMapBinding
 import desla.aos.eating.ui.base.BaseFragment
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
-import java.lang.String
 
 
 class MapFragment :  BaseFragment<FragmentMapBinding>() {
@@ -86,10 +79,9 @@ class MapFragment :  BaseFragment<FragmentMapBinding>() {
             transaction.commit()
         }
 
-        viewModel.addressList.observe(this, Observer {
+        viewModel.locationList.observe(this, Observer {
 
-
-//            if(it.documents.isNotEmpty()){
+            if(it.isNotEmpty()){
 //                it.documents[0].let { v ->
 //                    if(v.roadAddress.addressName.isNotEmpty()){
 //                        viewDataBinding.etvAddress.text = v.roadAddress.addressName
@@ -104,30 +96,32 @@ class MapFragment :  BaseFragment<FragmentMapBinding>() {
 //                    viewModel.mapView.setMapCenterPointAndZoomLevel(mapPoint, 2 , true)
 //
 //                }
-//
-//            }
-        })
 
-        viewModel.address.observe(this, Observer {
-            if(it.documents.size == 1){
-                it.documents[0].let { v ->
-
-                    if(v.roadAddress.addressName.isNotEmpty()){
-                        viewDataBinding.etvAddress.text = v.roadAddress.addressName
-                    }else{
-                        viewDataBinding.etvAddress.text = v.address.addressName
-                    }
-
-                    removeMarker()
-
-                    val mapPoint = MapPoint.mapPointWithGeoCoord(viewModel.x, viewModel.y)
-                    addMarker(mapPoint)
-                    viewModel.mapView.setMapCenterPointAndZoomLevel(mapPoint, 2 , true)
-
-                }
+                //목록에 출력
 
             }
         })
+
+//        viewModel.address.observe(this, Observer {
+//            if(it.documents.size == 1){
+//                it.documents[0].let { v ->
+//
+//                    if(v.roadAddress.addressName.isNotEmpty()){
+//                        viewDataBinding.etvAddress.text = v.roadAddress.addressName
+//                    }else{
+//                        viewDataBinding.etvAddress.text = v.address.addressName
+//                    }
+//
+//                    removeMarker()
+//
+//                    val mapPoint = MapPoint.mapPointWithGeoCoord(viewModel.x, viewModel.y)
+//                    addMarker(mapPoint)
+//                    viewModel.mapView.setMapCenterPointAndZoomLevel(mapPoint, 2 , true)
+//
+//                }
+//
+//            }
+//        })
 
     }
 

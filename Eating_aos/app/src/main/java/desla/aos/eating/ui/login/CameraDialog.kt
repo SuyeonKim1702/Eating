@@ -16,7 +16,7 @@ import desla.aos.eating.R
 class CameraDialog(context : Context) {
 
 
-    private val dlg = Dialog(context)   //부모 액티비티의 context 가 들어감
+    private val dlg = Dialog(context, R.style.DialogTheme)   //부모 액티비티의 context 가 들어감
     private lateinit var btnCamera: AppCompatButton
     private lateinit var btnGallery : AppCompatButton
     private lateinit var btnCancel : ImageButton
@@ -32,6 +32,8 @@ class CameraDialog(context : Context) {
     fun setDialogListener(customDialogListener: CameraDialogListener?) {
         this.cameraDialogListener = customDialogListener
     }
+
+
 
     fun start() {
         dlg.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

@@ -8,6 +8,7 @@ import desla.aos.eating.R
 import desla.aos.eating.data.model.Post
 import desla.aos.eating.data.repositories.HomeRepository
 import desla.aos.eating.databinding.FragmentHomeBinding
+import desla.aos.eating.ui.MainActivity
 import desla.aos.eating.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -25,6 +26,8 @@ class HomeFragment :  BaseFragment<FragmentHomeBinding>() {
 
 
     override fun initStartView() {
+        (activity as MainActivity).setVisibilityBottomNavigation(true)
+
         val repository = HomeRepository()
         factory = HomeViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
