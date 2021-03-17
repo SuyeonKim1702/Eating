@@ -10,6 +10,31 @@
 		504D2215CD2B4DA7D844F495 /* libPods-Eating.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3D9CDF3FCC55D87447ABDEA /* libPods-Eating.a */; };
 		74FD08A5DCFAAD6C47B5A370 /* libPods-Eating-EatingUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E27D4FBEEB3E79B9CAE364B3 /* libPods-Eating-EatingUITests.a */; };
 		C209389059130ACD99A90F07 /* libPods-EatingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0ADC74E70FCFBD3EB9CBFB0 /* libPods-EatingTests.a */; };
+		D658FB3E25FBC859006C7F85 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FB3D25FBC859006C7F85 /* AddressCell.swift */; };
+		D658FB4625FC7AFA006C7F85 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FB4525FC7AFA006C7F85 /* Collection+Extension.swift */; };
+		D658FB4B25FCB85D006C7F85 /* AddressRegionCodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FB4A25FCB85C006C7F85 /* AddressRegionCodeService.swift */; };
+		D658FB5025FCB99A006C7F85 /* RegionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FB4F25FCB99A006C7F85 /* RegionCode.swift */; };
+		D658FB5625FCEB91006C7F85 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FB5525FCEB91006C7F85 /* HomeViewController.swift */; };
+		D658FB5E25FCEBA4006C7F85 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FB5D25FCEBA4006C7F85 /* MyPageViewController.swift */; };
+		D658FB6325FCEBB2006C7F85 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FB6225FCEBB2006C7F85 /* FavoriteViewController.swift */; };
+		D658FB6825FD1113006C7F85 /* NanumSquareOTFRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D658FB6725FD1113006C7F85 /* NanumSquareOTFRegular.otf */; };
+		D658FB6C25FD1136006C7F85 /* NanumSquareOTFRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D658FB6725FD1113006C7F85 /* NanumSquareOTFRegular.otf */; };
+		D658FB7025FD1136006C7F85 /* NanumSquareOTFRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D658FB6725FD1113006C7F85 /* NanumSquareOTFRegular.otf */; };
+		D658FB7525FD1255006C7F85 /* NanumSquareOTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D658FB7425FD1255006C7F85 /* NanumSquareOTFBold.otf */; };
+		D658FB7625FD1255006C7F85 /* NanumSquareOTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D658FB7425FD1255006C7F85 /* NanumSquareOTFBold.otf */; };
+		D658FB7725FD1255006C7F85 /* NanumSquareOTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D658FB7425FD1255006C7F85 /* NanumSquareOTFBold.otf */; };
+		D658FB8025FD1879006C7F85 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FB7E25FD1878006C7F85 /* FeedCell.swift */; };
+		D658FB8125FD1879006C7F85 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FB7E25FD1878006C7F85 /* FeedCell.swift */; };
+		D658FB8225FD1879006C7F85 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FB7E25FD1878006C7F85 /* FeedCell.swift */; };
+		D658FB8325FD1879006C7F85 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D658FB7F25FD1878006C7F85 /* FeedCell.xib */; };
+		D658FB8425FD1879006C7F85 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D658FB7F25FD1878006C7F85 /* FeedCell.xib */; };
+		D658FB8525FD1879006C7F85 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D658FB7F25FD1878006C7F85 /* FeedCell.xib */; };
+		D658FBAE2600E3C1006C7F85 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FBAD2600E3C1006C7F85 /* WritingViewController.swift */; };
+		D658FBB62600FDD7006C7F85 /* DefaultReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FBB52600FDD7006C7F85 /* DefaultReviewViewController.swift */; };
+		D658FBBB2600FDEE006C7F85 /* FirstReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FBBA2600FDEE006C7F85 /* FirstReviewViewController.swift */; };
+		D658FBC0260100E9006C7F85 /* ViewFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FBBF260100E9006C7F85 /* ViewFrame.swift */; };
+		D658FBC52601047B006C7F85 /* SecondReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FBC42601047B006C7F85 /* SecondReviewViewController.swift */; };
+		D658FBFA26025A84006C7F85 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D658FBF926025A84006C7F85 /* FilterViewController.swift */; };
 		D6BF9F3325EE80EE0076E321 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF9F3225EE80EE0076E321 /* AppDelegate.swift */; };
 		D6BF9F3725EE80EE0076E321 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF9F3625EE80EE0076E321 /* LoginViewController.swift */; };
 		D6BF9F3A25EE80EE0076E321 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BF9F3825EE80EE0076E321 /* Main.storyboard */; };
@@ -68,6 +93,23 @@
 		A3D9CDF3FCC55D87447ABDEA /* libPods-Eating.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Eating.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E712F831D9C48D45B8CE6F /* Pods-Eating-EatingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eating-EatingUITests.release.xcconfig"; path = "Target Support Files/Pods-Eating-EatingUITests/Pods-Eating-EatingUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B0ADC74E70FCFBD3EB9CBFB0 /* libPods-EatingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EatingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D658FB3D25FBC859006C7F85 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
+		D658FB4525FC7AFA006C7F85 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		D658FB4A25FCB85C006C7F85 /* AddressRegionCodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressRegionCodeService.swift; sourceTree = "<group>"; };
+		D658FB4F25FCB99A006C7F85 /* RegionCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionCode.swift; sourceTree = "<group>"; };
+		D658FB5525FCEB91006C7F85 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D658FB5D25FCEBA4006C7F85 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		D658FB6225FCEBB2006C7F85 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		D658FB6725FD1113006C7F85 /* NanumSquareOTFRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareOTFRegular.otf; path = "../../../../../../../../Volumes/나눔스퀘어 맥용 OTF/NanumSquareOTFRegular.otf"; sourceTree = "<group>"; };
+		D658FB7425FD1255006C7F85 /* NanumSquareOTFBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareOTFBold.otf; path = "../../../../../../../../Volumes/나눔스퀘어 맥용 OTF/NanumSquareOTFBold.otf"; sourceTree = "<group>"; };
+		D658FB7E25FD1878006C7F85 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		D658FB7F25FD1878006C7F85 /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
+		D658FBAD2600E3C1006C7F85 /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
+		D658FBB52600FDD7006C7F85 /* DefaultReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReviewViewController.swift; sourceTree = "<group>"; };
+		D658FBBA2600FDEE006C7F85 /* FirstReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstReviewViewController.swift; sourceTree = "<group>"; };
+		D658FBBF260100E9006C7F85 /* ViewFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFrame.swift; sourceTree = "<group>"; };
+		D658FBC42601047B006C7F85 /* SecondReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondReviewViewController.swift; sourceTree = "<group>"; };
+		D658FBF926025A84006C7F85 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		D6BF9F2F25EE80EE0076E321 /* Eating.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eating.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BF9F3225EE80EE0076E321 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6BF9F3625EE80EE0076E321 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +216,37 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D658FB3C25FBC83A006C7F85 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D658FB3D25FBC859006C7F85 /* AddressCell.swift */,
+				D658FB7E25FD1878006C7F85 /* FeedCell.swift */,
+				D658FB7F25FD1878006C7F85 /* FeedCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D658FB5425FCEB77006C7F85 /* TabViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D658FBAD2600E3C1006C7F85 /* WritingViewController.swift */,
+				D658FB5525FCEB91006C7F85 /* HomeViewController.swift */,
+				D658FB5D25FCEBA4006C7F85 /* MyPageViewController.swift */,
+				D658FB6225FCEBB2006C7F85 /* FavoriteViewController.swift */,
+			);
+			path = TabViewController;
+			sourceTree = "<group>";
+		};
+		D658FBF5260255E7006C7F85 /* ReviewController */ = {
+			isa = PBXGroup;
+			children = (
+				D658FBB52600FDD7006C7F85 /* DefaultReviewViewController.swift */,
+				D658FBBA2600FDEE006C7F85 /* FirstReviewViewController.swift */,
+				D658FBC42601047B006C7F85 /* SecondReviewViewController.swift */,
+			);
+			path = ReviewController;
+			sourceTree = "<group>";
+		};
 		D6BF9F2625EE80EE0076E321 = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +273,7 @@
 		D6BF9F3125EE80EE0076E321 /* Eating */ = {
 			isa = PBXGroup;
 			children = (
+				D658FB3C25FBC83A006C7F85 /* Cells */,
 				D6BFA06F25F4BAFC0076E321 /* Views */,
 				D6BFA06625F4A8AA0076E321 /* Storyboard */,
 				D6BFA06225F4A89E0076E321 /* Utils */,
@@ -238,6 +312,8 @@
 		D6BF9FE025F371190076E321 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				D658FB7425FD1255006C7F85 /* NanumSquareOTFBold.otf */,
+				D658FB6725FD1113006C7F85 /* NanumSquareOTFRegular.otf */,
 				D6BF9FD625F3710E0076E321 /* NanumSquareRoundOTFEB.otf */,
 				D6BF9FC925F36C640076E321 /* JalnanOTF.otf */,
 			);
@@ -249,6 +325,7 @@
 			children = (
 				D6BF9FF625F3A2880076E321 /* UITextField+Extension.swift */,
 				D6BFA06A25F4B2480076E321 /* UIColor+Extension.swift */,
+				D658FB4525FC7AFA006C7F85 /* Collection+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -257,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				D6BFA01925F48CD80076E321 /* Address.swift */,
+				D658FB4F25FCB99A006C7F85 /* RegionCode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,10 +342,13 @@
 		D6BFA05625F4A2800076E321 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D658FBF5260255E7006C7F85 /* ReviewController */,
+				D658FB5425FCEB77006C7F85 /* TabViewController */,
 				D6BFA03825F4A0FD0076E321 /* MapViewController.swift */,
 				D6BF9FE425F37F2D0076E321 /* SignUpViewController.swift */,
 				D6BF9F3625EE80EE0076E321 /* LoginViewController.swift */,
 				D6BF9FFE25F3E10F0076E321 /* AddressViewController.swift */,
+				D658FBF926025A84006C7F85 /* FilterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -276,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				D6BFA00325F3E12B0076E321 /* AddressService.swift */,
+				D658FB4A25FCB85C006C7F85 /* AddressRegionCodeService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -293,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				D6BF9F8125EE8B7D0076E321 /* Constant.swift */,
+				D658FBBF260100E9006C7F85 /* ViewFrame.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -422,6 +505,9 @@
 				D6BF9F3F25EE80F10076E321 /* LaunchScreen.storyboard in Resources */,
 				D6BF9FCA25F36C6E0076E321 /* JalnanOTF.otf in Resources */,
 				D6BF9F3C25EE80F10076E321 /* Assets.xcassets in Resources */,
+				D658FB6825FD1113006C7F85 /* NanumSquareOTFRegular.otf in Resources */,
+				D658FB7525FD1255006C7F85 /* NanumSquareOTFBold.otf in Resources */,
+				D658FB8325FD1879006C7F85 /* FeedCell.xib in Resources */,
 				D6BF9F3A25EE80EE0076E321 /* Main.storyboard in Resources */,
 				D6BF9FD725F371110076E321 /* NanumSquareRoundOTFEB.otf in Resources */,
 			);
@@ -431,8 +517,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D658FB6C25FD1136006C7F85 /* NanumSquareOTFRegular.otf in Resources */,
+				D658FB8425FD1879006C7F85 /* FeedCell.xib in Resources */,
 				D6BF9FDB25F371110076E321 /* NanumSquareRoundOTFEB.otf in Resources */,
 				D6BF9FCE25F36C770076E321 /* JalnanOTF.otf in Resources */,
+				D658FB7625FD1255006C7F85 /* NanumSquareOTFBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,8 +529,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D658FB7025FD1136006C7F85 /* NanumSquareOTFRegular.otf in Resources */,
+				D658FB8525FD1879006C7F85 /* FeedCell.xib in Resources */,
 				D6BF9FDC25F371120076E321 /* NanumSquareRoundOTFEB.otf in Resources */,
 				D6BF9FD225F36C780076E321 /* JalnanOTF.otf in Resources */,
+				D658FB7725FD1255006C7F85 /* NanumSquareOTFBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,18 +613,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D658FBC0260100E9006C7F85 /* ViewFrame.swift in Sources */,
+				D658FBBB2600FDEE006C7F85 /* FirstReviewViewController.swift in Sources */,
 				D6BFA03925F4A0FD0076E321 /* MapViewController.swift in Sources */,
+				D658FBAE2600E3C1006C7F85 /* WritingViewController.swift in Sources */,
+				D658FBC52601047B006C7F85 /* SecondReviewViewController.swift in Sources */,
+				D658FB5E25FCEBA4006C7F85 /* MyPageViewController.swift in Sources */,
+				D658FB4625FC7AFA006C7F85 /* Collection+Extension.swift in Sources */,
 				D6BF9FF725F3A2880076E321 /* UITextField+Extension.swift in Sources */,
+				D658FB5625FCEB91006C7F85 /* HomeViewController.swift in Sources */,
 				D6BF9F3725EE80EE0076E321 /* LoginViewController.swift in Sources */,
 				D6BFA06B25F4B2480076E321 /* UIColor+Extension.swift in Sources */,
 				D6BF9F3325EE80EE0076E321 /* AppDelegate.swift in Sources */,
+				D658FB4B25FCB85D006C7F85 /* AddressRegionCodeService.swift in Sources */,
+				D658FBB62600FDD7006C7F85 /* DefaultReviewViewController.swift in Sources */,
+				D658FB8025FD1879006C7F85 /* FeedCell.swift in Sources */,
 				D6BF9FFF25F3E1100076E321 /* AddressViewController.swift in Sources */,
 				D6BFA01A25F48CD80076E321 /* Address.swift in Sources */,
 				D6BFA00925F3E1B90076E321 /* NetworkManager.swift in Sources */,
+				D658FB5025FCB99A006C7F85 /* RegionCode.swift in Sources */,
 				D6BF9FE525F37F2D0076E321 /* SignUpViewController.swift in Sources */,
+				D658FBFA26025A84006C7F85 /* FilterViewController.swift in Sources */,
+				D658FB6325FCEBB2006C7F85 /* FavoriteViewController.swift in Sources */,
 				D6BFA00E25F3E1E20076E321 /* NetworkError.swift in Sources */,
 				D6BFA00425F3E12B0076E321 /* AddressService.swift in Sources */,
 				D6BF9F8225EE8B7D0076E321 /* Constant.swift in Sources */,
+				D658FB3E25FBC859006C7F85 /* AddressCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +647,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6BF9F4A25EE80F10076E321 /* EatingTests.swift in Sources */,
+				D658FB8125FD1879006C7F85 /* FeedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +656,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6BF9F5525EE80F10076E321 /* EatingUITests.swift in Sources */,
+				D658FB8225FD1879006C7F85 /* FeedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,7 +832,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.suyeon.Eating;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/codeing/Desktop/suyeon/Eating/KakaoMap-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/codeing/Desktop/suyeon/MakeUs_Eating/Eating_ios/KakaoMap-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -751,7 +859,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.suyeon.Eating;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/codeing/Desktop/suyeon/Eating/KakaoMap-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/codeing/Desktop/suyeon/MakeUs_Eating/Eating_ios/KakaoMap-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

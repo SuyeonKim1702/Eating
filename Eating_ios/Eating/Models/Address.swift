@@ -13,14 +13,16 @@ struct Address: Codable {
 
 struct Place: Codable {
     enum CodingKeys: String, CodingKey {
-       case placeName = "place_name"
-       case addressName = "address_name"
-       case x
-       case y
-     }
+        case placeName = "place_name"
+        case addressName = "address_name"
+        case roadAddressName = "road_address_name"
+        case x
+        case y
+    }
     
     let placeName: String
     let addressName: String
+    let roadAddressName: String
     let x: String
     let y: String
 }

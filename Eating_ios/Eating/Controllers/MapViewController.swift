@@ -6,18 +6,93 @@
 //
 
 import UIKit
+import CoreLocation
 
-class MapViewController: UIViewController, MTMapViewDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     var mapView: MTMapView?
     let completeButton = UIButton()
-    let addressButton = UIButton()
-    
+    let addressTextField = UITextField()
+    let currentLocationImageView = UIImageView()
+    let regionCodeService = AddressRegionCodeService()
+    var x: Double?
+    var y: Double?
+    private let locationManager = CLLocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setForMapView()
         stylingCompleteButton()
-        stylingAddressButton()
+        stylingTextField()
+        stylingCurrentLocationButton()
+        addGestureRecognizer()
+        addCenterMarker()
+        locationManager.delegate = self
+    }
+    
+    @objc private func goBack() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func moveToCurrentLocation() {
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.authorizationStatus() == .denied {
+           locationPermissionAlert()
+        }
+        if let coor = locationManager.location?.coordinate {
+            y = coor.latitude
+            x = coor.longitude
+            setMapCenter(x!, y!)
+        }
+    }
+    
+    @objc private func tapCompeteButton() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController else { return }
+        
+        tabBarController.modalTransitionStyle = .coverVertical
+        tabBarController.modalPresentationStyle = .fullScreen
+        present(tabBarController, animated: true, completion: nil)
+    }
+    
+    private func locationPermissionAlert() {
+        let locationAlertController = UIAlertController(title: nil, message: Constant.locationPermissionString, preferredStyle: .alert)
+        let settingAction = UIAlertAction(title: "설정으로 이동", style: .default, handler: {_ in
+            guard let settingString = URL(string: UIApplication.openSettingsURLString) else { return }
+            UIApplication.shared.open(settingString, options: [:], completionHandler: nil)
+        })
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        locationAlertController.addAction(settingAction)
+        locationAlertController.addAction(cancelAction)
+        present(locationAlertController, animated: true, completion: nil)
+    }
+    
+    private func addGestureRecognizer() {
+        let tapGestureRecognizerForGoBack = UITapGestureRecognizer(target: self, action: #selector(goBack))
+        let tapGestureRecognizerForCurrentLocation = UITapGestureRecognizer(target: self, action: #selector(moveToCurrentLocation))
+        let tapGestureRecognizerForCompleteButton = UITapGestureRecognizer(target: self, action: #selector(tapCompeteButton))
+        completeButton.addGestureRecognizer(tapGestureRecognizerForCompleteButton)
+        addressTextField.addGestureRecognizer(tapGestureRecognizerForGoBack)
+        currentLocationImageView.addGestureRecognizer(tapGestureRecognizerForCurrentLocation)
+    }
+    
+    private func addCenterMarker() {
+        let newView = UIView(frame: view.bounds)
+        view.addSubview(newView)
+        newView.backgroundColor = .none
+        newView.isUserInteractionEnabled = false
+        
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "markerIcon")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        newView.addSubview(imageView)
+        imageView.centerXAnchor.constraint(equalTo: newView.centerXAnchor).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: newView.centerYAnchor).isActive = true
+    }
+    
+    private func setMapCenter(_ x: Double, _ y: Double) {
+        mapView?.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: y, longitude: x)), zoomLevel: 1, animated: true)
     }
     
     private func setForMapView() {
@@ -26,11 +101,15 @@ class MapViewController: UIViewController, MTMapViewDelegate {
             mapView.delegate = self
             mapView.baseMapType = .standard
             view.addSubview(mapView)
-
+         
+            if let x = x, let y = y {
+                setMapCenter(x, y)
+            }
         }
     }
     
     private func stylingCompleteButton() {
+        completeButton.isUserInteractionEnabled = true
         completeButton.backgroundColor = UIColor(rgb: 0xfddc21)
         mapView?.addSubview(completeButton)
         completeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -49,26 +128,47 @@ class MapViewController: UIViewController, MTMapViewDelegate {
         completeButton.layer.shadowOpacity = 0.29
     }
     
-    private func stylingAddressButton() {
-        addressButton.backgroundColor = .white
-        mapView?.addSubview(addressButton)
-        addressButton.translatesAutoresizingMaskIntoConstraints = false
-        addressButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        addressButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        addressButton.bottomAnchor.constraint(equalTo: completeButton.topAnchor, constant: -25).isActive = true
-        addressButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        addressButton.layer.cornerRadius = 10
-        addressButton.layer.shadowRadius = 5
-        addressButton.layer.shadowColor = UIColor(rgb: 0x000000, alpha: 29).cgColor
-        addressButton.layer.shadowOffset = CGSize(width: 0, height: 3)
-        addressButton.layer.shadowOpacity = 0.29
-        addressButton.setTitle("서울 영등포구 선유로 9길 30 106동 싹 영등포 캠퍼스", for: .normal)
-        addressButton.setTitleColor(.black, for: .normal)
-        addressButton.titleLabel?.font = UIFont(name: "NanumSquareRoundOTFEB", size: 17)
-        addressButton.titleLabel?.lineBreakMode = .byWordWrapping
-        addressButton.titleLabel?.textAlignment = .center
-        addressButton.titleLabel?.numberOfLines = 2
+    private func stylingTextField() {
+        mapView?.addSubview(addressTextField)
+        addressTextField.backgroundColor = .white
+        addressTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        addressTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        addressTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        addressTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
+        addressTextField.font = UIFont(name: "NanumSquareRoundOTFEB", size: 15)
+
+        addressTextField.heightAnchor.constraint(equalToConstant: 53).isActive = true
+        addressTextField.layer.cornerRadius = 28
+        addressTextField.addLeftPadding()
+        addressTextField.addleftimage(image: UIImage(named:"searchIcon")!)
     }
+    
+    private func stylingCurrentLocationButton() {
+        currentLocationImageView.isUserInteractionEnabled = true
+        mapView?.addSubview(currentLocationImageView)
+        currentLocationImageView.translatesAutoresizingMaskIntoConstraints = false
+        currentLocationImageView.image = UIImage(named: "currentLocationIcon")
+        currentLocationImageView.bottomAnchor.constraint(equalTo: completeButton.topAnchor, constant: -20).isActive = true
+        currentLocationImageView.rightAnchor.constraint(equalTo: completeButton.rightAnchor).isActive = true
+    }
+}
 
-
+extension MapViewController: MTMapViewDelegate {
+    func mapView(_ mapView: MTMapView!, finishedMapMoveAnimation mapCenterPoint: MTMapPoint!) {
+        y = mapCenterPoint.mapPointGeo().latitude
+        x = mapCenterPoint.mapPointGeo().longitude
+        
+        regionCodeService.getAddressInfo(x: "\(String(describing: x!))", y: "\(String(describing: y!))") { [weak self] result in
+            switch result {
+            case .success(let address):
+                DispatchQueue.main.async {
+                    self?.addressTextField.text = address
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
 }

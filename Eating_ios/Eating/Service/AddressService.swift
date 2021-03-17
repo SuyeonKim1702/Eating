@@ -7,16 +7,16 @@
 
 import Foundation
 
-class AddressService {
+class AddressService{
     let networkManager = NetworkManager()
     
-    func getAddressInfo(completion: @escaping (Result<[Place], NetworkError>) -> Void) {
+    func getAddressInfo(for keyword: String, completion: @escaping (Result<[Place], NetworkError>) -> Void) {
         var urlComponents = URLComponents()
         urlComponents.scheme = Constant.scheme
         urlComponents.host = Constant.kakaoHost
         urlComponents.path = Constant.ApiId.kakaoAddressApi.rawValue
         urlComponents.queryItems = [
-            URLQueryItem(name: "query", value: "천천동 래미안")
+            URLQueryItem(name: "query", value: keyword)
         ]
         guard let urlString = urlComponents.url?.absoluteString, let url = URL(string: urlString) else {
             return completion(.failure(.urlError))

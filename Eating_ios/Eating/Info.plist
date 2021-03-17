@@ -2,10 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>앱을 열 때마다 위치 정보 가져오기</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>7b287bd0f2209ab8c9c1779af8b9bf93</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>NanumSquareOTFBold</string>
+		<string>NanumSquareOTFRegular</string>
 		<string>JalnanOTF</string>
 		<string>NanumSquareRoundOTFEB</string>
 	</array>

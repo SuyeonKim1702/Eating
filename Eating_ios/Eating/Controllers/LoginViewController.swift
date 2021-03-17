@@ -16,19 +16,22 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
     @IBOutlet weak var appleButtonPlaceHolder: UIView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        stylingButton()
+        stylingButton()        
     }
-    
+        
     private func stylingButton() {
         kakaoLoginButton?.layer.cornerRadius = 32
         if #available(iOS 13.0, *) {
             let appleLoginBtn = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
+            appleLoginBtn.isUserInteractionEnabled = true
+            appleLoginBtn.translatesAutoresizingMaskIntoConstraints = false
             appleButtonPlaceHolder?.addSubview(appleLoginBtn)
             appleLoginBtn.frame = appleButtonPlaceHolder!.bounds
+            
             appleLoginBtn.addTarget(self, action: #selector(tapAppleLogInButton), for: .touchUpInside)
-            //appleLoginBtn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-            //appleLoginBtn.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-            //appleLoginBtn.heightAnchor.constraint(equalToConstant: 63).isActive = true
+            appleLoginBtn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+            appleLoginBtn.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+            appleLoginBtn.heightAnchor.constraint(equalToConstant: 63).isActive = true
 
         } else {
             // Fallback on earlier versions
