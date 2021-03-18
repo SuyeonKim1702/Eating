@@ -2,6 +2,7 @@ package desla.aos.eating.data.network
 
 import desla.aos.eating.data.model.AddressAPI
 import desla.aos.eating.data.model.GeoAPI
+import desla.aos.eating.data.model.KeywordAPI
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.Response
@@ -14,8 +15,14 @@ import retrofit2.http.Query
 
 interface KakaoMapApi {
 
+    @GET("search/keyword.json")
+    fun getLocationWithKeyword(
+            @Query("query") query: String,
+            @Header("Authorization") Authorization: String
+    ): Single<KeywordAPI>
+
     @GET("search/address.json")
-    fun getAddressWithQuery(
+    fun getLocationWithAddress(
             @Query("query") query: String,
             @Query("size") size: Int,
             @Header("Authorization") Authorization: String

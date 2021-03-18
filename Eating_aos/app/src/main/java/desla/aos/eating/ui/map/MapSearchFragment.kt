@@ -6,13 +6,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import desla.aos.eating.R
 import desla.aos.eating.data.model.AddressAPI
-import desla.aos.eating.data.model.Post
-import desla.aos.eating.data.repositories.UserRepository
-import desla.aos.eating.databinding.FragmentLoginBinding
 import desla.aos.eating.databinding.FragmentMapSearchBinding
 import desla.aos.eating.ui.base.BaseFragment
-import desla.aos.eating.ui.home.HomeRCAdapter
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_map_search.*
 
 class MapSearchFragment :  BaseFragment<FragmentMapSearchBinding>() {
@@ -33,7 +28,7 @@ class MapSearchFragment :  BaseFragment<FragmentMapSearchBinding>() {
 
     override fun initDataBinding() {
 
-        viewModel.addressList.observe(this, Observer {
+        viewModel.locationList.observe(this, Observer {
 
 //            if(it.meta.totalCount > 0){
 //                activity?.onBackPressed()

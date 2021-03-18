@@ -8,6 +8,7 @@ import desla.aos.eating.data.repositories.HomeRepository
 import desla.aos.eating.data.repositories.LikeRepository
 import desla.aos.eating.data.repositories.UserRepository
 import desla.aos.eating.databinding.FragmentHomeBinding
+import desla.aos.eating.ui.MainActivity
 import desla.aos.eating.ui.base.BaseFragment
 import desla.aos.eating.ui.home.HomeRCAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -27,6 +28,8 @@ class LikeFragment :  BaseFragment<FragmentHomeBinding>() {
     private val like: MutableList<Post> = mutableListOf()
 
     override fun initStartView() {
+        (activity as MainActivity).setVisibilityBottomNavigation(true)
+
         val repository = LikeRepository()
         factory = LikeViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory).get(LikeViewModel::class.java)

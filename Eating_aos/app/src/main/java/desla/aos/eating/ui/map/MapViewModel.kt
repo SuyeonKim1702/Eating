@@ -18,10 +18,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
 import desla.aos.eating.data.model.AddressAPI
 import desla.aos.eating.data.model.GeoAPI
+import desla.aos.eating.data.model.MapSearch
 import desla.aos.eating.data.repositories.MapRepository
 import desla.aos.eating.ui.base.BaseViewModel
 import desla.aos.eating.util.getActivity
@@ -75,10 +74,35 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
     }
 
 
-    private val _addressList = MutableLiveData<List<AddressAPI.Document>>()
-    val addressList : LiveData<List<AddressAPI.Document>>
-        get() = _addressList
+    private val _locationList = MutableLiveData<List<MapSearch>>()
+    val locationList : LiveData<List<MapSearch>>
+        get() = _locationList
 
+    //키워드로 검색
+    fun getLocationWithKeyword(query: String){
+        val disposable = repository.getLocationWithKeyword(query ,
+                "KakaoAK fc1e18a34b2c31ec6d45168ef4e15284")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+
+                    if(it.meta.totalCount > 0){
+                        val list = mutableListOf<MapSearch>()
+                        for(data in it.documents){
+                            list.add(MapSearch(data.placeName, data.addressName, data.roadAddressName))
+                        }
+                        _locationList.value = list
+
+                    }else{
+                        getLocationList(query)
+                    }
+
+                }, {
+                })
+        addDisposable(disposable)
+    }
+
+    //주소로 검색
     fun getLocationList(query: String){
 
         val disposable = repository.getAddressWithQuery(query ,
@@ -87,16 +111,21 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
 
-                    _addressList.value = it.documents
+                    if(it.meta.totalCount > 0){
+                        val list = mutableListOf<MapSearch>()
+                        for(data in it.documents){
+                            list.add(MapSearch(null, data.addressName, data.roadAddress.roadName))
+                        }
+                        _locationList.value = list
+                    }else{
+                        _message.value = "일치하는 주소가 없습니다"
+                    }
+
                 }, {
                 })
         addDisposable(disposable)
 
     }
-
-    private val _address = MutableLiveData<GeoAPI>()
-    val address : LiveData<GeoAPI>
-        get() = _address
 
     var x = 0.0
     var y = 0.0
@@ -114,7 +143,15 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
 
-                        _address.value = it
+                        if(it.meta.totalCount > 0){
+                            val list = mutableListOf<MapSearch>()
+                            for(data in it.documents){
+                                list.add(MapSearch(null, data.address.addressName, data.roadAddress.roadName))
+                            }
+                            _locationList.value = list
+                        }else{
+                            _message.value = "일치하는 주소가 없습니다"
+                        }
 
                     }, {
 
