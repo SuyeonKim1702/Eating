@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MlT-Vo-ioZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cJM-gs-N85">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -192,16 +192,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="third" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjB-d0-UT3">
-                                <rect key="frame" x="266" y="114" width="81" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로필" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zY1-0u-cAK">
+                                <rect key="frame" x="181" y="45" width="52" height="21"/>
+                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="19"/>
+                                <color key="textColor" red="0.25490608809999998" green="0.25888052579999998" blue="0.2549018562" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9ff-Gv-TJc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zY1-0u-cAK" firstAttribute="centerX" secondItem="9ff-Gv-TJc" secondAttribute="centerX" id="BOI-ln-O3G"/>
+                            <constraint firstItem="zY1-0u-cAK" firstAttribute="top" secondItem="9ff-Gv-TJc" secondAttribute="top" constant="1" id="kW1-Q2-2rx"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="마이페이지" image="unselectedMypage" selectedImage="selectedMypage" id="qlN-yf-hyL"/>
                 </viewController>
@@ -217,22 +220,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="second" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pX-ho-k0s">
-                                <rect key="frame" x="176" y="374" width="132" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <nil key="textColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="9qL-OT-SJc">
+                                <rect key="frame" x="0.0" y="79" width="414" height="734"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="찜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGd-aA-rAK">
+                                <rect key="frame" x="198" y="45" width="18" height="21"/>
+                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="19"/>
+                                <color key="textColor" red="0.25490608809999998" green="0.25888052579999998" blue="0.2549018562" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Acm-zl-ppB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Acm-zl-ppB" firstAttribute="bottom" secondItem="9qL-OT-SJc" secondAttribute="bottom" id="2dK-Ds-peF"/>
+                            <constraint firstItem="9qL-OT-SJc" firstAttribute="top" secondItem="IGd-aA-rAK" secondAttribute="bottom" constant="13" id="6aZ-qY-G7r"/>
+                            <constraint firstItem="IGd-aA-rAK" firstAttribute="top" secondItem="Acm-zl-ppB" secondAttribute="top" constant="1" id="FfQ-kv-cbM"/>
+                            <constraint firstItem="IGd-aA-rAK" firstAttribute="centerX" secondItem="Acm-zl-ppB" secondAttribute="centerX" id="LB1-Z4-Y5E"/>
+                            <constraint firstItem="9qL-OT-SJc" firstAttribute="leading" secondItem="Acm-zl-ppB" secondAttribute="leading" id="aBs-Rl-WDe"/>
+                            <constraint firstItem="Acm-zl-ppB" firstAttribute="trailing" secondItem="9qL-OT-SJc" secondAttribute="trailing" id="s1Y-Ss-9Or"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="찜" image="unselectedFavorite" selectedImage="selectedFavorite" id="07J-o4-zDE"/>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="9qL-OT-SJc" id="73c-w1-k8p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uo4-Yv-gd1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912" y="1555"/>
+            <point key="canvasLocation" x="1911.594202898551" y="1554.9107142857142"/>
         </scene>
         <!--홈-->
         <scene sceneID="LzM-kn-136">
@@ -296,7 +313,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ogt-tF-JkQ">
                                 <rect key="frame" x="0.0" y="114" width="414" height="699"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Y2X-3E-qz3"/>
@@ -645,7 +662,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1zy-PE-zyw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4732" y="753"/>
+            <point key="canvasLocation" x="4732" y="740"/>
         </scene>
         <!--SecondReviewViewController-->
         <scene sceneID="Ac4-oE-oVo">
@@ -864,6 +881,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="TPP-u6-Z4r" kind="relationship" relationship="viewControllers" id="uMj-i6-Cqb"/>
@@ -1045,24 +1063,284 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1UC-uj-lfD">
-                                        <rect key="frame" x="28" y="138" width="358" height="31"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="174" minValue="28" maxValue="347" translatesAutoresizingMaskIntoConstraints="NO" id="1UC-uj-lfD">
+                                        <rect key="frame" x="28" y="138" width="358" height="41"/>
                                         <color key="minimumTrackTintColor" red="0.95453661680000002" green="0.86794906849999998" blue="0.41557678580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </slider>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sliderStartImage" translatesAutoresizingMaskIntoConstraints="NO" id="PE4-Pu-nGk">
-                                        <rect key="frame" x="30" y="107" width="54" height="71"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sliderStartImage" translatesAutoresizingMaskIntoConstraints="NO" id="PE4-Pu-nGk">
+                                        <rect key="frame" x="30" y="122" width="41" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="41" id="NiN-dM-xU0"/>
+                                            <constraint firstAttribute="height" constant="56" id="mqa-D3-opZ"/>
+                                        </constraints>
                                     </imageView>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBw-3X-4YE">
+                                        <rect key="frame" x="171" y="90" width="72" height="38"/>
+                                        <fontDescription key="fontDescription" name="JalnanOTF" family="Jalnan OTF" pointSize="13"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="-11" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="400m" backgroundImage="sliderToolTip">
+                                            <color key="titleColor" red="0.99569576979999996" green="0.98911458249999995" blue="0.9333266616" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9c-cx-vB9">
+                                        <rect key="frame" x="353" y="184" width="38" height="17"/>
+                                        <fontDescription key="fontDescription" name="JalnanOTF" family="Jalnan OTF" pointSize="17"/>
+                                        <color key="textColor" red="0.38039767740000002" green="0.38038221" blue="0.38039267059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hY-dh-mxJ">
+                                        <rect key="frame" x="28" y="184" width="28.5" height="17"/>
+                                        <fontDescription key="fontDescription" name="JalnanOTF" family="Jalnan OTF" pointSize="17"/>
+                                        <color key="textColor" red="0.38039767740000002" green="0.38038221" blue="0.38039267059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="bbb-Ii-itu">
+                                        <rect key="frame" x="16" y="246" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="Dfy-xE-ekB"/>
+                                            <constraint firstAttribute="height" constant="22" id="uNR-F2-ud6"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="음식 종류" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asN-E5-Z3I">
+                                        <rect key="frame" x="30" y="257" width="62.5" height="18"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="uyw-cg-Lcx">
+                                        <rect key="frame" x="30" y="310" width="159" height="171"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYQ-cY-hdg">
+                                                <rect key="frame" x="0.0" y="0.0" width="159" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="159" id="HLE-LD-KxB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="한식" image="emptyCheck">
+                                                    <color key="titleColor" red="0.61961638929999996" green="0.61959248779999998" blue="0.61960870030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <state key="selected" title="한식" image="fullCheck">
+                                                    <color key="titleColor" red="0.91115719080000002" green="0.34768384699999999" blue="0.18816241619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonClicked:" destination="NoW-WX-Z7W" eventType="touchUpInside" id="Plq-dy-khr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kL-Tk-b1c">
+                                                <rect key="frame" x="0.0" y="38" width="159" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="159" id="pfe-YY-lQE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="분식" image="emptyCheck">
+                                                    <color key="titleColor" red="0.61961638929999996" green="0.61959248779999998" blue="0.61960870030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <state key="selected" title="분식" image="fullCheck">
+                                                    <color key="titleColor" red="0.91115719080000002" green="0.34768384699999999" blue="0.18816241619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonClicked:" destination="NoW-WX-Z7W" eventType="touchUpInside" id="Tml-7Y-r3d"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFC-4x-CTh">
+                                                <rect key="frame" x="0.0" y="76" width="159" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="159" id="wbm-KW-lsI"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="치킨" image="emptyCheck">
+                                                    <color key="titleColor" red="0.61961638929999996" green="0.61959248779999998" blue="0.61960870030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <state key="selected" title="치킨" image="fullCheck">
+                                                    <color key="titleColor" red="0.91115719080000002" green="0.34768384699999999" blue="0.18816241619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonClicked:" destination="NoW-WX-Z7W" eventType="touchUpInside" id="F9d-bq-49B"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swy-vY-SH8">
+                                                <rect key="frame" x="0.0" y="114" width="159" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="159" id="gNn-ad-Ogg"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="아시아/양식" image="emptyCheck">
+                                                    <color key="titleColor" red="0.61961638929999996" green="0.61959248779999998" blue="0.61960870030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <state key="selected" title="아시아/양식" image="fullCheck">
+                                                    <color key="titleColor" red="0.91115719080000002" green="0.34768384699999999" blue="0.18816241619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonClicked:" destination="NoW-WX-Z7W" eventType="touchUpInside" id="qVO-Ji-dVb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4G3-0a-PIp">
+                                                <rect key="frame" x="0.0" y="152" width="159" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="159" id="KxK-mA-F0e"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="야식" image="emptyCheck">
+                                                    <color key="titleColor" red="0.61961638929999996" green="0.61959248779999998" blue="0.61960870030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <state key="selected" title="야식" image="fullCheck">
+                                                    <color key="titleColor" red="0.91115719080000002" green="0.34768384699999999" blue="0.18816241619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonClicked:" destination="NoW-WX-Z7W" eventType="touchUpInside" id="qr7-xc-j4e"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="rsO-Xr-Cx6">
+                                        <rect key="frame" x="232" y="310" width="159" height="167"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hf-CO-qdL">
+                                                <rect key="frame" x="0.0" y="0.0" width="159" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="159" id="Fa6-yQ-MRS"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="일식" image="emptyCheck">
+                                                    <color key="titleColor" red="0.61961638929999996" green="0.61959248779999998" blue="0.61960870030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <state key="selected" title="일식" image="fullCheck">
+                                                    <color key="titleColor" red="0.91115719080000002" green="0.34768384699999999" blue="0.18816241619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonClicked:" destination="NoW-WX-Z7W" eventType="touchUpInside" id="FUW-mv-ezo"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fk-A4-WFP">
+                                                <rect key="frame" x="0.0" y="37" width="159" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="159" id="jSy-3B-Tdl"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="카페/디저트" image="emptyCheck">
+                                                    <color key="titleColor" red="0.61961638929999996" green="0.61959248779999998" blue="0.61960870030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <state key="selected" title="카페/디저트" image="fullCheck">
+                                                    <color key="titleColor" red="0.91115719080000002" green="0.34768384699999999" blue="0.18816241619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonClicked:" destination="NoW-WX-Z7W" eventType="touchUpInside" id="MHU-7A-Er5"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeB-Qq-Ajf">
+                                                <rect key="frame" x="0.0" y="74" width="159" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="159" id="afZ-Ck-YpJ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="피자" image="emptyCheck">
+                                                    <color key="titleColor" red="0.61961638929999996" green="0.61959248779999998" blue="0.61960870030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <state key="selected" title="피자" image="fullCheck">
+                                                    <color key="titleColor" red="0.91115719080000002" green="0.34768384699999999" blue="0.18816241619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonClicked:" destination="NoW-WX-Z7W" eventType="touchUpInside" id="M0F-IF-FPf"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIV-5W-JgT">
+                                                <rect key="frame" x="0.0" y="111" width="159" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="159" id="abR-jN-ic0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="중국집" image="emptyCheck">
+                                                    <color key="titleColor" red="0.61961638929999996" green="0.61959248779999998" blue="0.61960870030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <state key="selected" title="중국집" image="fullCheck">
+                                                    <color key="titleColor" red="0.91115719080000002" green="0.34768384699999999" blue="0.18816241619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonClicked:" destination="NoW-WX-Z7W" eventType="touchUpInside" id="xg0-4f-3Ys"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7N-w1-PNE">
+                                                <rect key="frame" x="0.0" y="148" width="159" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="159" id="1JE-gv-mHU"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="패스트푸드" image="emptyCheck">
+                                                    <color key="titleColor" red="0.61961638929999996" green="0.61959248779999998" blue="0.61960870030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <state key="selected" title="패스트푸드" image="fullCheck">
+                                                    <color key="titleColor" red="0.91115719080000002" green="0.34768384699999999" blue="0.18816241619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonClicked:" destination="NoW-WX-Z7W" eventType="touchUpInside" id="ML4-g5-9Sx"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jC5-8D-NAM">
+                                        <rect key="frame" x="16" y="660.5" width="382" height="63"/>
+                                        <color key="backgroundColor" red="0.96998387580000001" green="0.86851567029999999" blue="0.31747785210000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="63" id="saj-fd-YFp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="JalnanOTF" family="Jalnan OTF" pointSize="20"/>
+                                        <state key="normal" title="완료">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapCompleteButton:" destination="M9M-jW-aZD" eventType="touchUpInside" id="2dm-TJ-myR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="bbb-Ii-itu" firstAttribute="leading" secondItem="BTq-Ak-H3S" secondAttribute="leading" id="1kh-f2-Pa4"/>
+                                    <constraint firstItem="uyw-cg-Lcx" firstAttribute="leading" secondItem="asN-E5-Z3I" secondAttribute="leading" id="2is-9U-xe4"/>
+                                    <constraint firstItem="8hY-dh-mxJ" firstAttribute="top" secondItem="PE4-Pu-nGk" secondAttribute="bottom" constant="6" id="6cG-24-e42"/>
+                                    <constraint firstItem="uyw-cg-Lcx" firstAttribute="top" secondItem="asN-E5-Z3I" secondAttribute="bottom" constant="35" id="7zo-Yf-SRe"/>
+                                    <constraint firstItem="1UC-uj-lfD" firstAttribute="top" secondItem="SBw-3X-4YE" secondAttribute="bottom" constant="10" id="86E-Ws-hVg"/>
+                                    <constraint firstAttribute="trailing" secondItem="jC5-8D-NAM" secondAttribute="trailing" constant="16" id="8k1-bn-PbI"/>
+                                    <constraint firstItem="asN-E5-Z3I" firstAttribute="top" secondItem="bbb-Ii-itu" secondAttribute="bottom" constant="-11" id="8oq-1e-gMv"/>
+                                    <constraint firstItem="rsO-Xr-Cx6" firstAttribute="top" secondItem="uyw-cg-Lcx" secondAttribute="top" id="GkR-xl-9jG"/>
                                     <constraint firstItem="BTq-Ak-H3S" firstAttribute="top" secondItem="jeL-0g-7rX" secondAttribute="top" constant="38" id="JcX-ab-yVY"/>
+                                    <constraint firstItem="rsO-Xr-Cx6" firstAttribute="trailing" secondItem="G9c-cx-vB9" secondAttribute="trailing" id="KlK-hA-j4f"/>
+                                    <constraint firstItem="jC5-8D-NAM" firstAttribute="leading" secondItem="jeL-0g-7rX" secondAttribute="leading" constant="16" id="LT0-49-k4b"/>
+                                    <constraint firstItem="bbb-Ii-itu" firstAttribute="top" secondItem="8hY-dh-mxJ" secondAttribute="bottom" constant="45" id="LaI-dD-MTj"/>
+                                    <constraint firstItem="G9c-cx-vB9" firstAttribute="top" secondItem="1UC-uj-lfD" secondAttribute="bottom" constant="6" id="Npu-28-1aR"/>
                                     <constraint firstItem="N4W-vR-8qH" firstAttribute="leading" secondItem="BTq-Ak-H3S" secondAttribute="trailing" constant="-8" id="Tw6-go-2ko"/>
+                                    <constraint firstItem="PE4-Pu-nGk" firstAttribute="leading" secondItem="1UC-uj-lfD" secondAttribute="leading" id="ZEk-OE-Fmm"/>
                                     <constraint firstItem="BTq-Ak-H3S" firstAttribute="leading" secondItem="jeL-0g-7rX" secondAttribute="leading" constant="16" id="aU9-HF-Sro"/>
+                                    <constraint firstItem="SBw-3X-4YE" firstAttribute="leading" secondItem="PE4-Pu-nGk" secondAttribute="trailing" constant="100" id="cO4-AG-bQ8"/>
                                     <constraint firstAttribute="trailing" secondItem="1UC-uj-lfD" secondAttribute="trailing" constant="30" id="g6r-qy-ojx"/>
+                                    <constraint firstItem="asN-E5-Z3I" firstAttribute="leading" secondItem="bbb-Ii-itu" secondAttribute="trailing" constant="-8" id="gfb-iI-qbA"/>
+                                    <constraint firstAttribute="bottom" secondItem="jC5-8D-NAM" secondAttribute="bottom" constant="50" id="hDS-rk-Iyi"/>
+                                    <constraint firstAttribute="trailing" secondItem="G9c-cx-vB9" secondAttribute="trailing" constant="23" id="jKd-Mq-aBI"/>
                                     <constraint firstItem="N4W-vR-8qH" firstAttribute="top" secondItem="BTq-Ak-H3S" secondAttribute="bottom" constant="-11" id="nCy-xg-t3g"/>
+                                    <constraint firstItem="1UC-uj-lfD" firstAttribute="top" secondItem="PE4-Pu-nGk" secondAttribute="bottom" constant="-40" id="nDf-yB-UOR"/>
                                     <constraint firstItem="1UC-uj-lfD" firstAttribute="top" secondItem="N4W-vR-8qH" secondAttribute="bottom" constant="71" id="qjU-T6-hLT"/>
+                                    <constraint firstItem="8hY-dh-mxJ" firstAttribute="leading" secondItem="jeL-0g-7rX" secondAttribute="leading" constant="28" id="vWp-UT-kQX"/>
                                     <constraint firstItem="1UC-uj-lfD" firstAttribute="leading" secondItem="jeL-0g-7rX" secondAttribute="leading" constant="30" id="xP7-zs-vpQ"/>
+                                    <constraint firstItem="G9c-cx-vB9" firstAttribute="top" secondItem="8hY-dh-mxJ" secondAttribute="top" id="yFS-tO-0a2"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1079,11 +1357,12 @@
                     </view>
                     <connections>
                         <outlet property="slider" destination="1UC-uj-lfD" id="sIK-cn-xmu"/>
+                        <outlet property="toolTip" destination="SBw-3X-4YE" id="MLV-BG-peu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awx-UZ-Lx8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3455" y="90"/>
+            <point key="canvasLocation" x="3403" y="87"/>
         </scene>
     </scenes>
     <resources>
@@ -1107,6 +1386,7 @@
         <image name="selectedHome" width="26.5" height="25"/>
         <image name="selectedMypage" width="22" height="22.5"/>
         <image name="sliderStartImage" width="41.5" height="55"/>
+        <image name="sliderToolTip" width="72" height="38"/>
         <image name="unselectedFavorite" width="21.5" height="19"/>
         <image name="unselectedHome" width="19" height="19"/>
         <image name="unselectedMypage" width="14.5" height="19.5"/>
