@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -41,7 +42,15 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
     private val PERMISSIONS_REQUEST_CODE = 2002
     private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
 
+    var searchText = ""
 
+    private val _selectLocation = MutableLiveData<MapSearch>()
+    val selectLocation : LiveData<MapSearch>
+        get() = _selectLocation
+
+    fun setSelectLocation(data: MapSearch){
+        _selectLocation.value = data
+    }
 
     fun initMap(){
 
@@ -58,13 +67,13 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
         v.context.getActivity()?.startMainActivity()
     }
 
-    var searchText = ""
 
     val clicksListener = object : TextView.OnEditorActionListener {
         override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
             when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH  -> {
-                    getLocationList(searchText)
+                    v?.hideKeyboard()
+                    getLocationWithKeyword(searchText)
                 }
                 else -> return false
             }
@@ -79,7 +88,7 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
         get() = _locationList
 
     //키워드로 검색
-    fun getLocationWithKeyword(query: String){
+    private fun getLocationWithKeyword(query: String){
         val disposable = repository.getLocationWithKeyword(query ,
                 "KakaoAK fc1e18a34b2c31ec6d45168ef4e15284")
                 .subscribeOn(Schedulers.io())
@@ -89,7 +98,8 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
                     if(it.meta.totalCount > 0){
                         val list = mutableListOf<MapSearch>()
                         for(data in it.documents){
-                            list.add(MapSearch(data.placeName, data.addressName, data.roadAddressName))
+                            list.add(MapSearch(data.placeName, data.addressName, data.roadAddressName,
+                                    data.x.toDouble(), data.y.toDouble()))
                         }
                         _locationList.value = list
 
@@ -103,7 +113,7 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
     }
 
     //주소로 검색
-    fun getLocationList(query: String){
+    private fun getLocationList(query: String){
 
         val disposable = repository.getAddressWithQuery(query ,
                 "KakaoAK fc1e18a34b2c31ec6d45168ef4e15284")
@@ -114,7 +124,8 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
                     if(it.meta.totalCount > 0){
                         val list = mutableListOf<MapSearch>()
                         for(data in it.documents){
-                            list.add(MapSearch(null, data.addressName, data.roadAddress.roadName))
+                            list.add(MapSearch(null, data.addressName, data.roadAddress.roadName,
+                                    data.x.toDouble(), data.y.toDouble()))
                         }
                         _locationList.value = list
                     }else{
@@ -144,11 +155,9 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
                     .subscribe({
 
                         if(it.meta.totalCount > 0){
-                            val list = mutableListOf<MapSearch>()
-                            for(data in it.documents){
-                                list.add(MapSearch(null, data.address.addressName, data.roadAddress.roadName))
-                            }
-                            _locationList.value = list
+
+                            setSelectLocation(MapSearch("", it.documents[0].address.addressName, it.documents[0].roadAddress.roadName,
+                                    x, y))
                         }else{
                             _message.value = "일치하는 주소가 없습니다"
                         }
@@ -162,6 +171,8 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
 
 
     }
+
+
 
 
 
@@ -279,16 +290,21 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
 
 
     private fun getLocationData(){
+        Log.i("MapViewModle","시작")
         LocationHelper().startListeningUserLocation(mapView.context , object : LocationHelper.MyLocationListener {
             override fun onLocationChanged(location: Location) {
                 // Here you got user location :)
-                Log.d("Location","" + location.latitude + "," + location.longitude)
+                Log.i("MapViewModle","" + location.latitude + "," + location.longitude)
                 getAddressWithGeo(location.latitude, location.longitude)
             }
         })
 
     }
 
+    private fun View.hideKeyboard() {
+        val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
+    }
 
 
 }

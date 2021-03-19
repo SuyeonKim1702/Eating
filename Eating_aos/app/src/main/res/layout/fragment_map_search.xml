@@ -81,7 +81,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toTopOf="@+id/guideline4">
 
-            <TextView
+            <EditText
                 android:id="@+id/etv_address"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -90,10 +90,14 @@
                 android:fontFamily="@font/nanum_square_round_eb"
                 android:letterSpacing="0.01"
                 android:lineSpacingExtra="10sp"
-                android:text="서울 영등포구 선유로9길 30 "
                 android:textColor="@color/greyish_brown"
                 android:textSize="14sp"
-                android:textStyle="normal"
+                android:imeOptions="actionSearch"
+                tools:setOnEditorActionListener="@{VM.clicksListener}"
+                android:background="@android:color/transparent"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={VM.searchText}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
