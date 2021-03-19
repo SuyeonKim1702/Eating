@@ -28,7 +28,6 @@ public class MemberService {
         Authentication principal = SecurityContextHolder.getContext().getAuthentication();
         if(principal != null){
             if(principal.getPrincipal() != "anonymousUser"){
-                System.out.println("나는 = " + principal.getPrincipal());
                 throw new EatingException("이미 로그인 된 상태입니다.");
             }
         }
