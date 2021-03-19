@@ -3,6 +3,7 @@ package com.eating.jinwoo.dto;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 public class PostDTO {
@@ -20,7 +21,7 @@ public class PostDTO {
         private String foodLink;
         private int category;
         private int memberCountLimit;
-        private LocalDate orderTime;
+        private LocalDateTime orderTime;
         private int meetPlace;
         private int deliveryFeeByHost;
     }

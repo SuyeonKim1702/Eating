@@ -21,6 +21,8 @@ public class MemoryPostRepository implements PostRepository{
 
     @Override
     public <S extends Post> S save(S entity) {
+        entity.setId(++the_id);
+        postMap.put(the_id, entity);
         return null;
     }
 
@@ -31,7 +33,7 @@ public class MemoryPostRepository implements PostRepository{
 
     @Override
     public Optional<Post> findById(Long aLong) {
-        return Optional.empty();
+        return Optional.ofNullable(postMap.get(aLong));
     }
 
     @Override
@@ -41,7 +43,7 @@ public class MemoryPostRepository implements PostRepository{
 
     @Override
     public Iterable<Post> findAll() {
-        return null;
+        return postMap.values();
     }
 
     @Override
@@ -71,6 +73,7 @@ public class MemoryPostRepository implements PostRepository{
 
     @Override
     public void deleteAll() {
-
+        postMap.clear();
+        the_id = 0L;
     }
 }

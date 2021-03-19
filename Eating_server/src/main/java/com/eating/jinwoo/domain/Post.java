@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class Post extends BaseAuditEntity{
 
     private String foodLink; // 음식 링크
 
-    private LocalDate orderTime; // 주문할 시간
+    private LocalDateTime orderTime; // 주문할 시간
 
     private boolean deliveryFeeByHost; // true면 호스트가 부담
 

@@ -1,10 +1,7 @@
 package com.eating.jinwoo.service;
 
 import com.eating.jinwoo.common.EatingException;
-import com.eating.jinwoo.domain.Category;
-import com.eating.jinwoo.domain.MeetPlace;
-import com.eating.jinwoo.domain.Member;
-import com.eating.jinwoo.domain.Post;
+import com.eating.jinwoo.domain.*;
 import com.eating.jinwoo.dto.PostDTO;
 import com.eating.jinwoo.repository.memberRepository.MemberRepository;
 import com.eating.jinwoo.repository.postRepository.PostRepository;
@@ -15,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -54,7 +53,6 @@ public class PostService {
         post.setCategory(new Category(postInfo.getCategory()));
         post.setLongitude(member.getLocation().getLongitude());
         post.setLatitude(member.getLocation().getLatitude());
-
         postRepository.save(post);
     }
 
@@ -69,7 +67,7 @@ public class PostService {
         String kakao_id = principal.getPrincipal().toString();
         Member member = memberRepository.findByKakaoId(kakao_id).get();
 
-        //
+
         postRepository.findById(id).ifPresentOrElse(
                 (post) -> {
                     post.setTitle(postInfo.getTitle());
@@ -85,7 +83,7 @@ public class PostService {
                     post.setCategory(new Category(postInfo.getCategory()));
                     post.setLongitude(member.getLocation().getLongitude());
                     post.setLatitude(member.getLocation().getLatitude());
-                }, () -> {throw new EatingException("게시글이 없습니다.");}
+                }, () -> {throw new EatingException("수정할 게시글이 없습니다.");}
         );
 
     }
@@ -97,7 +95,55 @@ public class PostService {
             throw new EatingException("회원이 아닙니다.");
         }
 
-        Post post = postRepository.findById(id).get();
-        post.setDeletedDate(LocalDate.now());
+        postRepository.findById(id).ifPresentOrElse(
+                (post) -> {
+                    post.setDeletedDate(LocalDateTime.now());
+                }, () -> {throw new EatingException("삭제할 게시글이 없습니다.");}
+        );
+
+    }
+
+    //찜하기
+    public void setFavorite(Long id) {
+
+        //로그인 되어있는지 확인
+        Authentication principal = SecurityContextHolder.getContext().getAuthentication();
+        if(principal == null || (principal != null && principal.getPrincipal() == "anonymousUser")){
+            throw new EatingException("회원이 아닙니다.");
+        }
+
+        Member member = memberRepository.findByKakaoId(principal.getPrincipal().toString()).get();
+        postRepository.findById(id).ifPresentOrElse(
+                (post) -> {
+                    Favorite favorite = new Favorite();
+                    favorite.setPost(post);
+                    favorite.setMember(member);
+                    List <Favorite> favoriteList = member.getFavoritePosts();
+                    favoriteList.add(favorite);
+                    member.setFavoritePosts(favoriteList);
+                }, () -> {throw new EatingException("게시글이 없습니다.");}
+        );
+    }
+
+    //찜취소
+    public void setUnFavorite(Long id) {
+
+        //로그인 되어있는지 확인
+        Authentication principal = SecurityContextHolder.getContext().getAuthentication();
+        if(principal == null || (principal != null && principal.getPrincipal() == "anonymousUser")){
+            throw new EatingException("회원이 아닙니다.");
+        }
+
+        Member member = memberRepository.findByKakaoId(principal.getPrincipal().toString()).get();
+        postRepository.findById(id).ifPresentOrElse(
+                (post) -> {
+                    Favorite favorite = new Favorite();
+                    favorite.setPost(post);
+                    favorite.setMember(member);
+                    List <Favorite> favoriteList = member.getFavoritePosts();
+                    favoriteList.remove(favorite);
+                    member.setFavoritePosts(favoriteList);
+                }, () -> {throw new EatingException("게시글이 없습니다.");}
+        );
     }
 }

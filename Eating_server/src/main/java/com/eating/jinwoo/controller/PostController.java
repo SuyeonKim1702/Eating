@@ -31,10 +31,24 @@ public class PostController {
         postService.deletePost(id);
         return new ResponseDTO<>(HttpStatus.OK, "게시글 삭제 완료", null);
     }
+
+//  찜하기 : GET (/favorite/{postId})
+    @GetMapping("/favorite/{postId}")
+    public ResponseDTO<String> setFavorite(@PathVariable("postID") Long id) {
+        postService.setFavorite(id);
+        return new ResponseDTO<>(HttpStatus.OK, "찜하기 완료", null);
+    }
+
+    //  찜 취소 : GET (/favorite/{postId})
+    @GetMapping("/unfavorite/{postId}")
+    public ResponseDTO<String> setUnFavorite(@PathVariable("postID") Long id) {
+        postService.setUnFavorite(id);
+        return new ResponseDTO<>(HttpStatus.OK, "찜 취소 완료", null);
+    }
+
 //  게시글 검색 : GET (/post?distance={dist}&category=0-2-4-6&page=0&size=10)
 //  게시글 세부 보기 : GET (/post/{postId})
 //    @GetMapping("/post/{postId}")
 //    public ResponseDTO<String>
-//  찜하기 : GET (/favorite/{postId})
 
 }
