@@ -15,11 +15,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         stylingFloatingImageView()
-        addGestureRecognizer()
- 
-        parent?.tabBarController?.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.yellow], for: .normal)
-        parent?.tabBarController?.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .application)
-      
+        addGestureRecognizer()      
     }
     
     private func addGestureRecognizer() {
@@ -38,8 +34,7 @@ class HomeViewController: UIViewController {
     }
     
     private func stylingFloatingImageView() {
-        
-        
+
         guard let keyWindow = UIApplication.shared.keyWindow else { return }
         keyWindow.addSubview(floatingImageView)
        
@@ -66,10 +61,5 @@ extension HomeViewController: UITableViewDataSource {
         guard let feedCell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as? FeedCell else { return UITableViewCell() }
         
         return feedCell
-    }
-    
-    
-    
-    
-    
+    }  
 }

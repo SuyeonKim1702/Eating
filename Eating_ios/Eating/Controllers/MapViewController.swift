@@ -49,9 +49,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @objc private func tapCompeteButton() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController else { return }
-        
+
         tabBarController.modalTransitionStyle = .coverVertical
         tabBarController.modalPresentationStyle = .fullScreen
+        tabBarController.tabBar.tintColor = .black
+  
         present(tabBarController, animated: true, completion: nil)
     }
     
