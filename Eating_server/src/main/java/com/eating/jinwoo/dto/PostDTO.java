@@ -25,6 +25,7 @@ public class PostDTO {
         private int deliveryFeeByHost;
     }
 
+
     @Getter
     @Setter
     @AllArgsConstructor

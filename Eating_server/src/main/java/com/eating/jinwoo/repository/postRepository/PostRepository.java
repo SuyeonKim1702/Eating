@@ -8,9 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface PostRepository extends CrudRepository<Post, Long> {
-
-    public PostDTO.getPost getPost(Long id);
-
+public interface PostRepository extends CrudRepository<Post, Long>, CustomPostRepository {
 
 }
