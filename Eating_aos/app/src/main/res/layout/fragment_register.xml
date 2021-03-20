@@ -18,24 +18,17 @@
         tools:context=".ui.login.RegisterFragment">
 
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.08" />
-
         <TextView
             android:id="@+id/login_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_title_register"
             android:fontFamily="@font/nanum_square_round_eb"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="3sp"
             android:text="회원가입"
             android:textColor="@color/greyish_brown"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,10 +38,11 @@
             android:id="@+id/profile_img"
             android:layout_width="123dp"
             android:layout_height="123dp"
-            android:layout_marginBottom="23dp"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/margin_top_photo"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/imageView3"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_title"
             app:srcCompat="@drawable/ic_emotion_best" />
 
         <ImageView
@@ -66,78 +60,61 @@
             android:id="@+id/editTextTextPersonName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/margin_top_nickname_edit"
             android:background="@drawable/background_white_rounded"
             android:ems="10"
             android:fontFamily="@font/nanum_square_round_b"
-            android:paddingHorizontal="20dp"
             android:hint="닉네임을 설정해주세요"
             android:inputType="textPersonName"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="2sp"
+            android:paddingHorizontal="20dp"
             android:textColor="#bdbdbd"
             android:textSize="14sp"
             android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline7"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.1" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline8"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9" />
-
-        <androidx.appcompat.widget.AppCompatButton
+        <ImageButton
+            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:id="@+id/btn_finish"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/background_yellow_rounded"
-            android:fontFamily="@font/jalnan_otf"
-            android:gravity="center"
-            android:letterSpacing="0.02"
-            android:lineSpacingExtra="5sp"
+            android:background="@drawable/ic_btn_next"
             android:onClick="@{(v) -> VM.startMapActivity(v)}"
-            android:text="완료"
-            android:textColor="#de000000"
-            android:textSize="18sp"
-            android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.45" />
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
 
         <ImageButton
             android:id="@+id/imageButton6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/horizontal_margin"
             android:background="@android:color/transparent"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintBottom_toBottomOf="@+id/login_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/login_title"
             app:srcCompat="@drawable/ic_fi_rr_angle_small_left" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="11dp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/margin_top_nickname_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_img"
             app:srcCompat="@drawable/ic_t_nickname" />
 
         <TextView
+            android:id="@+id/textView24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanum_square_round_eb"

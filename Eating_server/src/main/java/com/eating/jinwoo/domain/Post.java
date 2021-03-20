@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class Post extends BaseAuditEntity{
 
     private String foodLink; // 음식 링크
 
-    private LocalDate orderTime; // 주문할 시간
+    private LocalDateTime orderTime; // 주문할 시간
 
     private boolean deliveryFeeByHost; // true면 호스트가 부담
 
@@ -50,7 +50,7 @@ public class Post extends BaseAuditEntity{
     @OneToOne
     private Member host;
 
-    @OneToOne
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     @OneToMany(mappedBy = "post") // post와 member은 다대 다 관계이므로 MemberPost라는 중간 테이블을 생성함

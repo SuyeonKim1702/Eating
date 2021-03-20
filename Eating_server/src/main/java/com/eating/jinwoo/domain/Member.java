@@ -4,12 +4,13 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class Member extends BaseAuditEntity {
@@ -20,6 +21,7 @@ public class Member extends BaseAuditEntity {
 
     @Column(nullable = false)
     private String kakaoId;
+    @Column(length = 8)
     private String nickname;
     private String profileUrl;
     private String password;
@@ -41,20 +43,19 @@ public class Member extends BaseAuditEntity {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Location location;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Category category;
+    @ElementCollection
+    @CollectionTable(name = "memberCategory")
+    @MapKeyJoinColumn
+    @Enumerated(EnumType.STRING)
+    private List<Category> memberCategory = new ArrayList<>();
 
     @OneToMany(mappedBy = "member") // member와 post는 다대다 관계이므로 MemberPost라는 중간 테이블 생성함
     private List<MemberPost> memberPosts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Favorite> favoritePosts = new ArrayList<>();
 
-    public Member(String kakaoId, String nickname, String profileUrl, String password) {
-        this.kakaoId = kakaoId;
-        this.nickname = nickname;
-        this.profileUrl = profileUrl;
-        this.password = password;
+    public Member() {
         this.distance = 500;
         this.totalCount = 0;
         this.timeGood = 0;
@@ -62,5 +63,16 @@ public class Member extends BaseAuditEntity {
         this.foodDivide = 0;
         this.fastAnswer = 0;
         this.sugarScore = 50.0;
+        for (int i = 0; i < 10; i++){
+            memberCategory.add(Category.getEnumByValue(i));
+        }
+    }
+
+    public Member(String kakaoId, String nickname, String profileUrl, String password) {
+        this();
+        this.kakaoId = kakaoId;
+        this.nickname = nickname;
+        this.profileUrl = profileUrl;
+        this.password = password;
     }
 }

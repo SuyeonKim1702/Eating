@@ -7,13 +7,23 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import desla.aos.eating.R
 import desla.aos.eating.data.model.AddressAPI
+import desla.aos.eating.data.model.MapSearch
 import desla.aos.eating.databinding.RcMapBinding
 import desla.aos.eating.ui.home.HomeRCAdapter
 
 class MapSearchRCAdapter (
-    private val addressList : List<AddressAPI.Document>
+    private val addressList : List<MapSearch>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
+    //ClickListener
+    interface OnItemClickListener {
+        fun onClick(position: Int)
+    }
+    private lateinit var itemClickListener : OnItemClickListener
+
+    fun setLocationItemClickListener(itemClickListener: OnItemClickListener) {
+        this.itemClickListener = itemClickListener
+    }
 
     override fun getItemCount() = addressList.size
 
@@ -33,6 +43,9 @@ class MapSearchRCAdapter (
         if (holder is HomeViewHolder)
         {
             holder.mapBinding.address = addressList[position]
+            holder.itemView.setOnClickListener {
+                itemClickListener.onClick(position)
+            }
         }
 
     }

@@ -8,7 +8,7 @@
 
         <variable
             name="address"
-            type="desla.aos.eating.data.model.AddressAPI.Document" />
+            type="desla.aos.eating.data.model.MapSearch" />
     </data>
 
     <LinearLayout
@@ -23,7 +23,7 @@
             android:fontFamily="@font/nanum_square_round_eb"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="2sp"
-            android:text="싹 영등포캠퍼스"
+            android:text="@{address.title}"
             android:textColor="@color/greyish_brown"
             android:textSize="16sp" />
 
@@ -34,7 +34,7 @@
             android:fontFamily="@font/nanum_square_round_b"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="2sp"
-            android:text="@{address.address.addressName}"
+            android:text="@{address.address}"
             android:textColor="@color/brown_grey"
             android:textSize="14sp" />
 
@@ -45,7 +45,7 @@
             android:fontFamily="@font/nanum_square_round_b"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="2sp"
-            android:text="(도로명) 선유로9길 30 싹 영등포 캠퍼스"
+            android:text="@{`(도로명) `+ address.road}"
             android:textColor="#bdbdbd"
             android:textSize="14sp" />
     </LinearLayout>

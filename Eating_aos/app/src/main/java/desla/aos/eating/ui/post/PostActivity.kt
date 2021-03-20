@@ -2,6 +2,8 @@ package desla.aos.eating.ui.post
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import desla.aos.eating.R
 import desla.aos.eating.databinding.ActivityPostBinding
@@ -22,11 +24,25 @@ class PostActivity :  BaseActivity<ActivityPostBinding>() {
     }
 
     override fun initDataBinding() {
+        val items = arrayOf("1명", "2명", "3명", "4명")
+        val adapter = ArrayAdapter(this, R.layout.spinner_item, items)
+        viewDataBinding.spinner.adapter = adapter
+
 
     }
 
     override fun initAfterBinding() {
 
     }
+
+    //배달비
+    fun setPrice(v: View){
+        when(v){
+
+        }
+
+    }
+
+
 
 }

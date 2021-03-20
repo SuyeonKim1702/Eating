@@ -8,8 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
-public interface MemberRepository extends CrudRepository<Member, Long> {
+public interface MemberRepository extends CrudRepository<Member, Long>, CustomMemberRepository {
     public Optional<Member> findByKakaoId(String kakaoId);
-
-    public MemberDTO.GetProfile getProfile(String kakaoId);
+    public Optional<Member> findByNickname(String nickname);
 }

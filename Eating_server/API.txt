@@ -165,7 +165,7 @@ POST (/post)
 - data : null
 
 ////////// 게시글 수정
-PUT (/post)
+PUT (/post/{id})
 [request]
 - title : 제목
 - description : 내용

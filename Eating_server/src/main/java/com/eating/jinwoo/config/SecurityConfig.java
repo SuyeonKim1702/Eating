@@ -38,6 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/member/**")
                 .permitAll()
+                .antMatchers("/post/**")
+                .permitAll()
                 .anyRequest() // 다른 주소들은 인증 필요
                 .authenticated();
 //                .permitAll();

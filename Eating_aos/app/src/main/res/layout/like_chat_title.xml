@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/imageView10"
+    <ImageButton
+        android:id="@+id/imageButton11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginLeft="@dimen/margin_left_info_zzim"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_info"
+        app:layout_constraintBottom_toBottomOf="@+id/customTextView4"
+        app:layout_constraintStart_toEndOf="@+id/customTextView4"
+        app:layout_constraintTop_toTopOf="@+id/customTextView4"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <desla.aos.eating.ui.custom.CustomTextView
+        android:id="@+id/customTextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_vertical_title_zzim"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_list_circle" />
+        app:text="현재 채팅 중인 잇팅" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/nanum_square_round_eb"
-        android:letterSpacing="0.01"
-        android:lineSpacingExtra="2sp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="@+id/imageView10"
-        android:text="현재 채팅 중인 잇팅" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

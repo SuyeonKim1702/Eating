@@ -1,7 +1,6 @@
 package com.eating.jinwoo.service;
 
 import com.eating.jinwoo.common.EatingException;
-import com.eating.jinwoo.domain.Category;
 import com.eating.jinwoo.domain.Location;
 import com.eating.jinwoo.domain.Member;
 import com.eating.jinwoo.dto.MemberDTO;
@@ -28,13 +27,18 @@ public class MemberService {
         Authentication principal = SecurityContextHolder.getContext().getAuthentication();
         if(principal != null){
             if(principal.getPrincipal() != "anonymousUser"){
-                System.out.println("나는 = " + principal.getPrincipal());
                 throw new EatingException("이미 로그인 된 상태입니다.");
             }
+        }
+        if (userInfo.getNickname().length() > 8 || userInfo.getNickname().length() < 3) {
+            throw new EatingException("닉네임 글자수 제한을 지켜주세요.");
         }
         memberRepository.findByKakaoId(userInfo.getKakaoId())
                 .ifPresentOrElse(
                         this::doLogin, () -> {
+                            memberRepository.findByNickname(userInfo.getNickname()).ifPresent((member) -> {
+                                throw new EatingException("이미 존재하는 닉네임입니다.");
+                            });
                             // 없다면 회원가입 후 로그인
                             Member member = new Member();
                             member.setKakaoId(userInfo.getKakaoId());
@@ -44,8 +48,6 @@ public class MemberService {
                             Location location = new Location(userInfo.getAddress(), userInfo.getLongitude(), userInfo.getLatitude());
                             member.setLocation(location);
 
-                            Category category = new Category();
-                            member.setCategory(category);
                             // 프로필 사진 없을수도
                             if(userInfo.getProfile() != null){
                                 // 프로필 사진 저장하고 url 가져오는 부분 필요

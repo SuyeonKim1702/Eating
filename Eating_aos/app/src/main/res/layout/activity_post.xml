@@ -198,6 +198,7 @@
                         app:srcCompat="@drawable/ic_list_circle" />
 
                     <TextView
+                        android:onClick="@{(v) -> VM.showCategoryDialog(v)}"
                         android:id="@+id/tv_post_category"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -207,8 +208,8 @@
                         android:fontFamily="@font/nanum_square_round_eb"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="2sp"
-                        android:paddingHorizontal="5dp"
-                        android:paddingVertical="9dp"
+                        android:paddingHorizontal="@dimen/padding_horizontal_tv_post"
+                        android:paddingVertical="@dimen/padding_vertical_tv_post"
                         android:text="카테고리 설정"
                         android:textColor="#000000"
                         android:textSize="16sp"
@@ -257,8 +258,8 @@
                         android:fontFamily="@font/nanum_square_round_eb"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="2sp"
-                        android:paddingHorizontal="5dp"
-                        android:paddingVertical="9dp"
+                        android:paddingHorizontal="@dimen/padding_horizontal_tv_post"
+                        android:paddingVertical="@dimen/padding_vertical_tv_post"
                         android:text="파티원 수"
                         android:textColor="#000000"
                         android:textSize="16sp"
@@ -267,6 +268,24 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_im_box_short_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Spinner
+                            android:id="@+id/spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/brown_grey"
+                            android:overlapAnchor="false"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -297,8 +316,8 @@
                         android:fontFamily="@font/nanum_square_round_eb"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="2sp"
-                        android:paddingHorizontal="5dp"
-                        android:paddingVertical="9dp"
+                        android:paddingHorizontal="@dimen/padding_horizontal_tv_post"
+                        android:paddingVertical="@dimen/padding_vertical_tv_post"
                         android:text="배달비"
                         android:textColor="#000000"
                         android:textSize="16sp"
@@ -392,8 +411,8 @@
                         android:fontFamily="@font/nanum_square_round_eb"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="2sp"
-                        android:paddingHorizontal="5dp"
-                        android:paddingVertical="9dp"
+                        android:paddingHorizontal="@dimen/padding_horizontal_tv_post"
+                        android:paddingVertical="@dimen/padding_vertical_tv_post"
                         android:text="주문할 시간"
                         android:textColor="#000000"
                         android:textSize="16sp"
@@ -403,6 +422,23 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_im_box_short_gray"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Spinner
+                            android:id="@+id/spinner2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/brown_grey"
+                            android:overlapAnchor="false"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -432,8 +468,8 @@
                         android:fontFamily="@font/nanum_square_round_eb"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="2sp"
-                        android:paddingHorizontal="5dp"
-                        android:paddingVertical="9dp"
+                        android:paddingHorizontal="@dimen/padding_horizontal_tv_post"
+                        android:paddingVertical="@dimen/padding_vertical_tv_post"
                         android:text="잇팅 장소"
                         android:textColor="#000000"
                         android:textSize="16sp"
