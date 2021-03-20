@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumSquareRoundOTFEB.otf">
+            <string>NanumSquareRoundOTFEB</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="PopularMenu" selectionStyle="default" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="PopularMenu" customModule="Eating" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9n-QR-WfH">
+                        <rect key="frame" x="23" y="17" width="9" height="16"/>
+                        <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topHighlight" translatesAutoresizingMaskIntoConstraints="NO" id="MUS-Y9-Zwq">
+                        <rect key="frame" x="9" y="19.5" width="11" height="11"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="햄버거" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISn-N5-rOX">
+                        <rect key="frame" x="50" y="14" width="41" height="22"/>
+                        <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="MUS-Y9-Zwq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="1V0-WV-1gU"/>
+                    <constraint firstAttribute="bottom" secondItem="ISn-N5-rOX" secondAttribute="bottom" constant="14" id="349-ij-c6i"/>
+                    <constraint firstItem="ISn-N5-rOX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="XVx-3Q-nYi"/>
+                    <constraint firstItem="R9n-QR-WfH" firstAttribute="leading" secondItem="MUS-Y9-Zwq" secondAttribute="trailing" constant="3" id="dW6-VK-5fa"/>
+                    <constraint firstItem="MUS-Y9-Zwq" firstAttribute="centerY" secondItem="ISn-N5-rOX" secondAttribute="centerY" id="m1R-gF-yMk"/>
+                    <constraint firstItem="ISn-N5-rOX" firstAttribute="leading" secondItem="R9n-QR-WfH" secondAttribute="trailing" constant="18" id="snB-j5-RJI"/>
+                    <constraint firstItem="R9n-QR-WfH" firstAttribute="centerY" secondItem="MUS-Y9-Zwq" secondAttribute="centerY" id="zXy-hZ-RaN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="131.8840579710145" y="87.723214285714278"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="topHighlight" width="11" height="11"/>
+    </resources>
+</document>

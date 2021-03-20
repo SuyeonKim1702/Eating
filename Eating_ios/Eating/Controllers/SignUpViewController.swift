@@ -10,12 +10,28 @@ import UIKit
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var completeButton: UIButton?
     @IBOutlet weak var nicknameTextField: UITextField?
+    @IBOutlet var profileImageHolder: UIImageView?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nicknameTextField?.delegate = self
         stylingViews()
+        setupImageHolder()
+    }
 
+    private func setupImageHolder() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showAlert))
+        profileImageHolder?.isUserInteractionEnabled = true
+        profileImageHolder?.addGestureRecognizer(tapGestureRecognizer)
+        profileImageHolder?.contentMode = .scaleAspectFill
+        profileImageHolder?.layer.cornerRadius = 0.5 * (profileImageHolder?.bounds.size.width)!
+    }
+
+    @objc private func showAlert() {
+        guard let alertViewController = storyboard?.instantiateViewController(withIdentifier: "AlertViewController") else { return }
+        alertViewController.modalPresentationStyle = .overCurrentContext
+        present(alertViewController, animated: true, completion: nil)
     }
     
 
@@ -41,5 +57,5 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         present(addressViewController, animated: true, completion: nil)
         
     }
-    
+
 }

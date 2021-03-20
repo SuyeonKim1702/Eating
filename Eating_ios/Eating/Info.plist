@@ -2,8 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSFileProviderDomainUsageDescription</key>
+	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>사용자의 프로필 사진 설정을 위해 사집첩 접근 권한이 필요합니다.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>사용자의 프로필 사진 설정을 위해 카메라 접근 권한이 필요합니다.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>앱을 열 때마다 위치 정보 가져오기</string>
+	<string>잇팅 앱을 사용하기 위해서는 사용자의 현재 위치가 필요합니다.</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>7b287bd0f2209ab8c9c1779af8b9bf93</string>
 	<key>UIAppFonts</key>
