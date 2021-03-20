@@ -1,5 +1,6 @@
 package desla.aos.eating.ui.home
 
+import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -24,6 +25,20 @@ class HomeFragment :  BaseFragment<FragmentHomeBinding>() {
 
     private val posts: MutableList<Post> = mutableListOf()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        posts.add(Post(1, 100, "공차 같이 드실 분"))
+        posts.add(Post(2, 100, "신전 같이 드실 분"))
+        posts.add(Post(3, 100, "엽떡 같이 드실 분"))
+        posts.add(Post(4, 100, "치킨 같이 드실 분"))
+        posts.add(Post(5, 100, "공차 같이 드실 분"))
+        posts.add(Post(6, 100, "신전 같이 드실 분"))
+        posts.add(Post(7, 100, "엽떡 같이 드실 분"))
+        posts.add(Post(8, 100, "치킨 같이 드실 분"))
+
+
+    }
 
     override fun initStartView() {
         (activity as MainActivity).setVisibilityBottomNavigation(true)
@@ -35,15 +50,6 @@ class HomeFragment :  BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun initDataBinding() {
-
-        posts.add(Post(1, 100, "공차 같이 드실 분"))
-        posts.add(Post(2, 100, "신전 같이 드실 분"))
-        posts.add(Post(3, 100, "엽떡 같이 드실 분"))
-        posts.add(Post(4, 100, "치킨 같이 드실 분"))
-        posts.add(Post(5, 100, "공차 같이 드실 분"))
-        posts.add(Post(6, 100, "신전 같이 드실 분"))
-        posts.add(Post(7, 100, "엽떡 같이 드실 분"))
-        posts.add(Post(8, 100, "치킨 같이 드실 분"))
 
         initRc()
     }

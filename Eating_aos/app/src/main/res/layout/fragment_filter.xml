@@ -16,17 +16,11 @@
         tools:context=".ui.login.RegisterFragment">
 
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.08" />
-
         <TextView
             android:id="@+id/login_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_title_filter"
             android:fontFamily="@font/nanum_square_round_eb"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="3sp"
@@ -34,7 +28,6 @@
             android:textColor="@color/greyish_brown"
             android:textSize="18sp"
             android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,21 +37,20 @@
             android:id="@+id/view4"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_top_bg_filter"
             android:background="@drawable/ic_im_bg_whtite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline4"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/login_title" />
 
         <desla.aos.eating.ui.custom.CustomTextView
             android:id="@+id/constraintLayout5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="37dp"
+            android:layout_marginTop="@dimen/margin_top_tilte_space_filter"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,8 +61,8 @@
             android:id="@+id/imageView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/margin_top_space_road_filter"
             android:scaleType="centerInside"
             android:src="@drawable/im_bar_street"
             app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +73,7 @@
         <View
             android:id="@+id/view6"
             android:layout_width="0dp"
-            android:layout_height="25dp"
+            android:layout_height="22dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:background="#f8dc51"
@@ -103,6 +95,8 @@
             android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_horizontal_space_m_filter"
+            android:layout_marginTop="@dimen/margin_top_space_m_filter"
             android:fontFamily="@font/jalnan_otf"
             android:gravity="center_horizontal"
             android:letterSpacing="0.02"
@@ -112,12 +106,14 @@
             android:textSize="12sp"
             android:textStyle="normal"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/child_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_space_m_filter"
+            android:layout_marginEnd="@dimen/margin_horizontal_space_m_filter"
             android:fontFamily="@font/jalnan_otf"
             android:gravity="center_horizontal"
             android:letterSpacing="0.02"
@@ -127,29 +123,14 @@
             android:textSize="12sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline7"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.1" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline8"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintTop_toBottomOf="@+id/red" />
 
         <desla.aos.eating.ui.custom.CustomTextView
             android:id="@+id/constraintLayout6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/margin_top_tilte_food_category_filter"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
@@ -161,7 +142,8 @@
             android:id="@+id/btn_finish"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginBottom="@dimen/margin_bottom_complete_btn_filter"
             android:background="@drawable/background_yellow_rounded"
             android:fontFamily="@font/jalnan_otf"
             android:gravity="center"
@@ -172,19 +154,19 @@
             android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.45" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/horizontal_margin"
             android:background="@android:color/transparent"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintBottom_toBottomOf="@+id/login_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/login_title"
             app:srcCompat="@drawable/ic_fi_rr_angle_small_left" />
 
         <ImageView
@@ -202,185 +184,137 @@
             android:id="@+id/imageView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/margin_top_space_road_m_filter"
             app:layout_constraintEnd_toEndOf="@+id/red"
             app:layout_constraintStart_toStartOf="@+id/red"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
             app:srcCompat="@drawable/ic_im_box_m" />
 
         <LinearLayout
+            android:id="@+id/linear"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_btn_food_category_filter"
+            android:layout_marginHorizontal="@dimen/margin_horizontal_btn_filter"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/btn_finish"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/cons1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_height="@dimen/height_btn_filter"
+                android:layout_marginBottom="@dimen/margin_bottom_btn_filter">
 
                 <desla.aos.eating.ui.custom.CustomFilterButton
                     android:id="@+id/btn1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp"
-                    app:filter_text="한식"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn2"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/margin_right_btn_filter"
+                    app:filter_text="한식"/>
 
                 <desla.aos.eating.ui.custom.CustomFilterButton
                     android:id="@+id/btn2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:filter_text="일식"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/btn1"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    app:filter_text="일식"/>
 
+            </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/cons2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_height="@dimen/height_btn_filter"
+                android:layout_marginBottom="@dimen/margin_bottom_btn_filter">
 
                 <desla.aos.eating.ui.custom.CustomFilterButton
                     android:id="@+id/btn3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp"
-                    app:filter_text="분식"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn4"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/margin_right_btn_filter"
+                    app:filter_text="분식"/>
 
                 <desla.aos.eating.ui.custom.CustomFilterButton
                     android:id="@+id/btn4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:filter_text="카페/디저트"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/btn3"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    app:filter_text="카페/디저트"/>
 
+            </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/cons3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_height="@dimen/height_btn_filter"
+                android:layout_marginBottom="@dimen/margin_bottom_btn_filter">
 
                 <desla.aos.eating.ui.custom.CustomFilterButton
                     android:id="@+id/btn5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp"
-                    app:filter_text="피자"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn6"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/margin_right_btn_filter"
+                    app:filter_text="치킨"/>
 
                 <desla.aos.eating.ui.custom.CustomFilterButton
                     android:id="@+id/btn6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:filter_text="치킨"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/btn5"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    app:filter_text="피자"/>
 
+            </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/cons4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_height="@dimen/height_btn_filter"
+                android:layout_marginBottom="@dimen/margin_bottom_btn_filter">
 
                 <desla.aos.eating.ui.custom.CustomFilterButton
                     android:id="@+id/btn7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp"
-                    app:filter_text="중국집"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn8"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/margin_right_btn_filter"
+                    app:filter_text="아시아/양식"/>
 
                 <desla.aos.eating.ui.custom.CustomFilterButton
                     android:id="@+id/btn8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:filter_text="아시아/양식"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/btn7"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    app:filter_text="중국집"/>
 
+            </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/cons5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_height="@dimen/height_btn_filter"
+                android:layout_marginBottom="@dimen/margin_bottom_btn_filter">
 
                 <desla.aos.eating.ui.custom.CustomFilterButton
                     android:id="@+id/btn9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp"
-                    app:filter_text="패스트푸드"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn10"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/margin_right_btn_filter"
+                    app:filter_text="야식"/>
 
                 <desla.aos.eating.ui.custom.CustomFilterButton
                     android:id="@+id/btn10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:filter_text="야식"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/btn9"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    app:filter_text="패스트푸드"/>
 
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
 
         </LinearLayout>

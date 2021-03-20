@@ -156,8 +156,15 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
 
                         if(it.meta.totalCount > 0){
 
-                            setSelectLocation(MapSearch("", it.documents[0].address.addressName, it.documents[0].roadAddress.roadName,
-                                    x, y))
+                            var road = ""
+                            if(it.documents[0].roadAddress != null){
+                                if(it.documents[0].roadAddress.roadName != null){
+                                    road = it.documents[0].roadAddress.roadName
+                                }
+                            }
+
+                            setSelectLocation(MapSearch("", it.documents[0].address.addressName, road ,
+                                    y, x))
                         }else{
                             _message.value = "일치하는 주소가 없습니다"
                         }

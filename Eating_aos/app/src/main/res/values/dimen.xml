@@ -1,4 +1,75 @@
 <resources>
+
+<!--    공통-->
+    <dimen name="margin_horizontal">15dp</dimen>
+    <dimen name="height_title">55dp</dimen>
+    
+<!--    로그인-->
+    <dimen name="margin_left_text">24.1dp</dimen>
+    <dimen name="margin_top_login_title_text">48dp</dimen>
+    <dimen name="margin_top_login_explain_text">17dp</dimen>
+    <dimen name="margin_horizontal_login_button">15dp</dimen>
+    <dimen name="margin_bottom_login_button">80dp</dimen>
+    
+<!--    회원가입-->
+    <dimen name="margin_top_title_register">18dp</dimen>
+    <dimen name="margin_top_photo">57dp</dimen>
+    <dimen name="margin_top_nickname_title">23dp</dimen>
+    <dimen name="margin_top_nickname_edit">11dp</dimen>
+    <dimen name="margin_bottom_btn_register">40dp</dimen>
+    
+<!--    다이얼로그 회원가입-->
+    <dimen name="margin_top_title_dialog_register">19dp</dimen>
+    <dimen name="margin_top_btn_dialog_register">28.4dp</dimen>
+    <dimen name="margin_top_btn_btn_dialog_register">8dp</dimen>
+    <dimen name="margin_bottom_btn_dialog_register">43dp</dimen>
+    <dimen name="margin_top_close_btn_dialog_register">15dp</dimen>
+    
+<!--    필터 설정-->
+    <dimen name="margin_top_title_filter">20dp</dimen>
+    <dimen name="margin_top_bg_filter">25dp</dimen>
+    <dimen name="margin_top_tilte_space_filter">37dp</dimen>
+    <dimen name="margin_top_space_road_m_filter">10.4dp</dimen>
+    <dimen name="margin_top_space_road_filter">21.8dp</dimen>
+    <dimen name="margin_horizontal_space_m_filter">7dp</dimen>
+    <dimen name="margin_top_space_m_filter">6.2dp</dimen>
+    <dimen name="margin_top_tilte_food_category_filter">42.4dp</dimen>
+    <dimen name="margin_top_btn_food_category_filter">15dp</dimen>
+    <dimen name="margin_left_food_category_filter">9dp</dimen>
+    <dimen name="margin_right_btn_filter">4dp</dimen>
+    <dimen name="margin_bottom_btn_filter">5dp</dimen>
+    <dimen name="margin_horizontal_btn_filter">24dp</dimen>
+    <dimen name="margin_bottom_complete_btn_filter">24dp</dimen>
+    <dimen name="height_btn_filter">40dp</dimen>
+    
+<!--    메인 홈 화면-->
+    <dimen name="margin_horizontal_home">15.5dp</dimen>
+    <dimen name="margin_top_location_title_home">7dp</dimen>
+    <dimen name="margin_left_location_title_home">7.4dp</dimen>
+    <dimen name="margin_left_location_m_home">2dp</dimen>
+    <dimen name="margin_right_btn_filter_home">18dp</dimen>
+    <dimen name="height_viewpager_home">122dp</dimen>
+    <dimen name="margin_top_viewpager_home">11.9dp</dimen>
+    <dimen name="margin_top_scrollview_home">4dp</dimen>
+
+<!--    메인 찜 화면-->
+    <dimen name="margin_vertical_title_zzim">7dp</dimen>
+    <dimen name="margin_left_info_zzim">6dp</dimen>
+
+<!--    메인 프로픨 화면-->
+    <dimen name="height_bar_profile">73dp</dimen>
+    <dimen name="margin_top_photo_profile">16dp</dimen>
+    <dimen name="margin_left_name_profile">15dp</dimen>
+    <dimen name="margin_sweet_title_profile">22dp</dimen>
+    <dimen name="margin_top_count_title_profile">26.1dp</dimen>
+    <dimen name="margin_top_count_title_bar_profile">4.2dp</dimen>
+    <dimen name="margin_top_count_title_bar_img_profile">5dp</dimen>
+    <dimen name="margin_left_count_title_bar_img_profile">11dp</dimen>
+    <dimen name="margin_left_count_title_profile">27dp</dimen>
+    <dimen name="margin_top_first_bar_profile">23.9dp</dimen>
+    <dimen name="margin_top_bar_title_profile">14.4dp</dimen>
+    <dimen name="margin_bottom_bar_title_profile">29.6dp</dimen>
+    
     <dimen name="top_title_box_height">60dp</dimen>
     <dimen name="horizontal_margin">15dp</dimen>
     <dimen name="bottom_button_bottom_margin">40dp</dimen>

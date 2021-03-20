@@ -82,7 +82,12 @@ class MapFragment :  BaseFragment<FragmentMapBinding>() {
 
         viewModel.selectLocation.observe(this, Observer {v ->
 
-            viewDataBinding.etvAddress.text = v.Title
+            if(v.Title.isNullOrEmpty()){
+                viewDataBinding.etvAddress.text = v.Address
+            }else{
+                viewDataBinding.etvAddress.text = v.Title
+            }
+
             removeMarker()
 
             val mapPoint = MapPoint.mapPointWithGeoCoord(v.y, v.x)
