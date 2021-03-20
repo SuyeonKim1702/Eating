@@ -46,9 +46,10 @@ public class PostController {
         return new ResponseDTO<>(HttpStatus.OK, "찜 취소 완료", null);
     }
 
-//  게시글 검색 : GET (/post?distance={dist}&category=0-2-4-6&page=0&size=10)
-//  게시글 세부 보기 : GET (/post/{postId})
-//    @GetMapping("/post/{postId}")
-//    public ResponseDTO<String>
+    @GetMapping("/post")
+    public ResponseDTO<PostDTO.searchPost> getPostList(PostDTO.searchParam param) {
+        PostDTO.searchPost posts = postService.getPostList(param);
+        return new ResponseDTO<>(HttpStatus.OK, "게시글 가져오기", posts);
+    }
 
 }

@@ -50,7 +50,7 @@ public class PostService {
         post.setMeetPlace(MeetPlace.getEnumByValue(postInfo.getMeetPlace()));
 
         post.setHost(member);
-        post.setCategory(new Category(postInfo.getCategory()));
+        post.setCategory(Category.getEnumByValue(postInfo.getCategory()));
         post.setLongitude(member.getLocation().getLongitude());
         post.setLatitude(member.getLocation().getLatitude());
         postRepository.save(post);
@@ -80,7 +80,7 @@ public class PostService {
                     post.setMeetPlace(MeetPlace.getEnumByValue(postInfo.getMeetPlace()));
 
                     post.setHost(member);
-                    post.setCategory(new Category(postInfo.getCategory()));
+                    post.setCategory(Category.getEnumByValue(postInfo.getCategory()));
                     post.setLongitude(member.getLocation().getLongitude());
                     post.setLatitude(member.getLocation().getLatitude());
                 }, () -> {throw new EatingException("수정할 게시글이 없습니다.");}
@@ -145,5 +145,16 @@ public class PostService {
                     member.setFavoritePosts(favoriteList);
                 }, () -> {throw new EatingException("게시글이 없습니다.");}
         );
+    }
+
+    public PostDTO.searchPost getPostList(PostDTO.searchParam param) {
+        //로그인 되어있는지 확인
+        Authentication principal = SecurityContextHolder.getContext().getAuthentication();
+        if(principal == null || (principal != null && principal.getPrincipal() == "anonymousUser")){
+            throw new EatingException("회원이 아닙니다.");
+        }
+        Member member = memberRepository.findByKakaoId(principal.getPrincipal().toString()).get();
+
+        return postRepository.getPostList(param, member.getLocation());
     }
 }

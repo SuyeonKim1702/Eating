@@ -97,6 +97,22 @@ public class PostServiceTests {
         Exception e = assertThrows(EatingException.class, () -> postService.writePost(postInfo));
         assertThat(e.getMessage()).isEqualTo("회원이 아닙니다.");
     }
+    @Test
+    @DisplayName("post write fail - cateogory value error")
+    void writePost_X2() {
+        // given
+        memberService = new MemberService(memberRepository, passwordEncoder);
+        postInfo.setCategory(20);
+        memberService.joinOrLogin(joinMember);
+
+        // when
+        postService = new PostService(postRepository, memberRepository);
+
+        // then
+        Exception e = assertThrows(EatingException.class, () -> postService.writePost(postInfo));
+        assertThat(e.getMessage()).isEqualTo("옳지 않은 카테고리 번호 입력");
+
+    }
 
     @Test
     @DisplayName("post delete success")
