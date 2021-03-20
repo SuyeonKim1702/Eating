@@ -72,7 +72,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageButton
-                android:id="@+id/imageButton8"
+                android:id="@+id/btn_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/horizontal_margin"
@@ -90,7 +90,7 @@
                 android:layout_marginEnd="@dimen/margin_right_btn_filter_home"
                 android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton8"
+                app:layout_constraintEnd_toStartOf="@+id/btn_search"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_filter" />
 

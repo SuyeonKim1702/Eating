@@ -24,6 +24,7 @@ open class CustomFilterButton @JvmOverloads constructor(context: Context, attrs:
         btn_background.setOnClickListener {
             it.isSelected = !it.isSelected
             btn_img_ic.isSelected = it.isSelected
+            btn_text.isSelected = it.isSelected
         }
 
     }

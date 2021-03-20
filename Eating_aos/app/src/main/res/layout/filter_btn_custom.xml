@@ -36,7 +36,7 @@
         android:layout_marginStart="3.5dp"
         android:textSize="12sp"
         android:fontFamily="@font/nanum_square_round_eb"
-        android:textColor="@color/brown_grey"
+        android:textColor="@drawable/filter_button_tv_selector_selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_img_ic"
         app:layout_constraintTop_toTopOf="parent" />

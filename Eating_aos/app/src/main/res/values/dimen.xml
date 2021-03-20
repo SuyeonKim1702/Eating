@@ -69,13 +69,36 @@
     <dimen name="margin_top_first_bar_profile">23.9dp</dimen>
     <dimen name="margin_top_bar_title_profile">14.4dp</dimen>
     <dimen name="margin_bottom_bar_title_profile">29.6dp</dimen>
+
+    <dimen name="margin_horizontal_chat_profile">24dp</dimen>
+    <dimen name="margin_left_chat_num_profile">13.5dp</dimen>
+    <dimen name="margin_right_chat_num_profile">15dp</dimen>
+    <dimen name="margin_vertical_chat_num_profile">7.5dp</dimen>
+    <dimen name="padding_left_chat_profile">22dp</dimen>
+<!--    글쓰기 화면-->
+    <dimen name="margin_top_title_post">20dp</dimen>
+    <dimen name="padding_vertical_tv_post">6dp</dimen>
+    <dimen name="padding_horizontal_tv_post">4dp</dimen>
+
+<!--    카테고리 다이얼로그-->
+    <dimen name="margin_top_btn_category_dialog">13dp</dimen>
+
+<!--    검색 화면-->
+    <dimen name="margin_horizontal_search">20dp</dimen>
+    <dimen name="margin_top_edit_search">44dp</dimen>
+    <dimen name="margin_vertical_location_ic_search">8dp</dimen>
+    <dimen name="margin_left_location_ic_search">9dp</dimen>
+    <dimen name="margin_right_location_ic_search">8dp</dimen>
+    <dimen name="margin_top_title_before_search">20dp</dimen>
+    <dimen name="margin_top_rc_before_search">12dp</dimen>
+    <dimen name="margin_top_title_rank_search">43dp</dimen>
+    <dimen name="margin_horizontal_recent_search">6dp</dimen>
+    <dimen name="margin_top_rc_rank_search">17dp</dimen>
     
     <dimen name="top_title_box_height">60dp</dimen>
     <dimen name="horizontal_margin">15dp</dimen>
     <dimen name="bottom_button_bottom_margin">40dp</dimen>
-
     <dimen name="view_post_horizontal_margin">25dp</dimen>
-
     <dimen name="post_relative_height">55dp</dimen>
 
 

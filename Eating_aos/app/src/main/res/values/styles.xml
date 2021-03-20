@@ -19,4 +19,38 @@
         <item name="android:windowExitAnimation">@anim/close</item>
     </style>
 
+
+    <style name="TextStyle">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:fontFamily">@font/jalnan_otf</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">54sp</item>
+        <item name="android:lineSpacingExtra">0.4sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+    <style name="TextStyle2">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:fontFamily">@font/jalnan_otf</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+    <style name="TextStyle4">
+        <item name="android:fontFamily">@font/nanum_square_round_eb</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">12sp</item>
+        <item name="android:textColor">@color/brown_grey</item>
+    </style>
+    <style name="TextStyle3">
+        <item name="android:fontFamily">@font/jalnan_otf</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+        <item name="android:textColor">#fc4914</item>
+    </style>
+
 </resources>
