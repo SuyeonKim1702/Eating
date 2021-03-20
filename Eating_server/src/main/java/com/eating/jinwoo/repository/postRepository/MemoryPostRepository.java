@@ -1,5 +1,6 @@
 package com.eating.jinwoo.repository.postRepository;
 
+import com.eating.jinwoo.domain.Location;
 import com.eating.jinwoo.domain.Member;
 import com.eating.jinwoo.domain.Post;
 import com.eating.jinwoo.dto.PostDTO;
@@ -16,6 +17,11 @@ public class MemoryPostRepository implements PostRepository{
 
     @Override
     public PostDTO.getPost getPost(Long id) {
+        return null;
+    }
+
+    @Override
+    public PostDTO.searchPost getPostList(PostDTO.searchParam param, Location location) {
         return null;
     }
 

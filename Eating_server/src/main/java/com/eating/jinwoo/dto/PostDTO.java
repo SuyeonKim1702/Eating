@@ -26,7 +26,6 @@ public class PostDTO {
         private int deliveryFeeByHost;
     }
 
-
     @Getter
     @Setter
     @AllArgsConstructor
@@ -34,28 +33,27 @@ public class PostDTO {
     @ToString
     @Builder
     public static class searchPost {
+        private Long postId;
+        private String title;
+        private String foodLink;
+        private int deliveryFeeByHost;
+        private int meetPlace;
+        private int memberCount;
+        private String categoryImage;
+        private int memberCountLimit;
+        private LocalDateTime orderTime;
         private int distance;
-        private int size;
-        private int page;
+        private boolean isFavorite;
     }
-        // response
-//        private String title;
-//        private String foodLink;
-//        private int deliveryFeeByHost;
-//        private int meetPlace;
-//        private int currentMemberCount;
-//        private int memberCountLimit;
-//        private String orderTime;
-//        private String categoryImage;
-        @Getter
-        @Setter
-        @AllArgsConstructor
-        @NoArgsConstructor
-        @ToString
-        @Builder
-        public static class deletePost {
-            private Long id;
-        }
-
-
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @ToString
+    public static class searchParam {
+        private int distance;
+        private String category;
+        private int page;
+        private int size;
+    }
 }

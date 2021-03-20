@@ -1,6 +1,7 @@
 package com.eating.jinwoo.service;
 
 import com.eating.jinwoo.common.EatingException;
+import com.eating.jinwoo.domain.Category;
 import com.eating.jinwoo.domain.Member;
 import com.eating.jinwoo.dto.MemberDTO;
 import com.eating.jinwoo.repository.memberRepository.MemberRepository;
@@ -70,6 +71,53 @@ public class MemberServiceTests {
             // then
             Member savedMember = memberRepository.findById(1L).get();
             checkMember(joinMember, savedMember);
+        }
+        @Test
+        @DisplayName("회원가입 성공이 - 닉네임 한글일 경우")
+        void register_O() {
+            // given
+            memberService = new MemberService(memberRepository, passwordEncoder);
+            joinMember.setNickname("지누님");
+
+            // when
+            memberService.joinOrLogin(joinMember);
+
+            // then
+            Member savedMember = memberRepository.findById(1L).get();
+            checkMember(joinMember, savedMember);
+        }
+        @Test
+        @DisplayName("회원가입 실패 - 닉네임 글자수 제한")
+        void register_X1() {
+            // given
+            memberService = new MemberService(memberRepository, passwordEncoder);
+
+            // when
+            joinMember.setNickname("하하하하하하하하하");
+            // then
+            EatingException e = assertThrows(EatingException.class, () -> memberService.joinOrLogin(joinMember));
+            assertThat(e.getMessage()).isEqualTo("닉네임 글자수 제한을 지켜주세요.");
+
+            // when
+            joinMember.setNickname("aa");
+            // then
+            e = assertThrows(EatingException.class, () -> memberService.joinOrLogin(joinMember));
+            assertThat(e.getMessage()).isEqualTo("닉네임 글자수 제한을 지켜주세요.");
+        }
+        @Test
+        @DisplayName("회원가입 실패 - 닉네임 중복")
+        void register_X2() {
+            // given
+            memberService = new MemberService(memberRepository, passwordEncoder);
+
+            // when
+            memberService.joinOrLogin(joinMember);
+            joinMember.setKakaoId("jinwoo2");
+            memberService.logout();
+
+            // then
+            EatingException e = assertThrows(EatingException.class, () -> memberService.joinOrLogin(joinMember));
+            assertThat(e.getMessage()).isEqualTo("이미 존재하는 닉네임입니다.");
         }
     }
     @Nested
@@ -142,8 +190,8 @@ public class MemberServiceTests {
     }
     private void checkMember(MemberDTO.JoinOrLogin joinMember, Member savedMember) {
         int num = 0;
-        for (boolean the_category : savedMember.getCategory().getCategories()) {
-            if(the_category) num += 1;
+        for (Category category : savedMember.getMemberCategory()){
+            num += 1;
         }
         assertThat(savedMember.getKakaoId()).isEqualTo(joinMember.getKakaoId());
         assertThat(savedMember.getLocation().getLongitude()).isEqualTo(joinMember.getLongitude());
@@ -156,12 +204,12 @@ public class MemberServiceTests {
             assertThat(savedMember.getProfileUrl()).isEqualTo("profile_url");
         }
         assertThat(savedMember.getPassword()).isEqualTo("encoded");
-        assertThat(savedMember.getSugarScore()).isEqualTo(0.0);
+        assertThat(savedMember.getSugarScore()).isEqualTo(50.0);
         assertThat(savedMember.getTimeGood()).isEqualTo(0);
         assertThat(savedMember.getFastAnswer()).isEqualTo(0);
         assertThat(savedMember.getNiceGuy()).isEqualTo(0);
         assertThat(savedMember.getFoodDivide()).isEqualTo(0);
         assertThat(savedMember.getTotalCount()).isEqualTo(0);
-        assertThat(num).isEqualTo(savedMember.getCategory().getCategories().size());
+        assertThat(num).isEqualTo(10);
     }
 }

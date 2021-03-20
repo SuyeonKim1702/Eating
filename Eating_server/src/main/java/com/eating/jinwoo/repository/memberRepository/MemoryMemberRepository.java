@@ -23,6 +23,17 @@ public class MemoryMemberRepository implements MemberRepository {
     }
 
     @Override
+    public Optional<Member> findByNickname(String nickname) {
+        Collection<Member> members = memberMap.values();
+        for (Member member : members) {
+            if (member.getNickname().equals(nickname)){
+                return Optional.ofNullable(member);
+            }
+        }
+        return Optional.empty();
+    }
+
+    @Override
     public MemberDTO.GetProfile getProfile(String kakaoId) {
         return null;
     }
