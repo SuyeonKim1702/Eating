@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -147,14 +149,41 @@ public class PostService {
         );
     }
 
-    public PostDTO.searchPost getPostList(PostDTO.searchParam param) {
+    public List<PostDTO.searchPost> getPostList(PostDTO.searchParam param) {
         //로그인 되어있는지 확인
         Authentication principal = SecurityContextHolder.getContext().getAuthentication();
         if(principal == null || (principal != null && principal.getPrincipal() == "anonymousUser")){
             throw new EatingException("회원이 아닙니다.");
         }
-        Member member = memberRepository.findByKakaoId(principal.getPrincipal().toString()).get();
+        String[] categoryNums = param.getCategory().split("-");
+        String[] categories = new String[categoryNums.length];
+        for (int i = 0; i < categories.length; i++){
+            categories[i] = Category.getEnumByValue(Integer.valueOf(categoryNums[i])).name();
+        }
+        List<Object[]> postList = postRepository.getPostList(categories, param.getDistance(), param.getPage(), param.getSize(),
+                principal.getName());
+        List<PostDTO.searchPost> ret = new ArrayList<>();
+        for (Object[] res : postList) {
+            PostDTO.searchPost result = new PostDTO.searchPost();
+            result.setPostId(Long.valueOf(res[0].toString()));
+            result.setTitle(res[1].toString());
+            result.setFoodLink(res[2].toString());
+            result.setDeliveryFeeByHost(Boolean.valueOf(res[3].toString()) == true ? 1 : 0);
+            result.setMeetPlace(MeetPlace.getValueByString(res[4].toString()));
+            result.setMemberCount(Integer.valueOf(res[5].toString()));
+            result.setMemberCountLimit(Integer.valueOf(res[6].toString()));
 
-        return postRepository.getPostList(param, member.getLocation());
+            String dateStr = res[7].toString().substring(0, 19);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime dateTime = LocalDateTime.parse(dateStr, formatter);
+            result.setOrderTime(dateTime);
+
+            Double dist = Double.valueOf(res[8].toString());
+            result.setDistance((int) Math.round(dist.doubleValue() * 1000));
+
+            result.setFavorite(Integer.valueOf(res[9].toString()) == 0 ? false : true);
+            ret.add(result);
+        }
+        return ret;
     }
 }

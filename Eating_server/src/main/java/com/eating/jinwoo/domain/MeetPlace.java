@@ -13,4 +13,13 @@ public enum MeetPlace {
             return GUEST;
         }
     }
+    public static int getValueByString(String name) {
+        if (name == "HOST"){
+            return 0;
+        } else if (name == "MID") {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
 }

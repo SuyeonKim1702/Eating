@@ -5,6 +5,4 @@ import com.eating.jinwoo.dto.PostDTO;
 
 public interface CustomPostRepository {
     public PostDTO.getPost getPost(Long id);
-
-    PostDTO.searchPost getPostList(PostDTO.searchParam param, Location location);
 }

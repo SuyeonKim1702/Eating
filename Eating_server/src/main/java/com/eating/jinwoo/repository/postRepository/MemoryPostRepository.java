@@ -6,6 +6,7 @@ import com.eating.jinwoo.domain.Post;
 import com.eating.jinwoo.dto.PostDTO;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -20,10 +21,6 @@ public class MemoryPostRepository implements PostRepository{
         return null;
     }
 
-    @Override
-    public PostDTO.searchPost getPostList(PostDTO.searchParam param, Location location) {
-        return null;
-    }
 
     @Override
     public <S extends Post> S save(S entity) {
@@ -81,5 +78,10 @@ public class MemoryPostRepository implements PostRepository{
     public void deleteAll() {
         postMap.clear();
         the_id = 0L;
+    }
+
+    @Override
+    public List<Object[]> getPostList(String[] categories, int distance, int page, int size, String kakao_id) {
+        return null;
     }
 }

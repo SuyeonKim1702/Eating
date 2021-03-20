@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class PostController {
@@ -47,8 +49,8 @@ public class PostController {
     }
 
     @GetMapping("/post")
-    public ResponseDTO<PostDTO.searchPost> getPostList(PostDTO.searchParam param) {
-        PostDTO.searchPost posts = postService.getPostList(param);
+    public ResponseDTO<List<PostDTO.searchPost>> getPostList(PostDTO.searchParam param) {
+        List<PostDTO.searchPost> posts = postService.getPostList(param);
         return new ResponseDTO<>(HttpStatus.OK, "게시글 가져오기", posts);
     }
 
