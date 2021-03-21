@@ -1,4 +1,4 @@
-package desla.aos.eating.ui.post
+package desla.aos.eating.ui.review
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -7,13 +7,14 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import desla.aos.eating.R
+import kotlinx.android.synthetic.main.dialog_review_first.*
 
-class CategoryDialog(
+class ReviewFirstDialog(
         private val clickListener: CategoryClickListener
 ) : DialogFragment() {
 
     interface CategoryClickListener {
-        fun inputData(email: String, pw: String)
+        fun clickFirstFinish(a1: Int, a2: Int, view: View)
     }
 
     fun receiveResult(isSuccess: Boolean, message: String){
@@ -30,15 +31,17 @@ class CategoryDialog(
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.dialog_category, container, false)
+        return inflater.inflate(R.layout.dialog_review_first, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
+        btn_first_review.setOnClickListener {
+            clickListener.clickFirstFinish(1,2, it)
+        }
 
-        setupClickListeners(view)
 
 
     }
@@ -49,7 +52,8 @@ class CategoryDialog(
         val window: Window = dialog!!.window!!
 
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
+        window.decorView.setBackgroundResource(android.R.color.transparent)
+        window.setDimAmount(0.0f)
 
         val params: WindowManager.LayoutParams = window.attributes
         // 화면에 가득 차도록
@@ -63,12 +67,6 @@ class CategoryDialog(
         window.setGravity(Gravity.BOTTOM)
     }
 
-
-
-
-    private fun setupClickListeners(view: View) {
-
-    }
 
 
 

@@ -23,8 +23,8 @@ class LoginViewModel : BaseViewModel()  {
 
     private val TAG = "LoginViewModel"
 
-    private val _isLogin = MutableLiveData<Boolean>()
-    val isLogin : LiveData<Boolean>
+    private val _isLogin = MutableLiveData<Int>()
+    val isLogin : LiveData<Int>
         get() = _isLogin
 
 
@@ -37,9 +37,8 @@ class LoginViewModel : BaseViewModel()  {
         //서버에 데이터 전송
 
         //로컬 데이터에 카카오 회원가입 여부 저장
-        MyApplication.prefs.setKakaoRegisted()
-
-        _isLogin.value = true
+        MyApplication.prefs.setAuth(1)
+        _isLogin.value = 1
     }
 
     fun setPermission(v: View) {
@@ -128,7 +127,8 @@ class LoginViewModel : BaseViewModel()  {
                         "\n회원번호: ${tokenInfo.id}" +
                         "\n만료시간: ${tokenInfo.expiresIn} 초")
 
-                _isLogin.value = MyApplication.prefs.isKakaoRegisted()
+
+                _isLogin.value = MyApplication.prefs.getAuth()
 
             }
         }

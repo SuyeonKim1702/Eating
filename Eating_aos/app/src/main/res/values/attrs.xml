@@ -6,6 +6,7 @@
     </declare-styleable>
 
     <declare-styleable name="CustomFilterButton">
+        <attr name="isLarge" format="boolean" />
         <attr name="filter_text" format="string" />
     </declare-styleable>
 

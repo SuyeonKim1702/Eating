@@ -11,6 +11,7 @@ import desla.aos.eating.R
 import desla.aos.eating.data.model.Post
 import desla.aos.eating.databinding.RcHomeBinding
 import desla.aos.eating.ui.MainActivity
+import desla.aos.eating.ui.like.LikeRCAdapter
 import desla.aos.eating.ui.view.ViewActivity
 import desla.aos.eating.util.getActivity
 
@@ -18,18 +19,41 @@ class HomeRCAdapter (
         private val postList : List<Post>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
+    companion object
+    {
+        private const val VIEW_TYPE_DATA = 0
+        private const val VIEW_TYPE_LIKE_BOTTOM = 1
+    }
 
-    override fun getItemCount() = postList.size
+    override fun getItemCount() = postList.size + 1
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            HomeViewHolder(
-                    DataBindingUtil.inflate(
-                            LayoutInflater.from(parent.context),
-                            R.layout.rc_home,
-                            parent,
-                            false
-                    )
-            )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)  = when (viewType) {
+        VIEW_TYPE_DATA -> HomeViewHolder(
+                DataBindingUtil.inflate(
+                        LayoutInflater.from(parent.context),
+                        R.layout.rc_home,
+                        parent,
+                        false
+                )
+        )
+        VIEW_TYPE_LIKE_BOTTOM ->
+        {//inflates progressbar layout
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.rc_transparent_bottom,parent,false)
+            BottomViewHolder(view)
+        }
+
+        else -> throw IllegalArgumentException("Different View type")
+
+    }
+
+    override fun getItemViewType(position: Int): Int
+    {
+        if(position == itemCount-1) return VIEW_TYPE_LIKE_BOTTOM
+
+
+        return VIEW_TYPE_DATA
+    }
+
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -55,5 +79,8 @@ class HomeRCAdapter (
             val homeBinding: RcHomeBinding
     ) : RecyclerView.ViewHolder(homeBinding.root)
 
+    inner class BottomViewHolder(
+            itemView: View
+    ) : RecyclerView.ViewHolder(itemView)
 
 }

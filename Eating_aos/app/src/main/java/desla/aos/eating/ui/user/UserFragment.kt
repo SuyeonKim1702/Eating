@@ -1,14 +1,19 @@
 package desla.aos.eating.ui.user
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import desla.aos.eating.R
 import desla.aos.eating.data.repositories.HomeRepository
 import desla.aos.eating.data.repositories.UserRepository
 import desla.aos.eating.databinding.FragmentHomeBinding
+import desla.aos.eating.databinding.FragmentUserBinding
 import desla.aos.eating.ui.MainActivity
 import desla.aos.eating.ui.base.BaseFragment
+import desla.aos.eating.ui.map.MapActivity
+import desla.aos.eating.ui.review.ReviewActivity
+import kotlinx.android.synthetic.main.activity_post.*
 
-class UserFragment :  BaseFragment<FragmentHomeBinding>() {
+class UserFragment :  BaseFragment<FragmentUserBinding>() {
 
     override val layoutResourceId: Int
         get() = R.layout.fragment_user
@@ -29,6 +34,11 @@ class UserFragment :  BaseFragment<FragmentHomeBinding>() {
 
     override fun initDataBinding() {
 
+        //임시
+
+        viewDataBinding.btnSettingUser.setOnClickListener {
+            startActivity(Intent(it.context, ReviewActivity::class.java))
+        }
     }
 
     override fun initAfterBinding() {

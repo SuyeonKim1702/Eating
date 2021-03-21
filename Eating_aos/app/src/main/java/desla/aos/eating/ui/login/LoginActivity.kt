@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import desla.aos.eating.R
 import desla.aos.eating.databinding.ActivityLoginBinding
+import desla.aos.eating.ui.MainActivity
 import desla.aos.eating.ui.base.BaseActivity
 import desla.aos.eating.ui.map.MapActivity
 
@@ -40,12 +41,19 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
             println("kakao " + isLogin)
 
-            if(isLogin){
-                startActivity(Intent(this, MapActivity::class.java))
-                finish()
-            }else{
-                //회원가입
-                setRegisterFragment()
+            when(isLogin){
+                0 ->  setRegisterFragment()
+                1 -> {
+                    startActivity(Intent(this, MapActivity::class.java))
+                    finish()
+                }
+                2 -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                }
+                else ->{
+
+                }
             }
 
         })
@@ -68,7 +76,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
         }
     }
 
-    fun setRegisterFragment(){
+    private fun setRegisterFragment(){
         setFragment(registerFragment)
     }
 

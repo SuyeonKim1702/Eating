@@ -3,6 +3,7 @@
 <!--    공통-->
     <dimen name="margin_horizontal">15dp</dimen>
     <dimen name="height_title">55dp</dimen>
+
     
 <!--    로그인-->
     <dimen name="margin_left_text">24.1dp</dimen>
@@ -100,6 +101,13 @@
     <dimen name="bottom_button_bottom_margin">40dp</dimen>
     <dimen name="view_post_horizontal_margin">25dp</dimen>
     <dimen name="post_relative_height">55dp</dimen>
+
+<!--    후기 화면-->
+    <dimen name="margin_top_title_review">20dp</dimen>
+    <dimen name="margin_top_title_explain_review">21dp</dimen>
+    <dimen name="margin_left_title_explain_review">24dp</dimen>
+    <dimen name="margin_top_img_explain_review">9dp</dimen>
+    <dimen name="height_btn_review">51dp</dimen>
 
 
 

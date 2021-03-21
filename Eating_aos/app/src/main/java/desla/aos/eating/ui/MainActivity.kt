@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavView.setupWithNavController(navController)
 
         bottomNavView.itemIconTintList = null
+
     }
 
     private fun updateStatusBarColor(color: String) { // Color must be in hexadecimal fromat

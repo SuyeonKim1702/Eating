@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_white_rounded_top">
+
+    <ImageView
+        android:layout_marginTop="22dp"
+        android:id="@+id/imageView26"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_list_circle" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/jalnan_otf"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="5sp"
+        android:text="OO 님에게 후기 메세지를 보내세요~!"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/imageView26"
+        app:layout_constraintTop_toTopOf="@+id/imageView26" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_left_title_explain_review"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/nanum_square_round_b"
+        android:lineSpacingExtra="12sp"
+        android:text="상대방에게 후기 메세지를 보내주세요:) 꼭 쓰지 않으셔도 되지만
+써주신다면 다음 잇팅에 도움이 될거에요!"
+        android:textColor="#757575"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginHorizontal="@dimen/margin_left_title_explain_review"
+        android:layout_marginTop="38dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:gravity="top"
+        android:hint="00님의 스윗함을 적어주세요:)\n- 너무 스윗한 분이셨어요!\n- 깔끔한 잇팅이었어요~!"
+        android:lineSpacingExtra="12sp"
+        android:textColor="#bdbdbd"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+
+    <TextView
+        android:id="@+id/btn_second_review"
+        style="@style/TextStyle2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/horizontal_margin"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/background_yellow_rounded"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        android:text="완료" />
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/margin_left_title_explain_review"
+        android:id="@+id/imageView30"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29"
+        app:srcCompat="@drawable/ic_btn_camera" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
