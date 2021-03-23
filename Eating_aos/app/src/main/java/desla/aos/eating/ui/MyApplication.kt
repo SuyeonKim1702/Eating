@@ -31,11 +31,10 @@ class PreferenceUtil(context: Context) {
         prefs.edit().putString(key, str).apply()
     }
 
-    //0: 미회원가입 -> RegisterFragment
-    //1: 닉네임 입력 완료 -> MapActivity
+
     //2: 회원가입 완료 -> MainActivity
-    fun getAuth() = prefs.getInt("auth", 0)
-    fun setAuth(value: Int){
-        prefs.edit().putInt("auth", value).apply()
+    fun isRegister() = prefs.getBoolean("auth", false)
+    fun setRegister(value: Int){
+        prefs.edit().putBoolean("auth", true).apply()
     }
 }

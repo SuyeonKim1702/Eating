@@ -64,6 +64,7 @@
             android:layout_marginTop="@dimen/margin_top_nickname_edit"
             android:background="@drawable/background_white_rounded"
             android:ems="10"
+            android:text="@={VM.nickname}"
             android:fontFamily="@font/nanum_square_round_b"
             android:hint="닉네임을 설정해주세요"
             android:inputType="textPersonName"

@@ -22,7 +22,9 @@ import androidx.lifecycle.MutableLiveData
 import desla.aos.eating.data.model.AddressAPI
 import desla.aos.eating.data.model.GeoAPI
 import desla.aos.eating.data.model.MapSearch
+import desla.aos.eating.data.model.RequestRegister
 import desla.aos.eating.data.repositories.MapRepository
+import desla.aos.eating.ui.MyApplication
 import desla.aos.eating.ui.base.BaseViewModel
 import desla.aos.eating.util.getActivity
 import desla.aos.eating.util.startGPSSettingActivityForResult
@@ -30,6 +32,7 @@ import desla.aos.eating.util.startMainActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import net.daum.mf.map.api.MapView
+import retrofit2.HttpException
 
 
 class MapViewModel(val repository: MapRepository) : BaseViewModel() {
@@ -44,6 +47,11 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
 
     var searchText = ""
 
+
+    var kakao_id: String? = null
+    var nickname: String? = null
+
+
     private val _selectLocation = MutableLiveData<MapSearch>()
     val selectLocation : LiveData<MapSearch>
         get() = _selectLocation
@@ -51,6 +59,7 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
     fun setSelectLocation(data: MapSearch){
         _selectLocation.value = data
     }
+
 
     fun initMap(){
 
@@ -65,6 +74,27 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
 
     fun startMainActivity(v: View){
         v.context.getActivity()?.startMainActivity()
+    }
+
+    fun sendRegister(v: View){
+        Log.i("eunjin", "전송" )
+
+        val disposable = repository.postRegister(
+            RequestRegister("hello", nickname, selectLocation.value?.Address, selectLocation.value?.x, selectLocation.value?.y)
+        )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+
+                Log.i("eunjin", "${it.message} ${it.status}" )
+                startMainActivity(v)
+
+            }, {
+
+                Log.i("eunjin", "결과 ${(it as HttpException).message()} ${(it as HttpException).code()}" )
+            })
+        addDisposable(disposable)
+
     }
 
 
@@ -307,6 +337,8 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
         })
 
     }
+
+
 
     private fun View.hideKeyboard() {
         val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

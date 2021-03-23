@@ -48,7 +48,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
                     finish()
                 }
                 2 -> {
-                    startActivity(Intent(this, MainActivity::class.java))
+
+                    startActivity(Intent(this, MainActivity::class.java)
+                        .putExtra("kakao_id", viewModel.kakao_id)
+                        .putExtra("nickname", viewModel.nickname))
                     finish()
                 }
                 else ->{

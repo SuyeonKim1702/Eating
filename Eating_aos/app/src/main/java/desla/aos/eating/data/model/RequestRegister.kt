@@ -4,29 +4,28 @@ import com.google.gson.annotations.SerializedName
 
 /*
 [request]
-- kakao_id : 회원식별번호
-- nickname : 닉네임
-- profile : 프로필 사진 파일
-- address : 주소
-- latitude : 위도
-- longitude : 경도
+{
+  "kakaoId": "eunjin",
+  "nickname": "eunjin1",
+  "profile": null,
+  "address": "용인시",
+  "latitude": 37.4,
+  "longitude": 12.12
+}
 [response]
 - status : 201
 - message : "회원가입 성공"
 - data : null
  */
 data class RequestRegister(
-        @SerializedName("kakao_id")
+        @SerializedName("kakaoId")
         val kakao_id: String,
         @SerializedName("nickname")
-        val nickname: String,
-        @SerializedName("profile")
-        val profile: Int,
+        val nickname: String?,
         @SerializedName("address")
-        val address: String,
+        val address: String?,
         @SerializedName("latitude")
-        val latitude: Long,
+        val latitude: Double?,
         @SerializedName("longitude")
-        val longitude: Long
-
+        val longitude: Double?
 )

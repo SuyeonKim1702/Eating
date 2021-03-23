@@ -1,9 +1,9 @@
 package desla.aos.eating.data.network
 
-import desla.aos.eating.data.model.KeywordAPI
 import desla.aos.eating.data.model.PostResponse
 import desla.aos.eating.data.model.RequestRegister
 import io.reactivex.Single
+import okhttp3.RequestBody
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,9 +24,10 @@ interface ServerApi {
 - message : "회원가입 성공"
 - data : null
      */
-    @POST("/member")
+
+    @POST("member")
     fun postRegister(
-            @Body param : RequestRegister
+           @Body param: RequestRegister
     ): Single<PostResponse>
 
     companion object {
@@ -34,7 +35,7 @@ interface ServerApi {
             return Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .baseUrl("https://dapi.kakao.com/v2/local/")
+                    .baseUrl("http://3.34.214.72/")
                     .build()
                     .create(ServerApi::class.java)
         }
