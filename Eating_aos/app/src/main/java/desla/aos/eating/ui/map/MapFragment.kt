@@ -1,7 +1,9 @@
 package desla.aos.eating.ui.map
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
@@ -67,10 +69,6 @@ class MapFragment :  BaseFragment<FragmentMapBinding>() {
             Toast.makeText(context, it, Toast.LENGTH_LONG).show()
         })
 
-        viewDataBinding.button.setOnClickListener {
-
-
-        }
 
         viewDataBinding.tvAddress.setOnClickListener {
 

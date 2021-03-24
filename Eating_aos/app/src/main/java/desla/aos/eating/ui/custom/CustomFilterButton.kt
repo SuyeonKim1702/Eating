@@ -12,10 +12,15 @@ open class CustomFilterButton @JvmOverloads constructor(context: Context, attrs:
 
 
     init {
-        View.inflate(context, R.layout.filter_btn_custom, this)
-
 
         val typedArray = context.obtainStyledAttributes(attrs,R.styleable.CustomFilterButton)
+        typedArray.getBoolean(R.styleable.CustomFilterButton_isLarge, false).let {
+            if(it){
+                View.inflate(context, R.layout.filter_btn_custom_large, this)
+            }else{
+                View.inflate(context, R.layout.filter_btn_custom, this)
+            }
+        }
         typedArray.getString(R.styleable.CustomFilterButton_filter_text).let {
             btn_text.text = it
         }

@@ -31,8 +31,10 @@ class PreferenceUtil(context: Context) {
         prefs.edit().putString(key, str).apply()
     }
 
-    fun isKakaoRegisted() = prefs.getBoolean("kakao", false)
-    fun setKakaoRegisted(){
-        prefs.edit().putBoolean("kakao", true).apply()
+
+    //2: 회원가입 완료 -> MainActivity
+    fun isRegister() = prefs.getBoolean("auth", false)
+    fun setRegister(value: Int){
+        prefs.edit().putBoolean("auth", true).apply()
     }
 }

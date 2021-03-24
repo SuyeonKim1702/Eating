@@ -20,10 +20,11 @@ class LikeRCAdapter (
         private const val VIEW_TYPE_CHAT_DATA = 1
         private const val VIEW_TYPE_TITLE_LIKE = 2
         private const val VIEW_TYPE_LIKE_DATA = 3
+        private const val VIEW_TYPE_LIKE_BOTTOM = 4
     }
 
 
-    override fun getItemCount() = if (chatList.isEmpty()) likeList.size + 1 else chatList.size + likeList.size + 2
+    override fun getItemCount() = if (chatList.isEmpty()) likeList.size + 2 else chatList.size + likeList.size + 3
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = when (viewType)
     {
@@ -62,12 +63,18 @@ class LikeRCAdapter (
                     )
             )
         }
+        VIEW_TYPE_LIKE_BOTTOM ->
+        {//inflates progressbar layout
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.rc_transparent_bottom,parent,false)
+            BottomViewHolder(view)
+        }
 
         else -> throw IllegalArgumentException("Different View type")
     }
 
     override fun getItemViewType(position: Int): Int
     {
+        if(position == itemCount-1) return VIEW_TYPE_LIKE_BOTTOM
 
         if(chatList.isEmpty()){
             if(position == 0) return VIEW_TYPE_TITLE_LIKE
@@ -118,5 +125,7 @@ class LikeRCAdapter (
             itemView: View
     ) : RecyclerView.ViewHolder(itemView)
 
-
+    inner class BottomViewHolder(
+            itemView: View
+    ) : RecyclerView.ViewHolder(itemView)
 }

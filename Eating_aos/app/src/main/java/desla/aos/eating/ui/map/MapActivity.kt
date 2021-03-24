@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import desla.aos.eating.R
 import desla.aos.eating.data.network.KakaoMapApi
+import desla.aos.eating.data.network.ServerApi
 import desla.aos.eating.data.repositories.MapRepository
 import desla.aos.eating.databinding.ActivityMapBinding
 import desla.aos.eating.ui.base.BaseActivity
@@ -25,9 +26,15 @@ class MapActivity : BaseActivity<ActivityMapBinding>() {
     override fun initStartView() {
 
         val api = KakaoMapApi()
-        val repository = MapRepository(api)
+        val server = ServerApi()
+        val repository = MapRepository(api,server)
         factory = MapViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory).get(MapViewModel::class.java)
+
+
+        viewModel.kakao_id = intent.getStringExtra("kakao_id")
+        viewModel.nickname = intent.getStringExtra("nickname")
+
 
         replaceFragment(mapFragment)
 

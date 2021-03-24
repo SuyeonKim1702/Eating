@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_white_rounded_top">
+
+    <ImageView
+        android:layout_marginTop="22dp"
+        android:id="@+id/imageView26"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_list_circle" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/jalnan_otf"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="5sp"
+        android:text="OO 님과 잇팅은 어떠셨나요?"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/imageView26"
+        app:layout_constraintTop_toTopOf="@+id/imageView26" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_title_explain_review"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/nanum_square_round_b"
+        android:lineSpacingExtra="12sp"
+        android:text="잇팅 선호도는 상대방이 알 수 없어요."
+        android:textColor="#757575"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text" />
+
+    <ImageView
+        android:id="@+id/imageView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_title_explain_review"
+        android:layout_marginTop="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29"
+        app:srcCompat="@drawable/selector_review_bad_btn" />
+
+    <ImageView
+        android:id="@+id/imageView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_left_title_explain_review"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView27"
+        app:srcCompat="@drawable/selector_review_best_btn" />
+
+    <ImageView
+        android:id="@+id/imageView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/imageView28"
+        app:layout_constraintStart_toEndOf="@+id/imageView27"
+        app:layout_constraintTop_toTopOf="@+id/imageView27"
+        app:srcCompat="@drawable/selector_review_soso_btn" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/jalnan_otf"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="3sp"
+        android:textColor="#bdbdbd"
+        android:textSize="11sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/imageView27"
+        app:layout_constraintStart_toStartOf="@+id/imageView27"
+        app:layout_constraintTop_toBottomOf="@+id/imageView27"
+        android:text="별로에요" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/jalnan_otf"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="3sp"
+        android:textColor="#bdbdbd"
+        android:textSize="11sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/imageView29"
+        app:layout_constraintStart_toStartOf="@+id/imageView29"
+        app:layout_constraintTop_toBottomOf="@+id/imageView29"
+        android:text="좋아요" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/jalnan_otf"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="3sp"
+        android:textColor="#bdbdbd"
+        android:textSize="11sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/imageView28"
+        app:layout_constraintStart_toStartOf="@+id/imageView28"
+        app:layout_constraintTop_toBottomOf="@+id/imageView28"
+        android:text="최고예요" />
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_btn_filter"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView31">
+
+        <LinearLayout
+            android:id="@+id/cons1_review"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_btn_review"
+            android:layout_marginBottom="@dimen/margin_bottom_btn_filter">
+
+            <desla.aos.eating.ui.custom.CustomFilterButton
+                app:isLarge="true"
+                android:id="@+id/btn1_review"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/margin_right_btn_filter"
+                android:layout_weight="1"
+                app:filter_text="시간을 잘지켜요." />
+
+            <desla.aos.eating.ui.custom.CustomFilterButton
+                app:isLarge="true"
+                android:id="@+id/btn2_review"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:filter_text="친절해요." />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/cons2_review"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_btn_review"
+            android:layout_marginBottom="@dimen/margin_bottom_btn_filter">
+
+            <desla.aos.eating.ui.custom.CustomFilterButton
+                app:isLarge="true"
+                android:id="@+id/btn3_review"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/margin_right_btn_filter"
+                android:layout_weight="1"
+                app:filter_text="음식을\n정확히 나눴어요." />
+
+            <desla.aos.eating.ui.custom.CustomFilterButton
+                app:isLarge="true"
+                android:id="@+id/btn4_review"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:filter_text="답변이 빨라요." />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_first_review"
+        style="@style/TextStyle2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/horizontal_margin"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/background_yellow_rounded"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear"
+        android:text="확인" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

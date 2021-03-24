@@ -50,6 +50,7 @@ class CategoryDialog(
 
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+
         val params: WindowManager.LayoutParams = window.attributes
         // 화면에 가득 차도록
         params.width = WindowManager.LayoutParams.MATCH_PARENT

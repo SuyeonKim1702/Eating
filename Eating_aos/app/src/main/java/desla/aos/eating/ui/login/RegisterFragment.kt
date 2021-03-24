@@ -7,6 +7,8 @@ import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import desla.aos.eating.R
 import desla.aos.eating.data.repositories.UserRepository
@@ -17,19 +19,20 @@ import kotlinx.android.synthetic.main.fragment_register.*
 
 class RegisterFragment :  BaseFragment<FragmentRegisterBinding>() {
 
+    //사진 찍기
+    val REQUEST_IMAGE_CAPTURE = 10
+    val REQUEST_IMAGE_PICK = 11
+
+
     override val layoutResourceId: Int
         get() = R.layout.fragment_register
 
-    private lateinit var viewModel: LoginViewModel
-
-
+    val viewModel by activityViewModels<LoginViewModel>()
 
     private val TAG = "RegisterFragment"
 
     override fun initStartView() {
-        val repository = UserRepository()
 
-        viewModel = ViewModelProvider(requireActivity())[LoginViewModel::class.java]
         viewDataBinding.vm = viewModel
     }
 
@@ -50,7 +53,7 @@ class RegisterFragment :  BaseFragment<FragmentRegisterBinding>() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == viewModel.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             //사진찍은거 파일로 저장하고 가져오기
             val uri = CameraUtil.getInstance(requireContext()).makeBitmap(viewDataBinding.profileImg)
             CameraUtil.getInstance(requireContext()).setImageView(viewDataBinding.profileImg, uri)
@@ -60,10 +63,11 @@ class RegisterFragment :  BaseFragment<FragmentRegisterBinding>() {
         }
 
         //사진을 갖고왔을 때
-        if (resultCode == Activity.RESULT_OK && requestCode == viewModel.REQUEST_IMAGE_PICK && data != null) {
+        if (resultCode == RESULT_OK && requestCode == REQUEST_IMAGE_PICK && data != null) {
             val uri = data.data!!
             CameraUtil.getInstance(requireContext()).setImageView(viewDataBinding.profileImg, uri)
         }
+
 
     }
 

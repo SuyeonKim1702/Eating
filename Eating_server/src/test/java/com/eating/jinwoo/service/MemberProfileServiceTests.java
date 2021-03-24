@@ -40,24 +40,25 @@ public class MemberProfileServiceTests {
     }
 
     @Nested
-    @DisplayName("프로필")
+    @DisplayName("Profile")
     class Profile {
         @Test
-        @DisplayName("프로필 가져오기 성공")
+        @DisplayName("Get Profile Success")
         void profile_get_O() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);
             memberService.joinOrLogin(joinMember);
-
+            
             // when
             MemberDTO.GetProfile memberProfile = memberService.getProfile();
             Member savedMember = memberRepository.findById(1L).get();
-
+//            System.out.println("memberProfile = " + memberProfile);
+//            System.out.println("savedMember = " + savedMember);
             // then
             checkMember(memberProfile, savedMember);
         }
         @Test
-        @DisplayName("프로필 가져오기 성공 - review가 3개 이상일 때")
+        @DisplayName("Get Profile Success review >= 3")
         void profile_get_O_multiple_reviews() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);
@@ -71,7 +72,7 @@ public class MemberProfileServiceTests {
             Member savedMember = memberRepository.findById(1L).get();
         }
         @Test
-        @DisplayName("프로필 가져오기 실패 - 로그인 X")
+        @DisplayName("Get Profile Fail - Login_X")
         void profile_get_X() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);

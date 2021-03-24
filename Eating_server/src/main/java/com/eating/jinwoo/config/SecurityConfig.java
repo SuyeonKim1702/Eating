@@ -36,12 +36,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable() // csrf 토큰 비활성화(테스트시에는 걸어두는게 좋음
                 .authorizeRequests()
+                .antMatchers("/swagger-ui.html")
+                .permitAll()
                 .antMatchers("/member/**")
                 .permitAll()
                 .antMatchers("/post/**")
                 .permitAll()
                 .anyRequest() // 다른 주소들은 인증 필요
-                .authenticated();
-//                .permitAll();
+//                .authenticated();
+                .permitAll();
     }
 }

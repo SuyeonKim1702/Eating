@@ -18,28 +18,29 @@ import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import desla.aos.eating.ui.MyApplication
+import okhttp3.MediaType
+import okhttp3.RequestBody
 
 class LoginViewModel : BaseViewModel()  {
 
     private val TAG = "LoginViewModel"
 
-    private val _isLogin = MutableLiveData<Boolean>()
-    val isLogin : LiveData<Boolean>
+    private val _isLogin = MutableLiveData<Int>()
+    val isLogin : LiveData<Int>
         get() = _isLogin
 
+    var kakao_id: String? = null
+    var nickname: String? = null
 
 
+    //사진 찍기
     val REQUEST_IMAGE_CAPTURE = 10
     val REQUEST_IMAGE_PICK = 11
 
+
     fun startMapActivity(v: View){
 
-        //서버에 데이터 전송
-
-        //로컬 데이터에 카카오 회원가입 여부 저장
-        MyApplication.prefs.setKakaoRegisted()
-
-        _isLogin.value = true
+        _isLogin.value = 1
     }
 
     fun setPermission(v: View) {
@@ -128,10 +129,20 @@ class LoginViewModel : BaseViewModel()  {
                         "\n회원번호: ${tokenInfo.id}" +
                         "\n만료시간: ${tokenInfo.expiresIn} 초")
 
-                _isLogin.value = MyApplication.prefs.isKakaoRegisted()
+                kakao_id = "" + tokenInfo.id
+                if(MyApplication.prefs.isRegister()){
+                    _isLogin.value = 2
+                }else{
+                    _isLogin.value = 0
+                }
+
 
             }
         }
+    }
+
+    fun sendRegister(){
+
     }
 
 }

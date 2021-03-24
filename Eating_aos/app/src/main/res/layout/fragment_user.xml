@@ -37,7 +37,7 @@
 
             <ImageButton
                 android:layout_marginHorizontal="@dimen/horizontal_margin"
-                android:id="@+id/imageButton2"
+                android:id="@+id/btn_setting_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -516,6 +516,11 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/view5"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp" />
 
             </LinearLayout>
         </ScrollView>
