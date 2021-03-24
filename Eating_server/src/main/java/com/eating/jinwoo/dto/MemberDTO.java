@@ -22,7 +22,6 @@ public class MemberDTO {
         private MultipartFile profile;
         private String address;
         private Double latitude;
-
         private Double longitude;
     }
     @Getter

@@ -43,10 +43,10 @@ public class MemberServiceTests {
     }
 
     @Nested
-    @DisplayName("회원가입")
+    @DisplayName("Join Member")
     class Register {
         @Test
-        @DisplayName("회원가입 성공 - 사진 없이")
+        @DisplayName("Join Member Success - Profile X")
         void register_NoPic_O() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);
@@ -58,7 +58,7 @@ public class MemberServiceTests {
             checkMember(joinMember, savedMember);
         }
         @Test
-        @DisplayName("회원가입 성공이 - 사진 있이")
+        @DisplayName("Join Member Success - Profile O")
         void register_YesPic_O() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);
@@ -73,7 +73,7 @@ public class MemberServiceTests {
             checkMember(joinMember, savedMember);
         }
         @Test
-        @DisplayName("회원가입 성공이 - 닉네임 한글일 경우")
+        @DisplayName("Join Member Success - Korean Nickname")
         void register_O() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);
@@ -87,7 +87,7 @@ public class MemberServiceTests {
             checkMember(joinMember, savedMember);
         }
         @Test
-        @DisplayName("회원가입 실패 - 닉네임 글자수 제한")
+        @DisplayName("Join Member Fail - Nickname String rule")
         void register_X1() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);
@@ -105,7 +105,7 @@ public class MemberServiceTests {
             assertThat(e.getMessage()).isEqualTo("닉네임 글자수 제한을 지켜주세요.");
         }
         @Test
-        @DisplayName("회원가입 실패 - 닉네임 중복")
+        @DisplayName("Join Member Fail - Nickname Duplicate rule")
         void register_X2() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);
@@ -121,10 +121,10 @@ public class MemberServiceTests {
         }
     }
     @Nested
-    @DisplayName("로그인")
+    @DisplayName("Login")
     class Login {
         @Test
-        @DisplayName("로그인 성공")
+        @DisplayName("Login Success")
         void login_O() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);
@@ -145,7 +145,7 @@ public class MemberServiceTests {
             assertThat(afterJoin).isEqualTo(afterLogin);
         }
         @Test
-        @DisplayName("로그인 했는데 또 로그인 하려는 경우")
+        @DisplayName("Login Duplicate")
         void login_X_LoginAgain() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);
@@ -159,7 +159,7 @@ public class MemberServiceTests {
         }
     }
     @Nested
-    @DisplayName("로그아웃")
+    @DisplayName("Logout")
     class Logout {
         @Test
         @DisplayName("로그아웃 성공")
@@ -177,7 +177,7 @@ public class MemberServiceTests {
             assertThat(principal).isNull();
         }
         @Test
-        @DisplayName("로그인 안 되어 있는데 또 로그아웃 하려는 경우")
+        @DisplayName("Logout Duplicate")
         void logout_X_LogoutAgain() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);
