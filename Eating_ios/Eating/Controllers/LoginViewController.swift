@@ -11,7 +11,7 @@ import KakaoSDKUser
 import AuthenticationServices
 
 class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    var kakaoUserId: Int?
+    var kakaoUserId: String?
     @IBOutlet weak var kakaoLoginButton: UIButton?
     @IBOutlet weak var appleButtonPlaceHolder: UIView?
     override func viewDidLoad() {
@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
     }
         
     private func stylingButton() {
-        kakaoLoginButton?.layer.cornerRadius = 32
+        kakaoLoginButton?.layer.cornerRadius = 5
         if #available(iOS 13.0, *) {
             let appleLoginBtn = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
             appleLoginBtn.isUserInteractionEnabled = true
@@ -43,6 +43,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let userIdentifier = credential.user
+            Constant.userId = userIdentifier
             moveToNext()
         }
     }
@@ -89,7 +90,9 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
             }
             else {
                 if let user = user {
-                    self?.kakaoUserId = Int(user.id)
+                    self?.kakaoUserId = String(user.id)
+                    Constant.userId = self?.kakaoUserId ?? ""
+
                     self?.moveToNext()
                 }
             }

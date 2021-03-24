@@ -10,13 +10,14 @@ import Foundation
 class AddressService{
     let networkManager = NetworkManager()
     
-    func getAddressInfo(for keyword: String, completion: @escaping (Result<[Place], NetworkError>) -> Void) {
+    func getAddressInfo(for keyword: String, page: Int, completion: @escaping (Result<[Place], NetworkError>) -> Void) {
         var urlComponents = URLComponents()
         urlComponents.scheme = Constant.scheme
         urlComponents.host = Constant.kakaoHost
         urlComponents.path = Constant.ApiId.kakaoAddressApi.rawValue
         urlComponents.queryItems = [
-            URLQueryItem(name: "query", value: keyword)
+            URLQueryItem(name: "query", value: keyword),
+            URLQueryItem(name: "page", value: "\(page)")
         ]
         guard let urlString = urlComponents.url?.absoluteString, let url = URL(string: urlString) else {
             return completion(.failure(.urlError))

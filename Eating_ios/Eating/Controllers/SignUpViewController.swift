@@ -11,13 +11,26 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var completeButton: UIButton?
     @IBOutlet weak var nicknameTextField: UITextField?
     @IBOutlet var profileImageHolder: UIImageView?
+    @IBOutlet var underlineLabel: UILabel?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         nicknameTextField?.delegate = self
         stylingViews()
         setupImageHolder()
+        setupToolBar()
+    }
+
+    private func setupToolBar() {
+        let toolBarKeyboard = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 60))
+
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+
+        let btnDoneBar = UIBarButtonItem(image: UIImage(named: "keyboardNext"), style: .done, target: self, action: #selector(tapCompleteButton(_:)))
+        toolBarKeyboard.items = [flexibleSpace, btnDoneBar]
+        toolBarKeyboard.barTintColor = UIColor(red: 255, green: 252, blue: 238)
+        toolBarKeyboard.clipsToBounds = true
+        nicknameTextField?.inputAccessoryView = toolBarKeyboard
     }
 
     private func setupImageHolder() {
@@ -42,20 +55,60 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
+        if let nickname = textField.text {
+            if validateNickname(nickname) {
+                goToNextPage()
+            }
+        }
         return true
     }
-    
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        changeToOriginal()
+    }
+
+    private func validateNickname(_ text: String) -> Bool {
+        if text.count < 3 || text.count > 8 {
+            alertWrongNickname()
+            return false
+        } else {
+            return true
+        }
+    }
+
+    private func changeToOriginal() {
+        underlineLabel?.textColor = UIColor(red: 193, green: 193, blue: 192)
+        nicknameTextField?.layer.borderWidth = 0
+
+    }
+
+    private func alertWrongNickname() {
+        underlineLabel?.textColor = .red
+        nicknameTextField?.layer.borderWidth = 1
+        nicknameTextField?.layer.borderColor = UIColor.red.cgColor
+    }
+
+    private func goToNextPage() {
+        guard let addressViewController = storyboard?.instantiateViewController(withIdentifier: "AddressViewController") else { return }
+        addressViewController.modalTransitionStyle = .coverVertical
+        addressViewController.modalPresentationStyle = .fullScreen
+        present(addressViewController, animated: true, completion: nil)
+    }
+
     @IBAction func tapGoBackButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func tapCompleteButton(_ sender: Any) {
-        guard let addressViewController = storyboard?.instantiateViewController(withIdentifier: "AddressViewController") else { return }
-        addressViewController.modalTransitionStyle = .coverVertical
-        addressViewController.modalPresentationStyle = .fullScreen
-        present(addressViewController, animated: true, completion: nil)
+
+        if let nickname = nicknameTextField?.text {
+            if validateNickname(nickname) {
+                Constant.nickname = nickname
+                goToNextPage()
+            }
+        }
         
     }
 
 }
+

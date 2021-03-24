@@ -11,7 +11,8 @@ class AddressViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField?
     @IBOutlet var addressTableView: UITableView?
     let addressService = AddressService()
-    var places: [Place]?
+    var places = [Place]()
+    var currentPage = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +28,16 @@ class AddressViewController: UIViewController {
         addressTextField?.addleftimage(image: UIImage(named:"searchIcon")!)
     }
     
-    private func callAddressApi(for query: String) {
-        addressService.getAddressInfo(for: query){ [weak self] places in
+    private func callAddressApi(for query: String, page: Int) {
+        addressService.getAddressInfo(for: query, page: page){ [weak self] places in
             switch(places){
             case .success(let places):
-                self?.places = places
+                if page == 1 {
+                    self?.places = places
+                    self?.currentPage = 2
+                } else {
+                    self?.places.append(contentsOf: places)
+                }
                 DispatchQueue.main.async {
                     self?.addressTableView?.reloadData()
                 }
@@ -52,7 +58,7 @@ extension AddressViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         if let text = textField.text {
-            callAddressApi(for: text)
+            callAddressApi(for: text, page: 1)
         }
         return true
     }
@@ -60,20 +66,20 @@ extension AddressViewController: UITextFieldDelegate {
 
 extension AddressViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        places?.count ?? 0
+        places.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath) as? AddressCell else { return UITableViewCell() }
         
-        if let place = places?[safe: indexPath.row] {
+        if let place = places[safe: indexPath.row] {
             cell.updateUI(for: place)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let place = places?[safe: indexPath.row] else { return }
+        guard let place = places[safe: indexPath.row] else { return }
         guard let viewController = storyboard?.instantiateViewController(withIdentifier: "MapViewController"), let mapViewController = viewController as? MapViewController else { return }
     
         mapViewController.addressTextField.text = place.addressName
@@ -84,5 +90,14 @@ extension AddressViewController: UITableViewDataSource, UITableViewDelegate {
         mapViewController.modalPresentationStyle = .fullScreen
         present(mapViewController, animated: true, completion: nil)
     }
-    
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+
+        if offsetY + scrollView.frame.height + 400 > contentHeight && currentPage < 45 {
+            callAddressApi(for: addressTextField?.text ?? "", page: currentPage)
+            currentPage += 1
+        }
+    }
 }
