@@ -8,9 +8,9 @@
 import Foundation
 
 class NetworkManager {
-    func request<T: Any>(_ url: URL, _ completion: @escaping (Result<T, NetworkError>) -> Void, _ parser: ((Data) -> (Result<T, NetworkError>))?, _ key: String?) -> URLSessionDataTask {
+    func request<T: Any>(_ url: URL, _ completion: @escaping (Result<T, NetworkError>) -> Void, _ parser: ((Data) -> (Result<T, NetworkError>))?, _ key: String?) -> URLSessionTask {
         var request = URLRequest(url: url)
-        
+
         if let key = key {
             request.setValue(key, forHTTPHeaderField: "Authorization")
         }

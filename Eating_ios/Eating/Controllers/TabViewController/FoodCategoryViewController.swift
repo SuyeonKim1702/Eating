@@ -8,14 +8,48 @@
 import UIKit
 
 class FoodCategoryViewController: UIViewController {
-
+    @IBOutlet var firstButtonStackView: UIStackView?
+    @IBOutlet var secondButtonStackView: UIStackView?
+    var buttonsArray = [UIButton]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupButtons()
+    }
+
+    private func setupButtons() {
+        let firstButtonArray = firstButtonStackView?.subviews.map{ $0 as! UIButton }
+        let secondButtonArray = secondButtonStackView?.subviews.map{ $0 as! UIButton }
+
+        buttonsArray = firstButtonArray! + secondButtonArray!
+        for button in buttonsArray {
+            button.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
+        }
+    }
+
+    @objc private func tapButton(_ sender: UIButton) {
+        for button in buttonsArray {
+            button.isSelected = false
+        }
+        sender.isSelected = !sender.isSelected
+    }
+
+    private func getSelectedButton() -> String {
+        var index = 0
+        var menuString = ""
+
+        for button in buttonsArray {
+            if button.isSelected {
+                menuString += "\(Constant.getMenuCode(raw: index))-"
+            }
+            index += 1
+        }
+        menuString = String(menuString.dropLast())
+        return menuString
     }
 
     @IBAction func tapCompleteButton(_ sender: Any) {
-        let parentViewController = parent as? WritingViewController
+        (parent as? WritingViewController)?.menu = getSelectedButton()
 
         UIView.animate(withDuration: 1,
                        delay: 0,
@@ -30,8 +64,7 @@ class FoodCategoryViewController: UIViewController {
                         self?.view.removeFromSuperview()
                         self?.removeFromParent()
                        })
-        parentViewController?.visualEffect.isHidden = true
-        // TODO 선택한 값 넘겨주기 -> 버튼 뭐 선택했는지 넘겨줄 것
+        (parent as? WritingViewController)?.visualEffect.isHidden = true
     }
 
     private func setTabViewFrame (metrics: ViewFrame?, view: UIView) {

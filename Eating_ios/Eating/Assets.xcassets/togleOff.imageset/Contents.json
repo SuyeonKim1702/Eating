@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "imCharacterGray.png",
+      "filename" : "icToggleAccepting.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "imCharacterGray@2x.png",
+      "filename" : "icToggleAccepting@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "imCharacterGray@3x.png",
+      "filename" : "icToggleAccepting@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

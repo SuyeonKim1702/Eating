@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icMypage.png",
+      "filename" : "icFillMypage.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icMypage@2x.png",
+      "filename" : "icFillMypage@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icMypage@3x.png",
+      "filename" : "icFillMypage@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

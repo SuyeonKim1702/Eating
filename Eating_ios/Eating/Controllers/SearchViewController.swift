@@ -28,6 +28,10 @@ class SearchViewController: UIViewController {
         popularTableView?.dataSource = self
         popularTableView?.isScrollEnabled = false
     }
+
+    @IBAction func tapGoBackButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension SearchViewController: UITableViewDataSource {

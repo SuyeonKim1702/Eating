@@ -15,6 +15,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     let addressTextField = UITextField()
     let currentLocationImageView = UIImageView()
     let regionCodeService = AddressRegionCodeService()
+    let postUserService = PostUserService()
     var x: Double?
     var y: Double?
     private let locationManager = CLLocationManager()
@@ -45,16 +46,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             setMapCenter(x!, y!)
         }
     }
-    
-    @objc private func tapCompeteButton() {
+
+    private func goToNextPage() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController else { return }
 
         tabBarController.modalTransitionStyle = .coverVertical
         tabBarController.modalPresentationStyle = .fullScreen
         tabBarController.tabBar.tintColor = .black
-  
+
         present(tabBarController, animated: true, completion: nil)
+    }
+    
+    @objc private func tapCompeteButton() {
+        Constant.address = addressTextField.text ?? ""
+        goToNextPage()
+
+        postUserService.postUserInfo(id: "2f321343f", nickname: Constant.nickname, latitude: x, longitude: y, address: Constant.address) { [weak self] result in
+            switch result {
+            case .success(let data):
+                print(data)
+                DispatchQueue.main.async {
+                    self?.goToNextPage()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                //로그인에 실패했습니다. 메세지 보여주기
+            }
+        }
+
     }
     
     private func locationPermissionAlert() {
@@ -160,6 +180,7 @@ extension MapViewController: MTMapViewDelegate {
     func mapView(_ mapView: MTMapView!, finishedMapMoveAnimation mapCenterPoint: MTMapPoint!) {
         y = mapCenterPoint.mapPointGeo().latitude
         x = mapCenterPoint.mapPointGeo().longitude
+        print(x, y)
         
         regionCodeService.getAddressInfo(x: "\(String(describing: x!))", y: "\(String(describing: y!))") { [weak self] result in
             switch result {

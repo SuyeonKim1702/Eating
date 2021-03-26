@@ -42,6 +42,20 @@
 		D6687BC026066EAF008114D4 /* PopularMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6687BBE26066EAF008114D4 /* PopularMenu.swift */; };
 		D6687BC126066EAF008114D4 /* PopularMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6687BBF26066EAF008114D4 /* PopularMenu.xib */; };
 		D6687BC626066FD5008114D4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6687BC526066FD5008114D4 /* SearchViewController.swift */; };
+		D67A80DE260794B000FED72B /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = D67A80DD260794AF00FED72B /* NanumSquareRoundOTFB.otf */; };
+		D67A80DF260794B000FED72B /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = D67A80DD260794AF00FED72B /* NanumSquareRoundOTFB.otf */; };
+		D67A80E0260794B000FED72B /* NanumSquareRoundOTFB.otf in Resources */ = {isa = PBXBuildFile; fileRef = D67A80DD260794AF00FED72B /* NanumSquareRoundOTFB.otf */; };
+		D67A80E82608DD1B00FED72B /* PostUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67A80E72608DD1B00FED72B /* PostUserService.swift */; };
+		D67A80ED2608E14E00FED72B /* NetworkManagerForPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67A80EC2608E14E00FED72B /* NetworkManagerForPost.swift */; };
+		D67A80FA2609E86B00FED72B /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67A80F92609E86B00FED72B /* PaddingLabel.swift */; };
+		D67A80FF260A216300FED72B /* NSMutableData+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67A80FE260A216300FED72B /* NSMutableData+Extension.swift */; };
+		D67A8104260A4DB000FED72B /* MyFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67A8103260A4DB000FED72B /* MyFeedViewController.swift */; };
+		D67A8127260B594600FED72B /* PostFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67A8126260B594600FED72B /* PostFeedService.swift */; };
+		D67A812C260B622E00FED72B /* GetFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67A812B260B622E00FED72B /* GetFeedService.swift */; };
+		D67A8131260B630E00FED72B /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67A8130260B630E00FED72B /* Feed.swift */; };
+		D67A8168260B951900FED72B /* OtherFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67A8167260B951900FED72B /* OtherFeedViewController.swift */; };
+		D67A816D260B9B4800FED72B /* GetDetailFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67A816C260B9B4800FED72B /* GetDetailFeedService.swift */; };
+		D67A8172260B9E4300FED72B /* FeedDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67A8171260B9E4300FED72B /* FeedDetail.swift */; };
 		D688E1F32603B78F001B89D7 /* FavoriteTableViewFirstHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D688E1F22603B78F001B89D7 /* FavoriteTableViewFirstHeader.swift */; };
 		D688E1F82603B7C2001B89D7 /* FavoriteTableViewFirstHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D688E1F72603B7C2001B89D7 /* FavoriteTableViewFirstHeader.xib */; };
 		D688E1FD2603C2E0001B89D7 /* FavoriteTableViewSecondHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D688E1FC2603C2E0001B89D7 /* FavoriteTableViewSecondHeader.swift */; };
@@ -142,6 +156,18 @@
 		D6687BBE26066EAF008114D4 /* PopularMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMenu.swift; sourceTree = "<group>"; };
 		D6687BBF26066EAF008114D4 /* PopularMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularMenu.xib; sourceTree = "<group>"; };
 		D6687BC526066FD5008114D4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		D67A80DD260794AF00FED72B /* NanumSquareRoundOTFB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundOTFB.otf; path = "../../../../../../../../Volumes/나눔스퀘어라운드 맥용 OTF/NanumSquareRoundOTFB.otf"; sourceTree = "<group>"; };
+		D67A80E72608DD1B00FED72B /* PostUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserService.swift; sourceTree = "<group>"; };
+		D67A80EC2608E14E00FED72B /* NetworkManagerForPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerForPost.swift; sourceTree = "<group>"; };
+		D67A80F92609E86B00FED72B /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		D67A80FE260A216300FED72B /* NSMutableData+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableData+Extension.swift"; sourceTree = "<group>"; };
+		D67A8103260A4DB000FED72B /* MyFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFeedViewController.swift; sourceTree = "<group>"; };
+		D67A8126260B594600FED72B /* PostFeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedService.swift; sourceTree = "<group>"; };
+		D67A812B260B622E00FED72B /* GetFeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeedService.swift; sourceTree = "<group>"; };
+		D67A8130260B630E00FED72B /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		D67A8167260B951900FED72B /* OtherFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherFeedViewController.swift; sourceTree = "<group>"; };
+		D67A816C260B9B4800FED72B /* GetDetailFeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDetailFeedService.swift; sourceTree = "<group>"; };
+		D67A8171260B9E4300FED72B /* FeedDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetail.swift; sourceTree = "<group>"; };
 		D688E1F22603B78F001B89D7 /* FavoriteTableViewFirstHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewFirstHeader.swift; sourceTree = "<group>"; };
 		D688E1F72603B7C2001B89D7 /* FavoriteTableViewFirstHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewFirstHeader.xib; sourceTree = "<group>"; };
 		D688E1FC2603C2E0001B89D7 /* FavoriteTableViewSecondHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewSecondHeader.swift; sourceTree = "<group>"; };
@@ -383,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				D658FB7425FD1255006C7F85 /* NanumSquareOTFBold.otf */,
+				D67A80DD260794AF00FED72B /* NanumSquareRoundOTFB.otf */,
 				D658FB6725FD1113006C7F85 /* NanumSquareOTFRegular.otf */,
 				D6BF9FD625F3710E0076E321 /* NanumSquareRoundOTFEB.otf */,
 				D6BF9FC925F36C640076E321 /* JalnanOTF.otf */,
@@ -398,6 +425,8 @@
 				D658FB4525FC7AFA006C7F85 /* Collection+Extension.swift */,
 				D688E23926050868001B89D7 /* UILabel+Extension.swift */,
 				D61F8B39260626CB0045ECFE /* UISegmentedControl.swift */,
+				D67A80F92609E86B00FED72B /* PaddingLabel.swift */,
+				D67A80FE260A216300FED72B /* NSMutableData+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -407,6 +436,8 @@
 			children = (
 				D6BFA01925F48CD80076E321 /* Address.swift */,
 				D658FB4F25FCB99A006C7F85 /* RegionCode.swift */,
+				D67A8130260B630E00FED72B /* Feed.swift */,
+				D67A8171260B9E4300FED72B /* FeedDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -423,6 +454,8 @@
 				D658FBF926025A84006C7F85 /* FilterViewController.swift */,
 				D61F8B3E260654390045ECFE /* AlertViewController.swift */,
 				D6687BC526066FD5008114D4 /* SearchViewController.swift */,
+				D67A8103260A4DB000FED72B /* MyFeedViewController.swift */,
+				D67A8167260B951900FED72B /* OtherFeedViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -432,6 +465,10 @@
 			children = (
 				D6BFA00325F3E12B0076E321 /* AddressService.swift */,
 				D658FB4A25FCB85C006C7F85 /* AddressRegionCodeService.swift */,
+				D67A80E72608DD1B00FED72B /* PostUserService.swift */,
+				D67A8126260B594600FED72B /* PostFeedService.swift */,
+				D67A812B260B622E00FED72B /* GetFeedService.swift */,
+				D67A816C260B9B4800FED72B /* GetDetailFeedService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -441,6 +478,7 @@
 			children = (
 				D6BFA00825F3E1B90076E321 /* NetworkManager.swift */,
 				D6BFA00D25F3E1E20076E321 /* NetworkError.swift */,
+				D67A80EC2608E14E00FED72B /* NetworkManagerForPost.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -583,6 +621,7 @@
 				D6BF9F3C25EE80F10076E321 /* Assets.xcassets in Resources */,
 				D658FB6825FD1113006C7F85 /* NanumSquareOTFRegular.otf in Resources */,
 				D688E2092604C847001B89D7 /* ProfileCell.xib in Resources */,
+				D67A80DE260794B000FED72B /* NanumSquareRoundOTFB.otf in Resources */,
 				D688E2172604D4F5001B89D7 /* ReviewCell.xib in Resources */,
 				D658FB7525FD1255006C7F85 /* NanumSquareOTFBold.otf in Resources */,
 				D658FB8325FD1879006C7F85 /* FeedCell.xib in Resources */,
@@ -601,6 +640,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D67A80DF260794B000FED72B /* NanumSquareRoundOTFB.otf in Resources */,
 				D658FB6C25FD1136006C7F85 /* NanumSquareOTFRegular.otf in Resources */,
 				D658FB8425FD1879006C7F85 /* FeedCell.xib in Resources */,
 				D6BF9FDB25F371110076E321 /* NanumSquareRoundOTFEB.otf in Resources */,
@@ -613,6 +653,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D67A80E0260794B000FED72B /* NanumSquareRoundOTFB.otf in Resources */,
 				D658FB7025FD1136006C7F85 /* NanumSquareOTFRegular.otf in Resources */,
 				D658FB8525FD1879006C7F85 /* FeedCell.xib in Resources */,
 				D6BF9FDC25F371120076E321 /* NanumSquareRoundOTFEB.otf in Resources */,
@@ -698,11 +739,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D658FBC0260100E9006C7F85 /* ViewFrame.swift in Sources */,
+				D67A8168260B951900FED72B /* OtherFeedViewController.swift in Sources */,
 				D61F8B2426061DBF0045ECFE /* CustomSegmentedControl.swift in Sources */,
 				D688E2212604F2BE001B89D7 /* ProfileTableViewThirdHeader.swift in Sources */,
 				D6687BC026066EAF008114D4 /* PopularMenu.swift in Sources */,
 				D61F8B3F260654390045ECFE /* AlertViewController.swift in Sources */,
 				D658FBBB2600FDEE006C7F85 /* FirstReviewViewController.swift in Sources */,
+				D67A80FA2609E86B00FED72B /* PaddingLabel.swift in Sources */,
 				D6BFA03925F4A0FD0076E321 /* MapViewController.swift in Sources */,
 				D61F8B3A260626CB0045ECFE /* UISegmentedControl.swift in Sources */,
 				D688E2532605EA89001B89D7 /* FoodCategoryViewController.swift in Sources */,
@@ -712,18 +755,26 @@
 				D658FB5E25FCEBA4006C7F85 /* MyPageViewController.swift in Sources */,
 				D658FB4625FC7AFA006C7F85 /* Collection+Extension.swift in Sources */,
 				D6BF9FF725F3A2880076E321 /* UITextField+Extension.swift in Sources */,
+				D67A816D260B9B4800FED72B /* GetDetailFeedService.swift in Sources */,
 				D658FB5625FCEB91006C7F85 /* HomeViewController.swift in Sources */,
 				D61F8B1F26060B260045ECFE /* ActivityListViewController.swift in Sources */,
 				D6BF9F3725EE80EE0076E321 /* LoginViewController.swift in Sources */,
 				D6BFA06B25F4B2480076E321 /* UIColor+Extension.swift in Sources */,
+				D67A812C260B622E00FED72B /* GetFeedService.swift in Sources */,
 				D6BF9F3325EE80EE0076E321 /* AppDelegate.swift in Sources */,
 				D658FB4B25FCB85D006C7F85 /* AddressRegionCodeService.swift in Sources */,
 				D688E21C2604F2AC001B89D7 /* ProfileTableViewSecondHeader.swift in Sources */,
 				D658FBB62600FDD7006C7F85 /* DefaultReviewViewController.swift in Sources */,
 				D688E23A26050868001B89D7 /* UILabel+Extension.swift in Sources */,
+				D67A80FF260A216300FED72B /* NSMutableData+Extension.swift in Sources */,
+				D67A80ED2608E14E00FED72B /* NetworkManagerForPost.swift in Sources */,
+				D67A8127260B594600FED72B /* PostFeedService.swift in Sources */,
+				D67A80E82608DD1B00FED72B /* PostUserService.swift in Sources */,
 				D658FB8025FD1879006C7F85 /* FeedCell.swift in Sources */,
+				D67A8131260B630E00FED72B /* Feed.swift in Sources */,
 				D6BF9FFF25F3E1100076E321 /* AddressViewController.swift in Sources */,
 				D6BFA01A25F48CD80076E321 /* Address.swift in Sources */,
+				D67A8172260B9E4300FED72B /* FeedDetail.swift in Sources */,
 				D6BFA00925F3E1B90076E321 /* NetworkManager.swift in Sources */,
 				D658FB5025FCB99A006C7F85 /* RegionCode.swift in Sources */,
 				D688E2262604F2CD001B89D7 /* ProfileTableViewFourthHeader.swift in Sources */,
@@ -731,6 +782,7 @@
 				D658FBFA26025A84006C7F85 /* FilterViewController.swift in Sources */,
 				D688E2162604D4F5001B89D7 /* ReviewCell.swift in Sources */,
 				D658FB6325FCEBB2006C7F85 /* FavoriteViewController.swift in Sources */,
+				D67A8104260A4DB000FED72B /* MyFeedViewController.swift in Sources */,
 				D688E1FD2603C2E0001B89D7 /* FavoriteTableViewSecondHeader.swift in Sources */,
 				D6BFA00E25F3E1E20076E321 /* NetworkError.swift in Sources */,
 				D6687BC626066FD5008114D4 /* SearchViewController.swift in Sources */,

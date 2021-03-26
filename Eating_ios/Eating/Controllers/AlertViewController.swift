@@ -17,9 +17,6 @@ class AlertViewController: UIViewController {
         imagePickerController.delegate = self
         signUpViewController = parent as? SignUpViewController
     }
-    
-
-
 
     @IBAction func tapTakePictureButton(_ sender: Any) {
         imagePickerController.sourceType = .camera
@@ -42,6 +39,7 @@ extension AlertViewController : UIImagePickerControllerDelegate, UINavigationCon
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             if let presenter = presentingViewController as? SignUpViewController {
                 presenter.profileImageHolder?.image = image
+                Constant.profileImageData = image.pngData()
             }
             dismiss(animated: true, completion: nil)
         }
