@@ -3,7 +3,9 @@ package com.eating.jinwoo.service;
 import com.eating.jinwoo.common.EatingException;
 import com.eating.jinwoo.domain.Location;
 import com.eating.jinwoo.domain.Member;
+import com.eating.jinwoo.domain.Post;
 import com.eating.jinwoo.dto.MemberDTO;
+import com.eating.jinwoo.dto.PostDTO;
 import com.eating.jinwoo.repository.memberRepository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -79,10 +81,22 @@ public class MemberService {
 
     public MemberDTO.GetProfile getProfile() {
         Authentication principal = SecurityContextHolder.getContext().getAuthentication();
-        if(principal == null || (principal != null && principal.getPrincipal() == "anonymousUser")){
+        if (principal == null || (principal != null && principal.getPrincipal() == "anonymousUser")) {
             throw new EatingException("회원이 아닙니다.");
         }
 
         return null;
+    }
+    public void editProfile(MemberDTO.EditProfile editInfo) {
+        Authentication principal = SecurityContextHolder.getContext().getAuthentication();
+        if (principal == null || (principal != null && principal.getPrincipal() == "anonymousUser")) {
+            throw new EatingException("회원이 아닙니다.");
+        }
+        // kakao id
+        String kakao_id = principal.getPrincipal().toString();
+        Member member = memberRepository.findByKakaoId(kakao_id).get();
+        member.setNickname(editInfo.getNickname());
+        member.setProfileUrl(editInfo.getProfileUrl());
+        memberRepository.save(member);
     }
 }

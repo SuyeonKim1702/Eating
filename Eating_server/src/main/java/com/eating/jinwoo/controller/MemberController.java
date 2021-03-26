@@ -2,16 +2,14 @@ package com.eating.jinwoo.controller;
 
 import com.eating.jinwoo.common.EatingException;
 import com.eating.jinwoo.dto.MemberDTO;
+import com.eating.jinwoo.dto.PostDTO;
 import com.eating.jinwoo.dto.ResponseDTO;
 import com.eating.jinwoo.service.MemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -42,5 +40,12 @@ public class MemberController {
     public ResponseDTO<MemberDTO.GetProfile> getProfile() {
         MemberDTO.GetProfile memberProfile = memberService.getProfile();
         return new ResponseDTO<>(HttpStatus.OK, "프로필 정보 가져오기", memberProfile);
+    }
+
+    @PutMapping("/member")
+    @ApiOperation(value = "프로필(닉네임) 수정하기")
+    public ResponseDTO<String> editProfile(@RequestBody MemberDTO.EditProfile editInfo) {
+        memberService.editProfile(editInfo);
+        return new ResponseDTO<>(HttpStatus.OK, "프로필 수정완료", null);
     }
 }

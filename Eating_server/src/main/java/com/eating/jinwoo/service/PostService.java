@@ -165,25 +165,36 @@ public class PostService {
         List<PostDTO.searchPost> ret = new ArrayList<>();
         for (Object[] res : postList) {
             PostDTO.searchPost result = new PostDTO.searchPost();
-            result.setPostId(Long.valueOf(res[0].toString()));
+            Long post_id = Long.valueOf(res[0].toString());
+            result.setPostId(post_id);
             result.setTitle(res[1].toString());
             result.setFoodLink(res[2].toString());
             result.setDeliveryFeeByHost(Boolean.valueOf(res[3].toString()) == true ? 1 : 0);
             result.setMeetPlace(MeetPlace.getValueByString(res[4].toString()));
-            result.setMemberCount(Integer.valueOf(res[5].toString()));
-            result.setMemberCountLimit(Integer.valueOf(res[6].toString()));
+            result.setMemberCountLimit(Integer.valueOf(res[5].toString()));
 
-            String dateStr = res[7].toString().substring(0, 19);
+            String dateStr = res[6].toString().substring(0, 19);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             LocalDateTime dateTime = LocalDateTime.parse(dateStr, formatter);
             result.setOrderTime(dateTime);
 
-            Double dist = Double.valueOf(res[8].toString());
+            Double dist = Double.valueOf(res[7].toString());
             result.setDistance((int) Math.round(dist.doubleValue() * 1000));
 
-            result.setFavorite(Integer.valueOf(res[9].toString()) == 0 ? false : true);
+            // member count calc
+            int member_count = postRepository.getPostMemberCount(post_id);
+            result.setMemberCount(member_count);
+
+            // is_favorite calc
+            Long member_id = Long.valueOf(res[8].toString());
+            int is_favorite = postRepository.getIsFavorite(post_id, member_id);
+            result.setFavorite(is_favorite == 0 ? false : true);
             ret.add(result);
         }
         return ret;
     }
+
+//    public List<PostDTO.searchPost> getPostDetail(Long id) {
+//
+//    }
 }

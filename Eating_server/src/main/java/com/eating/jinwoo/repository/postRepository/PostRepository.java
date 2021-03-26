@@ -14,16 +14,21 @@ import java.util.Optional;
 
 public interface PostRepository extends CrudRepository<Post, Long>, CustomPostRepository {
 
-    @Query(value = "SELECT p.id, p.title, p.food_link, p.delivery_fee_by_host, p.meet_place, count(mp.id) as memberCount, p.member_count_limit, p.order_time, " +
-            "(6371*acos(cos(radians(l.latitude)) *cos(radians(p.latitude))*cos(radians(p.longitude) -radians(l.longitude))+sin(radians(l.latitude))*sin(radians(p.latitude)))) AS distance," +
-            "count(fou.id) as isFavorite " +
-            "FROM post p left outer join " +
-            "(select favorite.* from favorite join member on member.id=favorite.member_id where member.kakao_id=:kakao_id) as fou on fou.post_id=p.id" +
-            ", member_post mp, " +
-            "member m join location l on m.location_id " +
-            "where p.category in :categories and m.kakao_id=:kakao_id and mp.post_id = p.id " +
+    @Query(value = "SELECT p.id, p.title, p.food_link, p.delivery_fee_by_host, p.meet_place, " +
+            "p.member_count_limit, p.order_time, " +
+            "(6371*acos(cos(radians(l.latitude)) *cos(radians(p.latitude))*cos(radians(p.longitude) " +
+            "-radians(l.longitude))+sin(radians(l.latitude))*sin(radians(p.latitude)))) AS distance, m.id as member_id " +
+            "FROM post p, member m, location l " +
+            "where p.category in :categories and m.kakao_id=:kakao_id and l.id=m.location_id " +
             "HAVING distance <= :distance " +
             "ORDER BY distance limit :page, :size", nativeQuery = true)
     List<Object[]> getPostList(@Param("categories") String[] categories, @Param("distance") int distance, @Param("page") int page, @Param("size") int size,
                      @Param("kakao_id") String kakao_id);
+
+    @Query("select count(p.id) from Post p join p.memberPosts mp where p.id = :postId")
+    int getPostMemberCount(@Param("postId") Long postId)
+            ;
+
+    @Query("select count(f.id) from Favorite f join f.post where f.member.id = :memberId and f.post.id = :postId")
+    int getIsFavorite(@Param("postId") Long postId, @Param("memberId") Long memberId);
 }

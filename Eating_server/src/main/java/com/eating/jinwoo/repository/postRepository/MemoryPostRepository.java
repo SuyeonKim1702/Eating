@@ -84,4 +84,15 @@ public class MemoryPostRepository implements PostRepository{
     public List<Object[]> getPostList(String[] categories, int distance, int page, int size, String kakao_id) {
         return null;
     }
+
+    @Override
+    public int getPostMemberCount(Long postId) {
+        return 0;
+    }
+
+    @Override
+    public int getIsFavorite(Long postId, Long memberId) {
+        return 0;
+    }
+
 }

@@ -41,4 +41,15 @@ public class MemberDTO {
         private int fastAnswer;
         private List<Review> reviews = new ArrayList<>();
     }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @ToString
+    @Builder
+    public static class EditProfile {
+        private String nickname;
+        private String profileUrl;
+    }
 }
