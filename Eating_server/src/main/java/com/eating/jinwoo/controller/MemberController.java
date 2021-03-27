@@ -16,15 +16,23 @@ import java.security.Principal;
 
 @Api(tags={"Member"})
 @RestController
+
 @RequiredArgsConstructor
 public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping("/member")
-    @ApiOperation(value = "회원가입/로그인 동시 처리")
-    public ResponseDTO<String> joinOrLogin(@RequestBody MemberDTO.JoinOrLogin userInfo) {
-        memberService.joinOrLogin(userInfo);
+    @PostMapping("/member/join")
+    @ApiOperation(value = "회원가입 처리")
+    public ResponseDTO<String> join(@RequestBody MemberDTO.Join userInfo) {
+        memberService.join(userInfo);
+        return new ResponseDTO<>(HttpStatus.OK, "회원가입 후 로그인 성공", null);
+    }
+
+    @PostMapping("/member/login")
+    @ApiOperation(value = "로그인 처리")
+    public ResponseDTO<String> login(@RequestBody MemberDTO.Login userInfo) {
+        memberService.login(userInfo);
         return new ResponseDTO<>(HttpStatus.OK, "로그인 성공", null);
     }
 

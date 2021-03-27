@@ -58,7 +58,7 @@ public class MemberRepositoryTests {
 
         // then
         assertThat(profile.getNickname()).isEqualTo(member.getNickname());
-        assertThat(profile.getProfileUrl()).isEqualTo(member.getProfileUrl());
+//        assertThat(profile.getProfileUrl()).isEqualTo(member.getProfileUrl());
         assertThat(profile.getTotalCount()).isEqualTo(member.getTotalCount());
         assertThat(profile.getSugarScore()).isEqualTo(member.getSugarScore());
         assertThat(profile.getTimeGood()).isEqualTo(member.getTimeGood());

@@ -49,7 +49,7 @@ public class Member extends BaseAuditEntity {
     @Enumerated(EnumType.STRING)
     private List<Category> memberCategory = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member") // member와 post는 다대다 관계이므로 MemberPost라는 중간 테이블 생성함
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL) // member와 post는 다대다 관계이므로 MemberPost라는 중간 테이블 생성함
     private List<MemberPost> memberPosts = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)

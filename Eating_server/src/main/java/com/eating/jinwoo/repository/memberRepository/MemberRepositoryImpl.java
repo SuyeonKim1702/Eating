@@ -38,7 +38,7 @@ public class MemberRepositoryImpl extends QuerydslRepositorySupport implements C
             reviews.add(res.get(review));
         }
         result.setNickname(profile.get(0).get(member.nickname));
-        result.setProfileUrl(profile.get(0).get(member.profileUrl));
+//        result.setProfileUrl(profile.get(0).get(member.profileUrl));
         result.setTotalCount(profile.get(0).get(member.totalCount));
         result.setSugarScore(profile.get(0).get(member.sugarScore));
         result.setTimeGood(profile.get(0).get(member.timeGood));

@@ -31,8 +31,11 @@ public class MemberServiceTests {
     }
     @BeforeEach
     void beforeEach() {
+//        joinMember = MemberDTO.JoinOrLogin.builder()
+//                .kakaoId("jinwoo").nickname("nick").address("where").profile(null).longitude(11.11).latitude(22.22).build();
         joinMember = MemberDTO.JoinOrLogin.builder()
-                .kakaoId("jinwoo").nickname("nick").address("where").profile(null).longitude(11.11).latitude(22.22).build();
+                .kakaoId("jinwoo").nickname("nick").address("where").longitude(11.11).latitude(22.22).build();
+
         memberRepository = new MemoryMemberRepository();
         when(passwordEncoder.encode(joinMember.getKakaoId())).thenReturn("encoded");
     }
@@ -57,21 +60,21 @@ public class MemberServiceTests {
             Member savedMember = memberRepository.findById(1L).get();
             checkMember(joinMember, savedMember);
         }
-        @Test
-        @DisplayName("Join Member Success - Profile O")
-        void register_YesPic_O() {
-            // given
-            memberService = new MemberService(memberRepository, passwordEncoder);
-            MultipartFile file = new MockMultipartFile("mock", (byte[]) null);
-            joinMember.setProfile(file);
-
-            // when
-            memberService.joinOrLogin(joinMember);
-
-            // then
-            Member savedMember = memberRepository.findById(1L).get();
-            checkMember(joinMember, savedMember);
-        }
+//        @Test
+//        @DisplayName("Join Member Success - Profile O")
+//        void register_YesPic_O() {
+//            // given
+//            memberService = new MemberService(memberRepository, passwordEncoder);
+//            MultipartFile file = new MockMultipartFile("mock", (byte[]) null);
+//            joinMember.setProfile(file);
+//
+//            // when
+//            memberService.joinOrLogin(joinMember);
+//
+//            // then
+//            Member savedMember = memberRepository.findById(1L).get();
+//            checkMember(joinMember, savedMember);
+//        }
         @Test
         @DisplayName("Join Member Success - Korean Nickname")
         void register_O() {
@@ -162,7 +165,7 @@ public class MemberServiceTests {
     @DisplayName("Logout")
     class Logout {
         @Test
-        @DisplayName("로그아웃 성공")
+        @DisplayName("Logout Success")
         void logout_O() {
             // given
             memberService = new MemberService(memberRepository, passwordEncoder);
@@ -198,11 +201,11 @@ public class MemberServiceTests {
         assertThat(savedMember.getLocation().getLatitude()).isEqualTo(joinMember.getLatitude());
         assertThat(savedMember.getLocation().getAddress()).isEqualTo(joinMember.getAddress());
         assertThat(savedMember.getNickname()).isEqualTo(savedMember.getNickname());
-        if (joinMember.getProfile() == null){
-            assertThat(savedMember.getProfileUrl()).isNull();
-        } else {
-            assertThat(savedMember.getProfileUrl()).isEqualTo("profile_url");
-        }
+//        if (joinMember.getProfile() == null){
+//            assertThat(savedMember.getProfileUrl()).isNull();
+//        } else {
+//            assertThat(savedMember.getProfileUrl()).isEqualTo("profile_url");
+//        }
         assertThat(savedMember.getPassword()).isEqualTo("encoded");
         assertThat(savedMember.getSugarScore()).isEqualTo(50.0);
         assertThat(savedMember.getTimeGood()).isEqualTo(0);
