@@ -1,5 +1,7 @@
 package desla.aos.eating.data.repositories
 
+import desla.aos.eating.data.model.DetailResponse
+import desla.aos.eating.data.model.PostResponse
 import desla.aos.eating.data.model.PostsResponse
 import desla.aos.eating.data.network.ServerApi
 import io.reactivex.Single
@@ -7,18 +9,30 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 
-class LikeRepository(private val server: ServerApi) {
+class ViewRepository(private val server: ServerApi) {
 
-    fun getPostParticipated() : Single<Response<PostsResponse>> =
+    fun getDetailPost(postId: Int) : Single<Response<DetailResponse>> =
 
-            server.getPostParticipated()
+            server.getPostDetail(postId)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
 
-    fun getPostFavorite() : Single<Response<PostsResponse>> =
+    fun postJoin(postId: Int) : Single<Response<PostResponse>> =
 
-            server.getPostFavorite()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
+        server.postJoin(postId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+
+    fun postFavorite(postId: Int) : Single<Response<PostResponse>> =
+
+        server.postFavorite(postId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+
+    fun postUnFavorite(postId: Int) : Single<Response<PostResponse>> =
+
+        server.postUnFavorite(postId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
 
 }

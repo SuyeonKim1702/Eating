@@ -1,15 +1,19 @@
 package desla.aos.eating.ui.home
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import desla.aos.eating.R
 import desla.aos.eating.data.model.Post
+import desla.aos.eating.data.model.PostsResponse
+import desla.aos.eating.data.network.ServerApi
 import desla.aos.eating.data.repositories.HomeRepository
 import desla.aos.eating.databinding.FragmentHomeBinding
 import desla.aos.eating.ui.MainActivity
+import desla.aos.eating.ui.MyApplication
 import desla.aos.eating.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -23,35 +27,50 @@ class HomeFragment :  BaseFragment<FragmentHomeBinding>() {
 
     private val TAG = "HomeFragment"
 
-    private val posts: MutableList<Post> = mutableListOf()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        posts.add(Post(1, 100, "공차 같이 드실 분"))
-        posts.add(Post(2, 100, "신전 같이 드실 분"))
-        posts.add(Post(3, 100, "엽떡 같이 드실 분"))
-        posts.add(Post(4, 100, "치킨 같이 드실 분"))
-        posts.add(Post(5, 100, "공차 같이 드실 분"))
-        posts.add(Post(6, 100, "신전 같이 드실 분"))
-        posts.add(Post(7, 100, "엽떡 같이 드실 분"))
-        posts.add(Post(8, 100, "치킨 같이 드실 분"))
+    private val posts: MutableList<PostsResponse.Data> = mutableListOf()
 
 
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.setAddress(MyApplication.prefs.getString("address", ""))
+        viewModel.setDistance(1000)
     }
 
     override fun initStartView() {
         (activity as MainActivity).setVisibilityBottomNavigation(true)
 
-        val repository = HomeRepository()
+        val server = ServerApi()
+        val repository = HomeRepository(server)
         factory = HomeViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
         viewDataBinding.vm = viewModel
+
+
+        initRc()
+        viewModel.getPost()
     }
 
     override fun initDataBinding() {
 
-        initRc()
+        viewModel.postList.observe(this, Observer {
+            posts.clear()
+            posts.addAll(it)
+            viewDataBinding.rcHome.adapter?.notifyDataSetChanged()
+        })
+
+        viewDataBinding.btnMap.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_mapActivity)
+        }
+
+        viewModel.address.observe(this, Observer {
+            viewDataBinding.tvAddressHome.text = it
+        })
+        viewModel.distance.observe(this, Observer {
+            viewDataBinding.tvDistance.text = "${it}M"
+        })
+
+
     }
 
     override fun initAfterBinding() {

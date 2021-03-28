@@ -1,11 +1,12 @@
-package desla.aos.eating.ui.user.mylist
+package desla.aos.eating.ui.setting
 
 import desla.aos.eating.data.repositories.HomeRepository
+import desla.aos.eating.data.repositories.SettingRepository
 import desla.aos.eating.data.repositories.UserRepository
 import desla.aos.eating.ui.base.BaseViewModel
 
-class MyListViewModel(
-        private val repository: UserRepository
+class SettingViewModel(
+        private val repository: SettingRepository
 ) : BaseViewModel() {
 
 

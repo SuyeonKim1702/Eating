@@ -1,19 +1,16 @@
-package desla.aos.eating.ui.view
+package desla.aos.eating.ui.view.client
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import desla.aos.eating.R
 import desla.aos.eating.data.model.PostsResponse
 import desla.aos.eating.data.network.ServerApi
-import desla.aos.eating.data.repositories.PostRepository
 import desla.aos.eating.data.repositories.ViewRepository
-import desla.aos.eating.databinding.ActivityPostBinding
 import desla.aos.eating.databinding.ActivityViewBinding
 import desla.aos.eating.ui.base.BaseActivity
-import desla.aos.eating.ui.post.PostViewModel
-import desla.aos.eating.ui.post.PostViewModelFactory
+import desla.aos.eating.util.MyTimeUtils
+import kotlinx.android.synthetic.main.fragment_login.*
 
 class ViewActivity : BaseActivity<ActivityViewBinding>() {
 
@@ -42,7 +39,20 @@ class ViewActivity : BaseActivity<ActivityViewBinding>() {
         viewModel.getDetailPost()
         viewModel.data.observe(this, Observer {
             viewDataBinding.data = it
+            viewDataBinding.tvTimeView.text = MyTimeUtils.twoDatesBetweenTimeInView(it.orderTime)
         })
+
+        Log.i("eunjin",  "현재" + viewModel.beforeData?.favorite!!+ " ${viewModel.beforeData?.postId}")
+        viewDataBinding.btnFavorite.isSelected = viewModel.beforeData?.favorite!!
+        viewModel.favorite.observe(this, Observer {
+            viewDataBinding.btnFavorite.isSelected = it
+        })
+
+        viewModel.message.observe(this, Observer {
+            showToast(it)
+        })
+
+
     }
 
     override fun initAfterBinding() {

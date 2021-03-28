@@ -35,6 +35,8 @@ data class DetailResponse(
         @SerializedName("orderTime")
         val orderTime: String,
         @SerializedName("title")
-        val title: String
+        val title: String,
+        @SerializedName("writer")
+        val writer: String
     )
 }

@@ -1,9 +1,7 @@
-package desla.aos.eating.ui.view
+package desla.aos.eating.ui.view.client
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import desla.aos.eating.data.repositories.MapRepository
-import desla.aos.eating.data.repositories.PostRepository
 import desla.aos.eating.data.repositories.ViewRepository
 
 @Suppress("UNCHECKED_CAST")

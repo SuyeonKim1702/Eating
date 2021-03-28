@@ -8,6 +8,7 @@
 
 
     <ImageButton
+        android:clickable="false"
         android:padding="15dp"
         android:id="@+id/btn_background"
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:clickable="false"
         android:id="@+id/btn_img_ic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,6 +32,7 @@
         app:srcCompat="@drawable/filter_button_ic_selector_selected" />
 
     <TextView
+        android:clickable="false"
         android:id="@+id/btn_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

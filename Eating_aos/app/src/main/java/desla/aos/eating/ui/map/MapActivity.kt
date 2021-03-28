@@ -1,7 +1,6 @@
 package desla.aos.eating.ui.map
 
 import android.content.Intent
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
@@ -32,9 +31,9 @@ class MapActivity : BaseActivity<ActivityMapBinding>() {
         viewModel = ViewModelProvider(this, factory).get(MapViewModel::class.java)
 
 
-        viewModel.kakao_id = intent.getStringExtra("kakao_id")
-        viewModel.nickname = intent.getStringExtra("nickname")
-
+        intent.extras?.getBoolean("isRegister")?.let{
+            viewModel.isRegister = it
+        }
 
         replaceFragment(mapFragment)
 

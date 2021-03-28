@@ -1,15 +1,11 @@
 package desla.aos.eating.ui.home.search
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import desla.aos.eating.R
-import desla.aos.eating.databinding.RcHomeBinding
 import desla.aos.eating.databinding.RcRecentSearchBinding
-import desla.aos.eating.ui.view.ViewActivity
-import desla.aos.eating.util.getActivity
 
 class SearchRecentRCAdapter (
         private val list : List<String>

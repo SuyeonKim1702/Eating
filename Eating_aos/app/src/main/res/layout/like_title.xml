@@ -21,10 +21,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/margin_vertical_title_zzim"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:text="찜한 잇팅 목록" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_none"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:text="찜한 잇팅이 없습니다."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customTextView3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

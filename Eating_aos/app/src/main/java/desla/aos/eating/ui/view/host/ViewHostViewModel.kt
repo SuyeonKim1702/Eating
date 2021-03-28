@@ -1,22 +1,22 @@
-package desla.aos.eating.ui.view
+package desla.aos.eating.ui.view.host
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog
 import desla.aos.eating.data.model.DetailResponse
 import desla.aos.eating.data.model.PostsResponse
-import desla.aos.eating.data.repositories.PostRepository
 import desla.aos.eating.data.repositories.ViewRepository
 import desla.aos.eating.ui.base.BaseViewModel
 import desla.aos.eating.util.getActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.text.SimpleDateFormat
 
 
-class ViewViewModel(val repository: ViewRepository) : BaseViewModel(){
+class ViewHostViewModel(val repository: ViewRepository) : BaseViewModel(){
 
     private val TAG = "PostViewModel"
 
@@ -28,6 +28,18 @@ class ViewViewModel(val repository: ViewRepository) : BaseViewModel(){
 
     fun clickBackBtn(v: View){
         v.context.getActivity()?.finish()
+    }
+
+    fun goChat(v: View){
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(data.value?.chatLink))
+            v.context.startActivity(intent)
+
+        } catch (activityNotFound: ActivityNotFoundException) {
+
+            _message.value = "입력된 채팅 주소가 없습니다"
+        }
+
     }
 
     fun getDetailPost(){

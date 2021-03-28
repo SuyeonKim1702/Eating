@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:state_selected="true" android:drawable="@drawable/ic_fi_rr_heart"/>
-    <item android:state_selected="false" android:drawable="@drawable/ic_fill_heart2"/>
+    <item android:state_selected="false" android:drawable="@drawable/ic_unfill_heart_big"/>
+    <item android:state_selected="true" android:drawable="@drawable/ic_fill_heart2"/>
 </selector>

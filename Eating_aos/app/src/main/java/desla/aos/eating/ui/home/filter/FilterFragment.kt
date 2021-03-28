@@ -1,6 +1,10 @@
 package desla.aos.eating.ui.home.filter
 
 import android.animation.ValueAnimator
+import android.os.Build
+import android.util.Log
+import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.ViewModelProvider
@@ -9,8 +13,20 @@ import desla.aos.eating.data.repositories.FilterRepository
 import desla.aos.eating.databinding.FragmentFilterBinding
 import desla.aos.eating.ui.MainActivity
 import desla.aos.eating.ui.base.BaseFragment
+import desla.aos.eating.ui.custom.CustomFilterButton
 import kotlinx.android.synthetic.main.activity_view.*
+import kotlinx.android.synthetic.main.dialog_category.*
 import kotlinx.android.synthetic.main.fragment_filter.*
+import kotlinx.android.synthetic.main.fragment_filter.btn1
+import kotlinx.android.synthetic.main.fragment_filter.btn10
+import kotlinx.android.synthetic.main.fragment_filter.btn2
+import kotlinx.android.synthetic.main.fragment_filter.btn3
+import kotlinx.android.synthetic.main.fragment_filter.btn4
+import kotlinx.android.synthetic.main.fragment_filter.btn5
+import kotlinx.android.synthetic.main.fragment_filter.btn6
+import kotlinx.android.synthetic.main.fragment_filter.btn7
+import kotlinx.android.synthetic.main.fragment_filter.btn8
+import kotlinx.android.synthetic.main.fragment_filter.btn9
 
 
 class FilterFragment :  BaseFragment<FragmentFilterBinding>() {
@@ -32,27 +48,59 @@ class FilterFragment :  BaseFragment<FragmentFilterBinding>() {
         //viewDataBinding.viewModel = viewModel
     }
 
+
     override fun initDataBinding() {
-        initAnimation()
+
+
+
     }
 
     override fun initAfterBinding() {
+        btn1.setOnClickListener {
+            clicked(it, 0)
+        }
 
+        btn2.setOnClickListener {
+            clicked(it, 1)
+        }
+
+        btn3.setOnClickListener {
+            clicked(it, 2)
+        }
+        btn4.setOnClickListener {
+            clicked(it, 3)
+        }
+
+        btn5.setOnClickListener {
+            clicked(it, 4)
+        }
+
+        btn6.setOnClickListener {
+            clicked(it, 5)
+        }
+
+        btn7.setOnClickListener {
+            clicked(it, 6)
+        }
+
+        btn8.setOnClickListener {
+            clicked(it, 7)
+        }
+        btn9.setOnClickListener {
+            clicked(it, 8)
+        }
+
+        btn10.setOnClickListener {
+            clicked(it, 9)
+        }
     }
 
-    private fun initAnimation(){
-        val anim = ValueAnimator.ofFloat(1.0f, 0.3f)
-        anim.duration = 1000
-        anim.addUpdateListener { animation ->
-            val set = ConstraintSet()
-            set.clone(activity_constraint)
-            set.setHorizontalBias(R.id.red, animation.animatedValue as Float)
-            set.applyTo(activity_constraint)
 
-
-
+    private fun clicked(view: View, num: Int){
+        (view as CustomFilterButton).let {
+            it.setNotSelected(!it.getSelected())
         }
-        anim.start()
+
     }
 
 

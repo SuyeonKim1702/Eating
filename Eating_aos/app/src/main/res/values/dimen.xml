@@ -4,6 +4,8 @@
     <dimen name="margin_horizontal">15dp</dimen>
     <dimen name="height_title">55dp</dimen>
 
+    <dimen name="margin_setting_vertical">10dp</dimen>
+
     
 <!--    로그인-->
     <dimen name="margin_left_text">24.1dp</dimen>
@@ -38,7 +40,7 @@
     <dimen name="margin_top_btn_food_category_filter">15dp</dimen>
     <dimen name="margin_left_food_category_filter">9dp</dimen>
     <dimen name="margin_right_btn_filter">4dp</dimen>
-    <dimen name="margin_bottom_btn_filter">5dp</dimen>
+    <dimen name="margin_bottom_btn_filter">10dp</dimen>
     <dimen name="margin_horizontal_btn_filter">24dp</dimen>
     <dimen name="margin_bottom_complete_btn_filter">24dp</dimen>
     <dimen name="height_btn_filter">40dp</dimen>
@@ -110,7 +112,7 @@
     <dimen name="height_btn_review">51dp</dimen>
 
 <!--    상세 화면-->
-    <dimen name="margin_top_white_background_view">131dp</dimen>
+    <dimen name="margin_top_white_background_view">180dp</dimen>
     <dimen name="margin_horizontal_view">24dp</dimen>
     <dimen name="view_post_horizontal_margin">24dp</dimen>
 

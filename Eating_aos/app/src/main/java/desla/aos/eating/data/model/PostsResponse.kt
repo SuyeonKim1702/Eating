@@ -2,6 +2,7 @@ package desla.aos.eating.data.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class PostsResponse(
     @SerializedName("data")
@@ -12,8 +13,8 @@ data class PostsResponse(
     val status: String
 ) {
     data class Data(
-        @SerializedName("categoryImage")
-        val categoryImage: String,
+        @SerializedName("categoryIdx")
+        val categoryIdx: Int,
         @SerializedName("deliveryFeeByHost")
         val deliveryFeeByHost: Int,
         @SerializedName("distance")
@@ -28,11 +29,13 @@ data class PostsResponse(
         val memberCount: Int,
         @SerializedName("memberCountLimit")
         val memberCountLimit: Int,
+        @SerializedName("mine")
+        val mine: Boolean,
         @SerializedName("orderTime")
         val orderTime: String,
         @SerializedName("postId")
         val postId: Int,
         @SerializedName("title")
         val title: String
-    )
+    ): Serializable
 }

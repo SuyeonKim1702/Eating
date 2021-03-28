@@ -26,18 +26,28 @@ open class CustomFilterButton @JvmOverloads constructor(context: Context, attrs:
         }
         typedArray.recycle()
 
-        btn_background.setOnClickListener {
-            it.isSelected = !it.isSelected
-            btn_img_ic.isSelected = it.isSelected
-            btn_text.isSelected = it.isSelected
+
+    }
+
+    fun setNotSelected(value: Boolean){
+        if(value){
+            btn_background.isSelected = true
+            btn_img_ic.isSelected = true
+            btn_text.isSelected = true
+        }else{
+            btn_background.isSelected = false
+            btn_img_ic.isSelected = false
+            btn_text.isSelected = false
         }
 
     }
 
-    override fun isSelected(): Boolean {
+    fun getSelected(): Boolean{
         return btn_background.isSelected
     }
 
-
+    fun getName(): String{
+        return btn_text.text.toString()
+    }
 
 }

@@ -4,19 +4,20 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import desla.aos.eating.R
-import desla.aos.eating.data.model.Post
+import desla.aos.eating.data.model.PostsResponse
 import desla.aos.eating.databinding.RcHomeBinding
-import desla.aos.eating.ui.MainActivity
-import desla.aos.eating.ui.like.LikeRCAdapter
-import desla.aos.eating.ui.view.ViewActivity
+import desla.aos.eating.ui.view.client.ViewActivity
+import desla.aos.eating.ui.view.host.ViewHostActivity
+import desla.aos.eating.util.MyTimeUtils
 import desla.aos.eating.util.getActivity
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeRCAdapter (
-        private val postList : List<Post>
+        private val postList : List<PostsResponse.Data>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     companion object
@@ -55,6 +56,9 @@ class HomeRCAdapter (
     }
 
 
+    val img = arrayListOf<Int>(R.drawable.cb_0, R.drawable.cb_1, R.drawable.cb_2,R.drawable.cb_3,
+            R.drawable.cb_4, R.drawable.cb_5, R.drawable.cb_6, R.drawable.cb_7, R.drawable.cb_8,
+            R.drawable.cb_9)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
@@ -62,18 +66,31 @@ class HomeRCAdapter (
         {
             holder.homeBinding.post = postList[position]
 
+            holder.homeBinding.homeLike.isSelected = postList[position].favorite
+
+            holder.homeBinding.thumb.setImageResource(img[postList[position].categoryIdx])
+            holder.homeBinding.thumb.clipToOutline = true
+
+
             holder.homeBinding.layout.setOnClickListener {
                 val context = it.context
 
-                val detailViewIntent = Intent(context, ViewActivity::class.java)
-                //detailPostIntent.putExtra("post", photoList!![position])
-                //val options = ActivityOptionsCompat.makeSceneTransitionAnimation(context as MainActivity, holder!!.imageView, "profile")
-                //context.getActivity()?.startActivityForResult(detailPostIntent, 33,  options.toBundle())
-                context.getActivity()?.startActivity(detailViewIntent)
+                if(postList[position].mine){
+                    val detailViewIntent = Intent(context, ViewHostActivity::class.java)
+                    detailViewIntent.putExtra("data", postList[position])
+                    context.getActivity()?.startActivity(detailViewIntent)
+                }else{
+                    val detailViewIntent = Intent(context, ViewActivity::class.java)
+                    detailViewIntent.putExtra("data", postList[position])
+                    context.getActivity()?.startActivity(detailViewIntent)
+                }
+
+
             }
         }
 
     }
+
 
     inner class HomeViewHolder(
             val homeBinding: RcHomeBinding
@@ -82,5 +99,8 @@ class HomeRCAdapter (
     inner class BottomViewHolder(
             itemView: View
     ) : RecyclerView.ViewHolder(itemView)
+
+
+
 
 }

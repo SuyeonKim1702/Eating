@@ -8,7 +8,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 
-class PostRepository (
+class SettingRepository (
     private val server: ServerApi
 )  {
 

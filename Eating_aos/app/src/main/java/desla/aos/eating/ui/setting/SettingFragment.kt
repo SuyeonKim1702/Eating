@@ -5,54 +5,48 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import desla.aos.eating.R
+import desla.aos.eating.data.network.ServerApi
+import desla.aos.eating.data.repositories.SettingRepository
+import desla.aos.eating.data.repositories.UserRepository
+import desla.aos.eating.databinding.FragmentMyListBinding
+import desla.aos.eating.databinding.FragmentSettingBinding
+import desla.aos.eating.ui.MainActivity
+import desla.aos.eating.ui.base.BaseFragment
+import desla.aos.eating.ui.user.mylist.MyListViewModel
+import desla.aos.eating.ui.user.mylist.MyListViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SettingFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SettingFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class SettingFragment : BaseFragment<FragmentSettingBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    override val layoutResourceId: Int
+        get() = R.layout.fragment_setting
+
+    private lateinit var factory: SettingViewModelFactory
+    private lateinit var viewModel: SettingViewModel
+
+    private val TAG = "HomeFragment"
+
+    override fun initStartView() {
+        (activity as MainActivity).setVisibilityBottomNavigation(false)
+
+        val serverApi = ServerApi()
+        val repository = SettingRepository(serverApi)
+        factory = SettingViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, factory).get(SettingViewModel::class.java)
+        //viewDataBinding.viewModel = viewModel
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+    override fun initDataBinding() {
+
+
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SettingFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                SettingFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
+    override fun initAfterBinding() {
+
     }
+
+
 }

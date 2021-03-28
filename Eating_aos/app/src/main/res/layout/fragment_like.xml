@@ -4,6 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <variable
+            name="VM"
+            type="desla.aos.eating.ui.like.LikeViewModel" />
 
     </data>
 
