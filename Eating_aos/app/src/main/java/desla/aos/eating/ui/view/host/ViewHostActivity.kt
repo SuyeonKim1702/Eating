@@ -1,12 +1,11 @@
-package desla.aos.eating.ui.view
+package desla.aos.eating.ui.view.host
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import desla.aos.eating.R
 
-class ViewActivity : AppCompatActivity() {
+class ViewHostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view)
+        setContentView(R.layout.activity_view_host)
     }
 }
