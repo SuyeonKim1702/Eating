@@ -17,11 +17,15 @@ import desla.aos.eating.util.getActivity
 import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
+import desla.aos.eating.data.repositories.LoginRepository
+import desla.aos.eating.data.repositories.MapRepository
 import desla.aos.eating.ui.MyApplication
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType
 import okhttp3.RequestBody
 
-class LoginViewModel : BaseViewModel()  {
+class LoginViewModel(val repository: LoginRepository) : BaseViewModel()  {
 
     private val TAG = "LoginViewModel"
 
@@ -40,8 +44,53 @@ class LoginViewModel : BaseViewModel()  {
 
     fun startMapActivity(v: View){
 
-        _isLogin.value = 1
+        if(MyApplication.prefs.isRegister()){
+            sendLogin()
+        }else{
+            _isLogin.value = 1
+        }
+
     }
+
+
+    private fun sendLogin(){
+
+
+        val params:HashMap<String, Any> = HashMap<String, Any>()
+        params["kakaoId"] = MyApplication.prefs.getString("id", "id")
+
+
+        Log.i("eunjin", "전송 ${params}" )
+
+        val disposable = repository.postLogin(
+            params
+        )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                if(it.isSuccessful){
+                    if(it.body()?.status == "OK"){
+                        Log.i("eunjin", "로그인 성공 ${it.code()} ${params["kakaoId"]} ${params["nickname"]}" )
+
+                        _isLogin.value = 2
+                    }else{
+                        Log.i("eunjin", "로그인 실패1 ${it.body()?.status} ${it.body()?.message} ${params["nickname"]}" )
+                    }
+
+                }else{
+                    Log.i("eunjin", "${it.message()} ${it.code()} 로그인 실패2 ${it.body()?.message} ${it.body()?.status}" )
+                }
+
+            }, {
+
+                Log.i("eunjin", "가입 실패3" )
+            })
+        addDisposable(disposable)
+
+    }
+
+
+
 
     fun setPermission(v: View) {
         val permission = object : PermissionListener {
@@ -131,7 +180,7 @@ class LoginViewModel : BaseViewModel()  {
 
                 kakao_id = "" + tokenInfo.id
                 if(MyApplication.prefs.isRegister()){
-                    _isLogin.value = 2
+                    sendLogin()
                 }else{
                     _isLogin.value = 0
                 }
@@ -139,10 +188,6 @@ class LoginViewModel : BaseViewModel()  {
 
             }
         }
-    }
-
-    fun sendRegister(){
-
     }
 
 }

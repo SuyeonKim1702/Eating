@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="VM"
+            type="desla.aos.eating.ui.view.host.ViewHostViewModel" />
+
+        <variable
+            name="data"
+            type="desla.aos.eating.data.model.DetailResponse.Data" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.client.ViewActivity">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
+            android:layout_height="216dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:image="@{data.categoryURL}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_top_white_background_view"
+            android:background="@drawable/rounded_white_background"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView4">
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="68.5dp"
+                android:background="@drawable/ic_text_path"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/view_post_horizontal_margin"
+                android:layout_marginStart="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/view2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:srcCompat="@drawable/ic_emotion_best" />
+
+                <TextView
+                    android:id="@+id/title_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/nanum_square_round_b"
+                    android:letterSpacing="0.01"
+                    android:lineSpacingExtra="2sp"
+                    android:text="@{data.writer}"
+                    android:textColor="#616161"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/ic_fi_rr_angle_small_right" />
+            </LinearLayout>
+
+
+            <ScrollView
+                android:id="@+id/scrollView3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="12.5dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view2"
+                app:layout_constraintVertical_bias="0.0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/view_post_horizontal_margin"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/distance_view"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/nanum_square_round_eb"
+                                android:letterSpacing="0.01"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{VM.beforeData.distance + `M`}"
+                                android:textColor="#ff9b00"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/nanum_square_round_eb"
+                                android:letterSpacing="0.01"
+                                android:lineSpacingExtra="3sp"
+                                android:text="@{data.title}"
+                                android:textColor="#de000000"
+                                android:textSize="20sp"
+                                android:textStyle="normal" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/view_post_horizontal_margin"
+                        android:layout_marginTop="17dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:paddingVertical="5dp"
+                                android:id="@+id/textView13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/background_yellow_rounded_tag"
+                                android:fontFamily="@font/nanum_square_round_eb"
+                                android:gravity="center"
+                                android:letterSpacing="0.01"
+                                android:lineSpacingExtra="1sp"
+                                deliveryFeeByHost="@{data.deliveryFeeByHost}"
+                                android:textColor="@color/greyish_brown"
+                                android:textSize="11sp"
+                                android:textStyle="normal" />
+
+                            <TextView
+                                android:paddingVertical="5dp"
+                                android:id="@+id/textView14"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dp"
+                                android:background="@drawable/background_yellow_rounded_tag"
+                                android:fontFamily="@font/nanum_square_round_eb"
+                                android:gravity="center"
+                                android:letterSpacing="0.01"
+                                android:lineSpacingExtra="1sp"
+                                meetLocation="@{data.meetPlace}"
+                                android:textColor="@color/greyish_brown"
+                                android:textSize="11sp"
+                                android:textStyle="normal" />
+
+
+                        </LinearLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/textView33"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/nanum_square_otfb"
+                                android:letterSpacing="0.01"
+                                android:lineSpacingExtra="1sp"
+                                android:text="명"
+                                android:textColor="@color/brown_grey"
+                                android:textSize="11sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView35"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="1.5dp"
+                                android:fontFamily="@font/nanum_square_otfeb"
+                                android:letterSpacing="0.01"
+                                android:lineSpacingExtra="3sp"
+                                android:text="@{``+ data.memberCountLimit}"
+                                android:textColor="@color/brown_grey"
+                                android:textSize="18sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBaseline_toBaselineOf="@+id/textView33"
+                                app:layout_constraintEnd_toStartOf="@+id/textView33" />
+
+                            <TextView
+                                android:id="@+id/textView36"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:fontFamily="@font/nanum_square_round_b"
+                                android:letterSpacing="0.01"
+                                android:lineSpacingExtra="1sp"
+                                android:text="/"
+                                android:textColor="@color/brown_grey"
+                                android:textSize="13sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBaseline_toBaselineOf="@+id/textView35"
+                                app:layout_constraintEnd_toStartOf="@+id/textView35" />
+
+                            <TextView
+                                android:id="@+id/textView37"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="6dp"
+                                android:fontFamily="@font/nanum_square_otfb"
+                                android:letterSpacing="0.01"
+                                android:lineSpacingExtra="1sp"
+                                android:text="명"
+                                android:textColor="#000000"
+                                android:textSize="11sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBaseline_toBaselineOf="@+id/textView36"
+                                app:layout_constraintEnd_toStartOf="@+id/textView36" />
+
+                            <TextView
+                                android:id="@+id/textView38"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="1.5dp"
+                                android:fontFamily="@font/nanum_square_otfeb"
+                                android:letterSpacing="0.01"
+                                android:lineSpacingExtra="3sp"
+                                android:text="@{``+ data.currentMemberCount}"
+                                android:textColor="#000000"
+                                android:textSize="18sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBaseline_toBaselineOf="@+id/textView37"
+                                app:layout_constraintEnd_toStartOf="@+id/textView37" />
+
+                            <TextView
+                                android:id="@+id/textview39"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5.5dp"
+                                android:fontFamily="@font/nanum_square_otfb"
+                                android:letterSpacing="0.01"
+                                android:lineSpacingExtra="1sp"
+                                android:text="현재"
+                                android:textColor="#757575"
+                                android:textSize="13sp"
+                                android:textStyle="normal"
+                                app:layout_constraintBaseline_toBaselineOf="@+id/textView38"
+                                app:layout_constraintEnd_toStartOf="@+id/textView38" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:paddingVertical="15dp"
+                        android:id="@+id/btn_go_chat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/view_post_horizontal_margin"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/ic_btn_go_to_store"
+                        android:fontFamily="@font/nanum_square_round_b"
+                        android:gravity="center"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="2sp"
+                        android:onClick="@{(v) -> VM.goChat(v)}"
+                        android:text="채팅 보러가기"
+                        android:textColor="#616161"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/view_post_horizontal_margin"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/nanum_square_otfr"
+                        android:lineSpacingExtra="11sp"
+                        android:text="@{data.description}"
+                        android:textColor="#616161"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+            </ScrollView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_horizontal_view"
+                android:layout_marginBottom="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/imageView31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_im_round_box_bar_white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="13.5dp"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/nanum_square_otfb"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="1sp"
+                        android:text="파티원 수"
+                        android:textColor="#757575"
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_time_view_host"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/nanum_square_round_eb"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="2sp"
+                        android:textColor="#fc4914"
+                        android:textSize="16sp"
+                        android:textStyle="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/nanum_square_otfb"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="1sp"
+                        android:text="남음"
+                        android:textColor="#757575"
+                        android:textSize="13sp"
+                        android:textStyle="normal"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tv_time_view_host"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_time_view_host"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView3"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_fill_character" />
+
+                        <ImageView
+                            showCount_num="@{data.currentMemberCount}"
+                            showCount_pos="@{1}"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/selector_view_who" />
+
+                        <ImageView
+                            android:visibility="@{data.memberCountLimit &lt; 2 ? View.INVISIBLE : View.VISIBLE}"
+                            showCount_num="@{data.currentMemberCount}"
+                            showCount_pos="@{2}"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/selector_view_who" />
+
+                        <ImageView
+                            android:visibility="@{data.memberCountLimit &lt; 3 ? View.INVISIBLE : View.VISIBLE}"
+                            showCount_num="@{data.currentMemberCount}"
+                            showCount_pos="@{3}"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/selector_view_who" />
+
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ImageButton
+            android:onClick="@{(v) -> VM.clickBackBtn(v)}"
+            android:id="@+id/btn_view_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="9dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_btn_back_arrow" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_set_up"
+            android:background="@android:color/transparent"
+            android:layout_marginEnd="11dp"
+            android:layout_marginTop="9dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
