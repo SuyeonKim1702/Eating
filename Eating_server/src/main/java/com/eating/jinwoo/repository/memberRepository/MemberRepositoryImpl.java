@@ -45,7 +45,7 @@ public class MemberRepositoryImpl extends QuerydslRepositorySupport implements C
         result.setNiceGuy(profile.get(0).get(member.niceGuy));
         result.setFoodDivide(profile.get(0).get(member.foodDivide));
         result.setFastAnswer(profile.get(0).get(member.fastAnswer));
-        result.setReviews(reviews);
+//        result.setReviews(reviews);
 
         return result;
     }

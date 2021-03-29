@@ -1,6 +1,7 @@
 package com.eating.jinwoo.controller;
 
 import com.eating.jinwoo.common.EatingException;
+import com.eating.jinwoo.domain.Member;
 import com.eating.jinwoo.dto.MemberDTO;
 import com.eating.jinwoo.dto.PostDTO;
 import com.eating.jinwoo.dto.ResponseDTO;
@@ -31,9 +32,9 @@ public class MemberController {
 
     @PostMapping("/member/login")
     @ApiOperation(value = "로그인 처리")
-    public ResponseDTO<String> login(@RequestBody MemberDTO.Login userInfo) {
-        memberService.login(userInfo);
-        return new ResponseDTO<>(HttpStatus.OK, "로그인 성공", null);
+    public ResponseDTO<MemberDTO.LoginResponse> login(@RequestBody MemberDTO.Login userInfo) {
+        MemberDTO.LoginResponse result = memberService.login(userInfo);
+        return new ResponseDTO<>(HttpStatus.OK, "로그인 성공", result);
     }
 
     @PostMapping("/member/out")
@@ -56,4 +57,32 @@ public class MemberController {
         memberService.editProfile(editInfo);
         return new ResponseDTO<>(HttpStatus.OK, "프로필 수정완료", null);
     }
+
+    @PutMapping("/member/address")
+    @ApiOperation(value = "주소 수정하기")
+    public ResponseDTO<String> editAddress(@RequestBody MemberDTO.EditAddress editInfo) {
+        memberService.editAddress(editInfo);
+        return new ResponseDTO<>(HttpStatus.OK, "주소 수정완료", null);
+    }
+
+    @PutMapping("/member/filter")
+    @ApiOperation(value = "필터 수정하기")
+    public ResponseDTO<String> editAddress(@RequestBody MemberDTO.EditFilter editInfo) {
+        memberService.editFilter(editInfo);
+        return new ResponseDTO<>(HttpStatus.OK, "필터 수정완료", null);
+    }
+
+//    @PutMapping("member/participate/{postID}")
+//    @ApiOperation(value = "잇팅 참여하기")
+//    public ResponseDTO<String> participate(@PathVariable("postID") Long id) {
+//        memberService.participate(id);
+//        return new ResponseDTO<>(HttpStatus.OK, "참여 완료", null);
+//    }
+
+//    @PutMapping("member/unparticipate/{postID}")
+//    @ApiOperation(value = "잇팅 참여 취소하기")
+//    public ResponseDTO<String> unparticipate(@PathVariable("postID") Long id) {
+//        memberService.unparticipate(id);
+//        return new ResponseDTO<>(HttpStatus.OK, "참여 취소 완료", null);
+//    }
 }

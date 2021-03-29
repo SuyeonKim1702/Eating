@@ -28,7 +28,7 @@ public class PostController {
 //  게시글 수정 : PUT (/post)
     @PutMapping("/post/{id}")
     @ApiOperation(value = "게시글 수정")
-    public ResponseDTO<String> editPost(@PathVariable("id") Long id, @RequestBody PostDTO.getPost postInfo) {
+    public ResponseDTO<String> editPost(@PathVariable("id") Long id, @RequestBody PostDTO.editPost postInfo) {
         postService.editPost(postInfo, id);
         return new ResponseDTO<>(HttpStatus.OK, "게시글 수정 완료", null);
     }
@@ -48,7 +48,7 @@ public class PostController {
         return new ResponseDTO<>(HttpStatus.OK, "찜하기 완료", null);
     }
 
-    //  찜 취소 : GET (/favorite/{postId})
+    //  찜 취소 : GET (/unfavorite/{postId})
     @GetMapping("/unfavorite/{postId}")
     @ApiOperation(value = "게시글 찜하기 취소")
     public ResponseDTO<String> setUnFavorite(@PathVariable("postId") Long id) {

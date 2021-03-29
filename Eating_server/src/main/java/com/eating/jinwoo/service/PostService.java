@@ -12,6 +12,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -52,9 +55,10 @@ public class PostService {
         post.setCategory(Category.getEnumByValue(postInfo.getCategory()));
         post.setMemberCountLimit(postInfo.getMemberCountLimit());
         post.setOrderTime(postInfo.getOrderTime());
-        post.setMeetPlace(MeetPlace.getEnumByValue(postInfo.getMeetPlace()));
+        MeetPlace enumByValue = MeetPlace.getEnumByValue(postInfo.getMeetPlace());
+        System.out.println("enumByValue = " + enumByValue);
+        post.setMeetPlace(enumByValue);
         post.setDeliveryFeeByHost(postInfo.getDeliveryFeeByHost());
-
         post.setHost(member);
         post.setCategory(Category.getEnumByValue(postInfo.getCategory()));
         post.setLongitude(member.getLocation().getLongitude());
@@ -66,7 +70,7 @@ public class PostService {
         postRepository.save(post);
     }
 
-    public void editPost(PostDTO.getPost postInfo, Long id) {
+    public void editPost(PostDTO.editPost postInfo, Long id) {
         //로그인 되어있는지 확인
         Authentication principal = SecurityContextHolder.getContext().getAuthentication();
 //        if(principal == null || (principal != null && principal.getPrincipal() == "anonymousUser")){
@@ -84,12 +88,12 @@ public class PostService {
                     post.setDescription(postInfo.getDescription());
                     post.setChatLink(postInfo.getChatLink());
                     post.setFoodLink(postInfo.getFoodLink());
-                    post.setCategory(Category.getEnumByValue(postInfo.getCategory()));
+                    int categoryIdx = postInfo.getCategoryIdx();
+                    post.setCategory(Category.getEnumByValue(categoryIdx));
                     post.setMemberCountLimit(postInfo.getMemberCountLimit());
                     post.setOrderTime(postInfo.getOrderTime());
                     post.setMeetPlace(MeetPlace.getEnumByValue(postInfo.getMeetPlace()));
                     post.setDeliveryFeeByHost(postInfo.getDeliveryFeeByHost());
-                    post.setFinished(postInfo.isFinished());
 
                     post.setHost(member);
                     post.setLongitude(member.getLocation().getLongitude());
@@ -130,6 +134,7 @@ public class PostService {
                     Favorite favorite = new Favorite();
                     favorite.setPost(post);
                     favorite.setMember(member);
+
                     List <Favorite> favoriteList = member.getFavoritePosts();
                     favoriteList.add(favorite);
                     member.setFavoritePosts(favoriteList);
@@ -177,11 +182,19 @@ public class PostService {
             categories[i] = Category.getEnumByValue(Integer.valueOf(categoryNums[i])).name();
         }
         List<Object[]> postList = null;
-        if (param.getMine() == 1) {
+        if (param.getMine() == 1) { // 내가 작성한 게시글
             postList = postRepository.getPostListMine(categories, param.getDistance(), param.getPage(), param.getSize(), principal.getName());
-        } else {
+        }
+//        if (param.getFinished() == 1) { //완료된 게시글
+//            postList = postRepository.getPostListFinished(categories, param.getDistance(), param.getPage(), param.getSize(), principal.getName());
+//        }
+//        else if (param.getFinished() == 0) { //진행중인 게시글
+//            postList = postRepository.getPostListNotFinished(categories, param.getDistance(), param.getPage(), param.getSize(), principal.getName());
+//        }
+        else { //다 불러오기
             postList = postRepository.getPostListAll(categories, param.getDistance(), param.getPage(), param.getSize(), principal.getName());
         }
+
         List<PostDTO.searchPost> ret = new ArrayList<>();
         for (Object[] res : postList) {
             PostDTO.searchPost result = new PostDTO.searchPost();
@@ -221,6 +234,9 @@ public class PostService {
             String categoryStr = post.getCategory().toString();
             int ordinal = post.getCategory().ordinal();
             result.setCategoryIdx(ordinal);
+
+            // set finished
+            result.setFinished(post.isFinished());
             ret.add(result);
         }
         return ret;
@@ -245,6 +261,7 @@ public class PostService {
             result.setTitle(res[1].toString());
             result.setFoodLink(res[2].toString());
             result.setDeliveryFeeByHost(Boolean.valueOf(res[3].toString()) == true ? 1 : 0);
+            MeetPlace.getValueByString(res[4].toString());
             result.setMeetPlace(MeetPlace.getValueByString(res[4].toString()));
             result.setMemberCountLimit(Integer.valueOf(res[5].toString()));
 
@@ -320,15 +337,18 @@ public class PostService {
     }
 
     public PostDTO.getPost getPostDetail(Long id) {
+        Authentication principal = SecurityContextHolder.getContext().getAuthentication();
+        String kakao_id = principal.getPrincipal().toString();
+        Member member = memberRepository.findByKakaoId(kakao_id).get();
 
         PostDTO.getPost result = new PostDTO.getPost();
-        Long id1 = id;
         Post post = postRepository.findById(id).get();
         result.setTitle(post.getTitle());
+        Member host = post.getHost();
+        result.setWriter(host.getNickname());
         result.setDescription(post.getDescription());
         result.setChatLink(post.getChatLink());
         result.setFoodLink(post.getFoodLink());
-
         String baseUrl = "https://s3.ap-northeast-2.amazonaws.com/eating-image/category_b/";
         String categoryNum = Integer.toString(post.getCategory().ordinal());
         result.setCategory(post.getCategory().ordinal());
@@ -339,6 +359,9 @@ public class PostService {
         result.setMeetPlace(post.getMeetPlace().ordinal());
         result.setDeliveryFeeByHost(post.getDeliveryFeeByHost());
         result.setFinished(post.isFinished());
+        result.setSugerScore(host.getSugarScore());
+        int is_favorite = postRepository.getIsFavorite(id, member.getId());
+        result.setFavorite(is_favorite == 1 ? true : false);
         return result;
     }
 }

@@ -21,6 +21,7 @@ public class PostDTO {
     @Builder
     public static class getPost {
         private String title;
+        private String writer;
         private String description;
         private String chatLink;
         private String foodLink;
@@ -32,7 +33,28 @@ public class PostDTO {
         private int meetPlace;
         private int deliveryFeeByHost;
         private boolean finished;
+        private double sugerScore;
+        private boolean isFavorite;
     }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @ToString
+    @Builder
+    public static class editPost {
+        private String title;
+        private String description;
+        private String chatLink;
+        private String foodLink;
+        private int categoryIdx;
+        private int memberCountLimit;
+        private LocalDateTime orderTime;
+        private int meetPlace;
+        private int deliveryFeeByHost;
+    }
+
 
     @Getter
     @Setter
@@ -77,6 +99,7 @@ public class PostDTO {
         private int distance;
         private boolean isFavorite;
         private boolean isMine;
+        private boolean finished;
     }
     @Getter
     @Setter
@@ -89,5 +112,6 @@ public class PostDTO {
         private int page;
         private int size;
         private int mine; // 1이면 내꺼, 0이면 남꺼
+        private int finished;
     }
 }
