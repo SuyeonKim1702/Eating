@@ -13,6 +13,7 @@ public class ReviewDTO {
     @ToString
     @Builder
     public static class Participate {
+        private Long postId;
         private String kakaoId;
         private String nickName;
     }
@@ -29,6 +30,7 @@ public class ReviewDTO {
         private boolean niceGuy;
         private boolean foodDivide;
         private boolean fastAnswer;
+        private int reviewScore;
         private String review;
     }
 

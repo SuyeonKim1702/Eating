@@ -114,4 +114,13 @@ public class PostDTO {
         private int mine; // 1이면 내꺼, 0이면 남꺼
         private int finished;
     }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @ToString
+    public static class editMemberCount {
+        private int memberCount;
+    }
 }

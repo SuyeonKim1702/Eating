@@ -18,11 +18,11 @@ public class ReviewController {
 
     private final ReviewService reviewService;
 
-    @GetMapping("/review/guest/{PostID}")
-    @ApiOperation("리뷰 대상자 목록 가져오기")
-    public ResponseDTO<List<ReviewDTO.Participate>> getGuest(@PathVariable(value = "PostID") Long id) {
-        List<ReviewDTO.Participate> result = reviewService.getGuests(id);
-        return new ResponseDTO<>(HttpStatus.OK, "리뷰 대상자 목록 가져오기", result);
+    @GetMapping("/review/host")
+    @ApiOperation("리뷰 보낼 호스트 목록 가져오기")
+    public ResponseDTO<List<ReviewDTO.Participate>> getGuest() {
+        List<ReviewDTO.Participate> result = reviewService.getHost();
+        return new ResponseDTO<>(HttpStatus.OK, "리뷰 보낼 호스트 목록 가져오기 완료", result);
     }
 
     @PostMapping("/review")
