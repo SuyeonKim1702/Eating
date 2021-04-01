@@ -29,11 +29,13 @@ public class Review extends BaseAuditEntity{
 
     private String review;
     private LocalDate writeDate;
+    private int reviewScore;
 
-    public Review(Member sender, Member member, String review, LocalDate writeDate) {
+    public Review(Member sender, Member member, String review, LocalDate writeDate, int reviewScore) {
         this.sender = sender;
         this.member = member;
         this.review = review;
         this.writeDate = writeDate;
+        this.reviewScore = reviewScore;
     }
 }

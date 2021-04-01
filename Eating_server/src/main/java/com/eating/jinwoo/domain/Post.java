@@ -31,9 +31,13 @@ public class Post extends BaseAuditEntity{
 
     private String foodLink; // 음식 링크
 
+    @Column(nullable = false)
     private LocalDateTime orderTime; // 주문할 시간
 
     private int deliveryFeeByHost; // true면 호스트가 부담
+
+    @Column(nullable = false)
+    private int currentMemberCount;
 
     @Column(nullable = false)
     private int memberCountLimit; // 같이 먹을 사람 수(host 숫자를 포함한 수)

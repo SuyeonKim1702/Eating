@@ -73,6 +73,7 @@ public class PostService {
     public void editPost(PostDTO.editPost postInfo, Long id) {
         //로그인 되어있는지 확인
         Authentication principal = SecurityContextHolder.getContext().getAuthentication();
+
 //        if(principal == null || (principal != null && principal.getPrincipal() == "anonymousUser")){
 //            throw new EatingException("회원이 아닙니다.");
 //        }
@@ -202,7 +203,10 @@ public class PostService {
             result.setPostId(post_id);
             result.setTitle(res[1].toString());
             result.setFoodLink(res[2].toString());
-            result.setDeliveryFeeByHost(Boolean.valueOf(res[3].toString()) == true ? 1 : 0);
+
+//            result.setDeliveryFeeByHost(Boolean.valueOf(res[3].toString()) == true ? 1 : 0);
+            result.setDeliveryFeeByHost(Integer.valueOf(res[3].toString()));
+
             result.setMeetPlace(MeetPlace.getValueByString(res[4].toString()));
             result.setMemberCountLimit(Integer.valueOf(res[5].toString()));
 
@@ -216,7 +220,7 @@ public class PostService {
 
             // member count calc
             int member_count = postRepository.getPostMemberCount(post_id);
-            result.setMemberCount(member_count);
+            result.setMemberCount(Integer.valueOf(res[8].toString()));
 
             // is_favorite calc
             Long member_id = Long.valueOf(res[8].toString());
@@ -327,6 +331,7 @@ public class PostService {
             MemberPost memberPost = new MemberPost();
             memberPost.setPost(post);
             memberPost.setMember(member);
+
             List<MemberPost> memberPosts = member.getMemberPosts();
             memberPosts.add(memberPost);
             member.setMemberPosts(memberPosts);
@@ -353,7 +358,9 @@ public class PostService {
         String categoryNum = Integer.toString(post.getCategory().ordinal());
         result.setCategory(post.getCategory().ordinal());
         result.setCategoryURL(baseUrl + categoryNum + ".png");
-        result.setCurrentMemberCount(postRepository.getPostMemberCount(id));
+
+        result.setCurrentMemberCount(post.getCurrentMemberCount());
+
         result.setMemberCountLimit(post.getMemberCountLimit());
         result.setOrderTime(post.getOrderTime());
         result.setMeetPlace(post.getMeetPlace().ordinal());
@@ -363,5 +370,17 @@ public class PostService {
         int is_favorite = postRepository.getIsFavorite(id, member.getId());
         result.setFavorite(is_favorite == 1 ? true : false);
         return result;
+    }
+
+    public void editMemberCount(Long id, PostDTO.editMemberCount memberCount) {
+        Post post = postRepository.findById(id).get();
+        int modifiedMemberCount = memberCount.getMemberCount();
+        if (modifiedMemberCount < 0 || modifiedMemberCount >= 5) {
+            throw new EatingException("올바른 인원을 입력해주세요");
+        } else {
+            post.setCurrentMemberCount(modifiedMemberCount);
+            postRepository.save(post);
+        }
+
     }
 }

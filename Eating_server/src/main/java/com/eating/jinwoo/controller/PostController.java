@@ -104,4 +104,11 @@ public class PostController {
         PostDTO.getPost result = postService.getPostDetail(id);
         return new ResponseDTO<>(HttpStatus.OK, "게시글 상세보기", result);
     }
+
+    @PutMapping("post/membercount/{postId}")
+    @ApiOperation(value = "참가 인원 바꾸기")
+    public ResponseDTO<String> editMemberCount(@PathVariable(value = "postId") Long id, @RequestBody PostDTO.editMemberCount memberCount) {
+        postService.editMemberCount(id, memberCount);
+        return new ResponseDTO<>(HttpStatus.OK, "참가인원 바꾸기 완료", null);
+    }
 }
