@@ -87,6 +87,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:scrollbars="horizontal"
                 android:id="@+id/etv_address"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -95,7 +96,7 @@
                 android:fontFamily="@font/nanum_square_round_eb"
                 android:letterSpacing="0.01"
                 android:lineSpacingExtra="10sp"
-                android:text="서울 영등포구 선유로9길 30 "
+                android:text=""
                 android:textColor="@color/greyish_brown"
                 android:textSize="14sp"
                 android:textStyle="normal"

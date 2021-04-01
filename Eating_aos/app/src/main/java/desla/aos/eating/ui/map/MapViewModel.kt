@@ -69,9 +69,6 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
 
     }
 
-    fun startMainActivity(v: View){
-        v.context.getActivity()?.startMainActivity()
-    }
 
     fun sendRegister(v: View){
 
@@ -99,7 +96,9 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
                                 MyApplication.prefs.setUserInfo2(selectLocation.value?.Address!!,
                                         selectLocation.value?.x!!.toString(), selectLocation.value?.y!!.toString())
 
-                                startMainActivity(v)
+                                v.context.getActivity()?.startMainActivity()
+                                v.context.getActivity()?.finish()
+
                             }else{
                                 Log.i("eunjin", "가입 실패1 ${it.body()?.status} ${it.body()?.message} ${params["nickname"]}" )
                             }
@@ -136,7 +135,7 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
 
         Log.i("eunjin", "${params}")
 
-        val disposable = repository.postRegister(
+        val disposable = repository.modifyAdress(
             params
         )
             .subscribeOn(Schedulers.io())
@@ -154,7 +153,7 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
                     }
 
                 }else{
-                    Log.i("eunjin", "주소 수정 실패2 ${it.errorBody().toString()}" )
+                    Log.i("eunjin", "주소 수정 실패2 ${it.code()} ${it.body()?.message}" )
                 }
 
             }, {

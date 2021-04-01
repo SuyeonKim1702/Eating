@@ -1,6 +1,7 @@
 package desla.aos.eating.data.network
 
 import desla.aos.eating.data.model.DetailResponse
+import desla.aos.eating.data.model.LoginResponse
 import desla.aos.eating.data.model.PostResponse
 import desla.aos.eating.data.model.PostsResponse
 import io.reactivex.Single
@@ -34,14 +35,14 @@ interface ServerApi {
     @POST("member/login")
     fun postLogin(
         @Body parameters: HashMap<String, Any>
-    ): Single<Response<PostResponse>>
+    ): Single<Response<LoginResponse>>
 
     @POST("member/join")
     fun postRegister(
         @Body parameters: HashMap<String, Any>
     ): Single<Response<PostResponse>>
 
-    @POST("/member/address")
+    @PUT("member/address")
     fun modifyAddress(
         @Body parameters: HashMap<String, Any>
     ): Single<Response<PostResponse>>
@@ -59,7 +60,7 @@ interface ServerApi {
         @Query("size") size: Int
     ): Single<Response<PostsResponse>>
 
-    @GET("posts/participated")
+    @GET("posts/participating")
     fun getPostParticipated(): Single<Response<PostsResponse>>
 
     @GET("posts/favorite")

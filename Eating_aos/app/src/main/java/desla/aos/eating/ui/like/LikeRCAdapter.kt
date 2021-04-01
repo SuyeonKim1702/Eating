@@ -11,6 +11,7 @@ import desla.aos.eating.R
 import desla.aos.eating.data.model.PostsResponse
 import desla.aos.eating.databinding.RcHomeBinding
 import desla.aos.eating.ui.view.client.ViewActivity
+import desla.aos.eating.ui.view.host.ViewHostActivity
 import desla.aos.eating.util.getActivity
 
 class LikeRCAdapter (
@@ -106,17 +107,22 @@ class LikeRCAdapter (
 
         if (holder is ChatViewHolder)
         {
+            holder.homeBinding.thumb.clipToOutline = true
             holder.homeBinding.post = chatList[position-1]
             holder.homeBinding.homeLike.isSelected = chatList[position-1].favorite
 
             holder.homeBinding.layout.setOnClickListener {
                 val context = it.context
 
-                val detailViewIntent = Intent(context, ViewActivity::class.java)
-                //detailPostIntent.putExtra("post", photoList!![position])
-                //val options = ActivityOptionsCompat.makeSceneTransitionAnimation(context as MainActivity, holder!!.imageView, "profile")
-                //context.getActivity()?.startActivityForResult(detailPostIntent, 33,  options.toBundle())
-                context.getActivity()?.startActivity(detailViewIntent)
+                if(chatList[position-1].mine){
+                    val detailViewIntent = Intent(context, ViewHostActivity::class.java)
+                    detailViewIntent.putExtra("data", chatList[position-1])
+                    context.getActivity()?.startActivity(detailViewIntent)
+                }else{
+                    val detailViewIntent = Intent(context, ViewActivity::class.java)
+                    detailViewIntent.putExtra("data", chatList[position-1])
+                    context.getActivity()?.startActivity(detailViewIntent)
+                }
             }
         }
 
@@ -130,22 +136,30 @@ class LikeRCAdapter (
 
         if (holder is LikeViewHolder)
         {
+            var num = position - 2
+
+            holder.homeBinding.thumb.clipToOutline = true
             if(chatList.isEmpty()){
-                holder.homeBinding.post = likeList[position-1]
-                holder.homeBinding.homeLike.isSelected = likeList[position-1].favorite
+                holder.homeBinding.post = likeList[position-2]
+                holder.homeBinding.homeLike.isSelected = likeList[position-2].favorite
             }else{
                 holder.homeBinding.post = likeList[position-chatList.size-2]
                 holder.homeBinding.homeLike.isSelected = likeList[position-chatList.size-2].favorite
+                num = position - chatList.size - 2
             }
 
             holder.homeBinding.layout.setOnClickListener {
                 val context = it.context
 
-                val detailViewIntent = Intent(context, ViewActivity::class.java)
-                //detailPostIntent.putExtra("post", photoList!![position])
-                //val options = ActivityOptionsCompat.makeSceneTransitionAnimation(context as MainActivity, holder!!.imageView, "profile")
-                //context.getActivity()?.startActivityForResult(detailPostIntent, 33,  options.toBundle())
-                context.getActivity()?.startActivity(detailViewIntent)
+                if(likeList[num].mine){
+                    val detailViewIntent = Intent(context, ViewHostActivity::class.java)
+                    detailViewIntent.putExtra("data", likeList[num])
+                    context.getActivity()?.startActivity(detailViewIntent)
+                }else{
+                    val detailViewIntent = Intent(context, ViewActivity::class.java)
+                    detailViewIntent.putExtra("data", likeList[num])
+                    context.getActivity()?.startActivity(detailViewIntent)
+                }
             }
 
         }

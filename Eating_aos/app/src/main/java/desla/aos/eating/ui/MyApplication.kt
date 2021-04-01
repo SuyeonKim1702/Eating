@@ -31,10 +31,6 @@ class PreferenceUtil(context: Context) {
         prefs.edit().putString(key, str).apply()
     }
 
-    fun setUserInfo(id: String, name: String){
-        prefs.edit().putString("id", id).apply()
-        prefs.edit().putString("name", name).apply()
-    }
     fun setUserInfo2(address: String, latitude: String, longitude: String){
         prefs.edit().putString("address", address).apply()
         prefs.edit().putString("latitude", latitude).apply()

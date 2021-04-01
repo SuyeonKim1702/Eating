@@ -56,9 +56,6 @@ class HomeRCAdapter (
     }
 
 
-    val img = arrayListOf<Int>(R.drawable.cb_0, R.drawable.cb_1, R.drawable.cb_2,R.drawable.cb_3,
-            R.drawable.cb_4, R.drawable.cb_5, R.drawable.cb_6, R.drawable.cb_7, R.drawable.cb_8,
-            R.drawable.cb_9)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
@@ -68,7 +65,6 @@ class HomeRCAdapter (
 
             holder.homeBinding.homeLike.isSelected = postList[position].favorite
 
-            holder.homeBinding.thumb.setImageResource(img[postList[position].categoryIdx])
             holder.homeBinding.thumb.clipToOutline = true
 
 

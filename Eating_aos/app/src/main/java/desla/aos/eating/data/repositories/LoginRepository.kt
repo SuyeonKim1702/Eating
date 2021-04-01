@@ -13,7 +13,7 @@ class LoginRepository (
 )  {
 
 
-    fun postLogin(rR: HashMap<String, Any>) : Single<Response<PostResponse>> =
+    fun postLogin(rR: HashMap<String, Any>) : Single<Response<LoginResponse>> =
 
         //한 페이지에 보여질 문서의 개수, 1-30 사이, 기본 값 10
         server.postLogin(rR)

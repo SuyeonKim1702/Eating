@@ -11,6 +11,7 @@ import desla.aos.eating.data.repositories.HomeRepository
 import desla.aos.eating.data.repositories.SearchRepository
 import desla.aos.eating.data.repositories.UserRepository
 import desla.aos.eating.ui.base.BaseViewModel
+import desla.aos.eating.ui.custom.NoFuncDialog
 
 class SearchViewModel(
         private val repository: SearchRepository
@@ -30,6 +31,12 @@ class SearchViewModel(
             return true
         }
 
+    }
+
+    fun showNoFuncDoialog(v: View) {
+
+        val noFuncDialog = NoFuncDialog(v.context)
+        noFuncDialog.start()
     }
 
     private fun View.hideKeyboard() {

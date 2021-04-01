@@ -16,6 +16,8 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            img_time_finished="@{post.orderTime}"
+            category_img="@{post.categoryIdx}"
             android:id="@+id/thumb"
             android:layout_width="90dp"
             android:layout_height="90dp"
@@ -219,6 +221,23 @@
             android:textStyle="normal"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView15"
             app:layout_constraintEnd_toStartOf="@+id/textView15" />
+
+        <TextView
+            tv_time_finished="@{post.orderTime}"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_square_round_eb"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="1sp"
+            android:text="모집 완료"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/thumb"
+            app:layout_constraintEnd_toEndOf="@+id/thumb"
+            app:layout_constraintStart_toStartOf="@+id/thumb"
+            app:layout_constraintTop_toTopOf="@+id/thumb" />
 
         <ImageView
             android:id="@+id/home_like"

@@ -39,18 +39,15 @@ class SearchFragment :  BaseFragment<FragmentFilterBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        recentList.add("한식")
-        recentList.add("짜장")
-        recentList.add("떡볶이")
-        recentList.add("한식")
-        recentList.add("짜장")
-        recentList.add("떡볶이")
-        recentList.add("한식")
-        recentList.add("짜장")
-        recentList.add("떡볶이")
-
-        rankList.addAll(recentList)
-
+        rankList.add("한식")
+        rankList.add("짜장")
+        rankList.add("떡볶이")
+        rankList.add("한식")
+        rankList.add("짜장")
+        rankList.add("떡볶이")
+        rankList.add("한식")
+        rankList.add("짜장")
+        rankList.add("떡볶이")
 
 
     }
@@ -89,7 +86,7 @@ class SearchFragment :  BaseFragment<FragmentFilterBinding>() {
         rc_rank.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         rc_rank.setHasFixedSize(true)
         rc_rank.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
-        rc_rank.adapter = SearchRankRCAdapter(recentList)
+        rc_rank.adapter = SearchRankRCAdapter(rankList)
 
 
     }

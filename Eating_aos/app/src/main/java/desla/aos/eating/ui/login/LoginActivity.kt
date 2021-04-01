@@ -54,12 +54,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     override fun initAfterBinding() {
         viewModel.isLogin.observe(this, Observer {isLogin ->
 
-            println("kakao " + isLogin)
-
             when(isLogin){
                 0 ->  setRegisterFragment()
                 1 -> {
-                    MyApplication.prefs.setUserInfo(viewModel.kakao_id!!, viewModel.nickname!!)
+                    MyApplication.prefs.setString("nickname", viewModel.nickname)
                     val intent = Intent(this, MapActivity::class.java)
                     intent.putExtra("isRegister", true)
                     startActivity(intent)
@@ -68,9 +66,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
                 2 -> {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
-                }
-                else ->{
-
                 }
             }
 

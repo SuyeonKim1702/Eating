@@ -23,10 +23,22 @@ object MyTimeUtils {
         return getTime(oldDate)
     }
 
+    fun isBefore(oldtime: String): Boolean {
+        val transFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+        val oldDate = transFormat.parse(oldtime)
+        var diff: Long = Date().time - oldDate.time
+
+        return (diff < 0)
+    }
+
 
     fun getTime(oldDate: Date): String{
 
         var diff: Long = Date().time - oldDate.time
+
+        if(diff <= 0){
+            return "00:00:00"
+        }
 
         val days = (diff / (24 * 60 * 60 * 1000)).toInt()
 

@@ -21,6 +21,13 @@ class MapRepository (
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
+    fun modifyAdress(rR: HashMap<String, Any>) : Single<Response<PostResponse>> =
+
+            //한 페이지에 보여질 문서의 개수, 1-30 사이, 기본 값 10
+            server.modifyAddress(rR)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+
 
 
     fun getLocationWithKeyword(query: String, authorization: String) : Single<KeywordAPI> =
