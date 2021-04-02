@@ -37,7 +37,7 @@ public class Post extends BaseAuditEntity{
     private int deliveryFeeByHost; // true면 호스트가 부담
 
     @Column(nullable = false)
-    private int currentMemberCount;
+    private int currentMemberCount = 1;
 
     @Column(nullable = false)
     private int memberCountLimit; // 같이 먹을 사람 수(host 숫자를 포함한 수)

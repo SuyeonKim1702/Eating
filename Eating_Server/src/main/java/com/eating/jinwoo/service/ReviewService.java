@@ -29,30 +29,7 @@ import java.util.List;
 public class ReviewService {
 
     private final MemberRepository memberRepository;
-    private final PostRepository postRepository;
-    private final ReviewRepository reviewRepository;
 
-//    public List<ReviewDTO.Participate> getGuests(Long id) {
-//        Authentication principal = SecurityContextHolder.getContext().getAuthentication();
-//        Post post = postRepository.findById(id).get();
-//        String my_id = principal.getPrincipal().toString();
-//        List<MemberPost> memberPosts = post.getMemberPosts();
-//        List<ReviewDTO.Participate> guestList = new ArrayList<>();
-//
-//        for (MemberPost member : memberPosts) {
-//            ReviewDTO.Participate guest = new ReviewDTO.Participate();
-//            String guest_id = member.getMember().getKakaoId();
-//            if (my_id.equals(guest_id)) { // 자신 제외
-//                continue;
-//            } else {
-//                guest.setKakaoId(guest_id);
-//                guest.setNickName(member.getMember().getNickname());
-//                guest.setPostId(post.getId());
-//                guestList.add(guest);
-//            }
-//        }
-//        return guestList;
-//    }
 
     public List<ReviewDTO.Participate> getHost() {
         Authentication principal = SecurityContextHolder.getContext().getAuthentication();
@@ -70,13 +47,15 @@ public class ReviewService {
             LocalDateTime now = LocalDateTime.now();
 
             // 주문시간이 이미 지났거나 게시글이 완료 상태인 경우
-            if(orderTime.isBefore(now) || finished) {
-                hostInfo.setPostId(post.getId());
-                hostInfo.setNickName(post.getHost().getNickname());
-                hostInfo.setKakaoId(post.getHost().getKakaoId());
-                hostList.add(hostInfo);
+            String postHost_id = post.getHost().getKakaoId();
+            if(postHost_id != my_id){
+                if(orderTime.isBefore(now) || finished) {
+                    hostInfo.setPostId(post.getId());
+                    hostInfo.setNickName(post.getHost().getNickname());
+                    hostInfo.setKakaoId(post.getHost().getKakaoId());
+                    hostList.add(hostInfo);
+                }
             }
-
         }
         return hostList;
     }

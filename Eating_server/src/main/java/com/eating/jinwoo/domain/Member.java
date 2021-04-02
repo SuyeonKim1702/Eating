@@ -26,7 +26,9 @@ public class Member extends BaseAuditEntity {
     private String profileUrl;
     private String password;
 
+    @Column(nullable = false)
     private int distance; // 반경. 초기값 500
+
 
     private long totalCount; // 거래 카운트
 

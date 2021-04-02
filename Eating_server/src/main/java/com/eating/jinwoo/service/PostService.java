@@ -55,6 +55,7 @@ public class PostService {
         post.setCategory(Category.getEnumByValue(postInfo.getCategory()));
         post.setMemberCountLimit(postInfo.getMemberCountLimit());
         post.setOrderTime(postInfo.getOrderTime());
+//        post.setCurrentMemberCount(1);
         MeetPlace enumByValue = MeetPlace.getEnumByValue(postInfo.getMeetPlace());
         System.out.println("enumByValue = " + enumByValue);
         post.setMeetPlace(enumByValue);
@@ -219,9 +220,9 @@ public class PostService {
             result.setDistance((int) Math.round(dist.doubleValue() * 1000));
 
             // member count calc
-            int member_count = postRepository.getPostMemberCount(post_id);
-            result.setMemberCount(Integer.valueOf(res[8].toString()));
-
+//            int member_count = postRepository.getPostMemberCount(post_id);
+//            result.setMemberCount(member_count);
+            result.setMemberCount(Integer.valueOf(res[9].toString()));
             // is_favorite calc
             Long member_id = Long.valueOf(res[8].toString());
             int is_favorite = postRepository.getIsFavorite(post_id, member_id);
@@ -278,7 +279,8 @@ public class PostService {
             result.setDistance((int) Math.round(dist.doubleValue() * 1000));
 
             // member count calc
-            int member_count = postRepository.getPostMemberCount(post_id);
+//            int member_count = postRepository.getPostMemberCount(post_id);
+            int member_count = Integer.valueOf(res[9].toString());
             result.setMemberCount(member_count);
 
             // is_favorite calc
@@ -313,8 +315,6 @@ public class PostService {
                 post.setFinished(false);
                 postRepository.save(post);
             }
-
-
         }, ()-> {
             throw new EatingException("없는 게시물 입니다.");
         });
@@ -322,7 +322,7 @@ public class PostService {
 
     public void joinPost(Long id) {
         postRepository.findById(id).ifPresentOrElse((post) -> {
-            int before_member_count = postRepository.getPostMemberCount(id);
+            int before_member_count = post.getCurrentMemberCount();
             if (before_member_count + 1 > post.getMemberCountLimit()) {
                 throw new EatingException("이미 꽉찬 게시글입니다.");
             }
