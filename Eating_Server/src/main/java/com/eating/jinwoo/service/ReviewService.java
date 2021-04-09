@@ -46,14 +46,17 @@ public class ReviewService {
             LocalDateTime orderTime = post.getOrderTime();
             LocalDateTime now = LocalDateTime.now();
 
-            // 주문시간이 이미 지났거나 게시글이 완료 상태인 경우
+
             String postHost_id = post.getHost().getKakaoId();
-            if(postHost_id != my_id){
+            // 게시글의 작성자가 내가 아니고 리뷰를 보낸적이 없는 경우
+            if(!postHost_id.equals(my_id) && mp.isSendReview() == false){
+                // 주문시간이 이미 지났거나 게시글이 완료 상태인 경우
                 if(orderTime.isBefore(now) || finished) {
                     hostInfo.setPostId(post.getId());
                     hostInfo.setNickName(post.getHost().getNickname());
                     hostInfo.setKakaoId(post.getHost().getKakaoId());
                     hostList.add(hostInfo);
+                    mp.setSendReview(true);
                 }
             }
         }

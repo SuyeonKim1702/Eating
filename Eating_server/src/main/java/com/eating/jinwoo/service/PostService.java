@@ -181,11 +181,17 @@ public class PostService {
         String[] categoryNums = param.getCategory().split("-");
         String[] categories = new String[categoryNums.length];
         for (int i = 0; i < categories.length; i++){
-            categories[i] = Category.getEnumByValue(Integer.valueOf(categoryNums[i])).name();
+            categories[i] = Category.getEnumByValue(Integer.valueOf(categoryNums[i])).toString();
+
+
+//            int c_num = Integer.valueOf(categoryNums[i]);
+//            Category sample = Category.getEnumByValue(c_num);
+//            String s = sample.toString();
+//            categories[i] = s;
         }
         List<Object[]> postList = null;
         if (param.getMine() == 1) { // 내가 작성한 게시글
-            postList = postRepository.getPostListMine(categories, param.getDistance(), param.getPage(), param.getSize(), principal.getName());
+            postList = postRepository.getPostListMine(categories, param.getDistance(), param.getPage() * param.getSize(), param.getSize(), principal.getName());
         }
 //        if (param.getFinished() == 1) { //완료된 게시글
 //            postList = postRepository.getPostListFinished(categories, param.getDistance(), param.getPage(), param.getSize(), principal.getName());
@@ -194,7 +200,7 @@ public class PostService {
 //            postList = postRepository.getPostListNotFinished(categories, param.getDistance(), param.getPage(), param.getSize(), principal.getName());
 //        }
         else { //다 불러오기
-            postList = postRepository.getPostListAll(categories, param.getDistance(), param.getPage(), param.getSize(), principal.getName());
+            postList = postRepository.getPostListAll(categories, param.getDistance(), param.getPage() * param.getSize(), param.getSize(), principal.getName());
         }
 
         List<PostDTO.searchPost> ret = new ArrayList<>();
@@ -306,12 +312,12 @@ public class PostService {
 
     public void setPostStatus(Long id) {
         postRepository.findById(id).ifPresentOrElse((post) -> {
-            if(post.getDeletedDate() == null) {
-                post.setDeletedDate(LocalDateTime.now());
+            if(post.isFinished() == false) {
+//                post.setDeletedDate(LocalDateTime.now());
                 post.setFinished(true);
                 postRepository.save(post);
             } else {
-                post.setDeletedDate(null);
+//                post.setDeletedDate(null);
                 post.setFinished(false);
                 postRepository.save(post);
             }
