@@ -20,38 +20,37 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="HVp-xD-DO9">
-                    <rect key="frame" x="16" y="15" width="29" height="29"/>
+                    <rect key="frame" x="16" y="24" width="22" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="29" id="7Ab-Dj-RDQ"/>
-                        <constraint firstAttribute="width" constant="29" id="a51-9V-1J2"/>
+                        <constraint firstAttribute="height" constant="22" id="7Ab-Dj-RDQ"/>
+                        <constraint firstAttribute="width" constant="22" id="a51-9V-1J2"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 채팅중인 잇팅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MiW-u9-6bz">
-                    <rect key="frame" x="29" y="29" width="141" height="20"/>
+                    <rect key="frame" x="24" y="32" width="140.5" height="20"/>
                     <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info" id="x2d-8o-CkF">
-                    <rect key="frame" x="183" y="30" width="48" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBM-PM-ZJC">
+                    <rect key="frame" x="177.5" y="31" width="18" height="22"/>
+                    <state key="normal" image="info"/>
+                    <connections>
+                        <action selector="expandToolTip:" destination="iN0-l3-epB" eventType="touchUpInside" id="vIS-yv-KdO"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <accessibility key="accessibilityConfiguration" identifier="FavoriteTableViewFirstHeader"/>
             <constraints>
                 <constraint firstItem="HVp-xD-DO9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="7Vo-VO-PZu"/>
-                <constraint firstItem="MiW-u9-6bz" firstAttribute="top" secondItem="HVp-xD-DO9" secondAttribute="bottom" constant="-15" id="Mgd-7S-lE6"/>
-                <constraint firstItem="HVp-xD-DO9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="SC5-gg-R0E"/>
-                <constraint firstItem="x2d-8o-CkF" firstAttribute="bottom" secondItem="MiW-u9-6bz" secondAttribute="bottom" id="WiK-Sg-2Ir"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="HVp-xD-DO9" secondAttribute="bottom" constant="20" id="hEb-f2-UAD"/>
-                <constraint firstItem="x2d-8o-CkF" firstAttribute="leading" secondItem="MiW-u9-6bz" secondAttribute="trailing" constant="13" id="hnD-dW-lgC"/>
-                <constraint firstItem="MiW-u9-6bz" firstAttribute="leading" secondItem="HVp-xD-DO9" secondAttribute="trailing" constant="-16" id="lDD-rq-jTE"/>
+                <constraint firstItem="dBM-PM-ZJC" firstAttribute="centerY" secondItem="MiW-u9-6bz" secondAttribute="centerY" id="Fo9-6q-crl"/>
+                <constraint firstItem="MiW-u9-6bz" firstAttribute="top" secondItem="HVp-xD-DO9" secondAttribute="bottom" constant="-14" id="JY5-Bq-KeP"/>
+                <constraint firstItem="HVp-xD-DO9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="SC5-gg-R0E"/>
+                <constraint firstItem="MiW-u9-6bz" firstAttribute="leading" secondItem="HVp-xD-DO9" secondAttribute="trailing" constant="-14" id="bhm-ZO-14B"/>
+                <constraint firstItem="dBM-PM-ZJC" firstAttribute="leading" secondItem="MiW-u9-6bz" secondAttribute="trailing" constant="13" id="vEp-aS-pyJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="title" destination="MiW-u9-6bz" id="hPF-s3-1cN"/>
-            </connections>
             <point key="canvasLocation" x="-17.39130434782609" y="-202.90178571428569"/>
         </view>
     </objects>

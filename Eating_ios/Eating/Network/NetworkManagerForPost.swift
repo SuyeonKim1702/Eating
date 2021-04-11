@@ -8,7 +8,7 @@
 import Foundation
 
 class NetworkManagerForPost {
-    func request<T: Any>(_ request: URLRequest, _ completion: @escaping (Result<T, NetworkError>) -> Void) -> URLSessionDataTask {
+    func request<T: Any>(_ request: URLRequest, _ parser: ((Data) -> (Result<T, NetworkError>))?, _ completion: @escaping (Result<T, NetworkError>) -> Void) -> URLSessionDataTask {
         let request = request
 
         let config = URLSessionConfiguration.default
@@ -19,7 +19,7 @@ class NetworkManagerForPost {
         let successRange = 200..<300
         let dataTask = session.dataTask(with: request) { [weak self] data, response, error in
             print(String(data: data!, encoding: .utf8))
-            print((response as? HTTPURLResponse)?.statusCode)
+
             guard self != nil else {
                 completion(.failure(.clientError))
                 return
@@ -34,8 +34,12 @@ class NetworkManagerForPost {
                 completion(.failure(.noData))
                 return
             }
-            guard let data = unwrappedData as? T  else { return }
-            completion(.success(data))
+            
+            if let parser = parser {
+                completion(parser(unwrappedData))
+            } else {
+                completion(.success(String(data: data!, encoding: .utf8) as! T))
+            }
         }
         return dataTask
     }

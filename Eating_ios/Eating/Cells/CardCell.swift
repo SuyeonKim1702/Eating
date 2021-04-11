@@ -8,16 +8,16 @@
 import UIKit
 
 class CardCell: UITableViewCell {
-
+    @IBOutlet var commentButton: UIButton!
+    @IBOutlet var numOfCards: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func updateUI(num: Int, comment: String) {
+        numOfCards.text = "\(num)"
+        commentButton.setTitle(comment, for: .normal)
     }
     
 }

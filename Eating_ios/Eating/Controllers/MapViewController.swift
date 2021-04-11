@@ -15,7 +15,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     let addressTextField = UITextField()
     let currentLocationImageView = UIImageView()
     let regionCodeService = AddressRegionCodeService()
+    let loginSerivce = LoginService()
     let postUserService = PostUserService()
+    let updateAddress = UpdateAddressService()
     var x: Double?
     var y: Double?
     private let locationManager = CLLocationManager()
@@ -32,7 +34,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc private func goBack() {
-        dismiss(animated: true, completion: nil)
+        if presentingViewController as? UITabBarController != nil {
+            guard let addressViewController = storyboard?.instantiateViewController(withIdentifier: "AddressViewController") else { return }
+            addressViewController.modalTransitionStyle = .coverVertical
+            addressViewController.modalPresentationStyle = .fullScreen
+            present(addressViewController, animated: true, completion: nil)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc private func moveToCurrentLocation() {
@@ -60,21 +69,45 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @objc private func tapCompeteButton() {
         Constant.address = addressTextField.text ?? ""
-        goToNextPage()
+        if ((presentingViewController as? UITabBarController) != nil || Constant.check) {
+            print("check:", Constant.check)
+            print(presentingViewController)
+            print(x!, y!)
+            updateAddress.updateAddress(address: Constant.address, latitude: x, longitude: y) { [weak self] data in
+                switch data {
+                case .success(_ ):
+                    DispatchQueue.main.async {
+                        UserDefaults.standard.set(Constant.address, forKey: "address")
+                        UserDefaults.standard.set(self!.y, forKey: "longitude")
+                        UserDefaults.standard.set(self!.x, forKey: "latitude")
+                        Constant.latitude = self!.x
+                        Constant.longitude = self!.y
+                        self?.goToNextPage()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        } else {
+            callSignUpService()
+        }
+    }
 
-        postUserService.postUserInfo(id: "2f321343f", nickname: Constant.nickname, latitude: x, longitude: y, address: Constant.address) { [weak self] result in
+    private func callSignUpService() {
+        postUserService.postUserInfo(id: Constant.userId, nickname: Constant.nickname, latitude: x, longitude: y, address: Constant.address) { [weak self] result in
             switch result {
-            case .success(let data):
-                print(data)
+            case .success( _):
                 DispatchQueue.main.async {
+                    print("성공성공")
                     self?.goToNextPage()
+                    UserDefaults.standard.set(Constant.userId, forKey: "kakaoId")
                 }
             case .failure(let error):
+                print("실패")
                 print(error.localizedDescription)
                 //로그인에 실패했습니다. 메세지 보여주기
             }
         }
-
     }
     
     private func locationPermissionAlert() {
@@ -180,8 +213,7 @@ extension MapViewController: MTMapViewDelegate {
     func mapView(_ mapView: MTMapView!, finishedMapMoveAnimation mapCenterPoint: MTMapPoint!) {
         y = mapCenterPoint.mapPointGeo().latitude
         x = mapCenterPoint.mapPointGeo().longitude
-        print(x, y)
-        
+
         regionCodeService.getAddressInfo(x: "\(String(describing: x!))", y: "\(String(describing: y!))") { [weak self] result in
             switch result {
             case .success(let address):

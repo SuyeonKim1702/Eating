@@ -20,25 +20,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="K4D-AI-5l8">
-                    <rect key="frame" x="16" y="15" width="29" height="29"/>
+                    <rect key="frame" x="16" y="15" width="22" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="29" id="P0P-zc-arp"/>
-                        <constraint firstAttribute="width" constant="29" id="WKs-Qt-irh"/>
+                        <constraint firstAttribute="height" constant="22" id="P0P-zc-arp"/>
+                        <constraint firstAttribute="width" constant="22" id="WKs-Qt-irh"/>
                     </constraints>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="받은 당도 카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEg-3P-VMa">
-                    <rect key="frame" x="29" y="29" width="108" height="20"/>
-                    <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="18"/>
+                    <rect key="frame" x="23" y="23" width="101.5" height="19"/>
+                    <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackRightButton" translatesAutoresizingMaskIntoConstraints="NO" id="BwD-yn-HZC">
-                    <rect key="frame" x="391" y="32" width="7.5" height="14.5"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="14.5" id="Jsf-UI-jKG"/>
-                        <constraint firstAttribute="width" constant="7.5" id="Nvy-Ld-O23"/>
-                    </constraints>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8C7-Ae-iey">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
                     <color key="backgroundColor" red="0.8784431815" green="0.87841010090000005" blue="0.87843257190000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -49,23 +43,20 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="EkU-JU-3oM"/>
             <constraints>
-                <constraint firstItem="BwD-yn-HZC" firstAttribute="centerY" secondItem="hEg-3P-VMa" secondAttribute="centerY" id="0rw-m8-EcU"/>
+                <constraint firstItem="EkU-JU-3oM" firstAttribute="bottom" secondItem="K4D-AI-5l8" secondAttribute="bottom" constant="27" id="1nu-Je-GEX"/>
                 <constraint firstItem="K4D-AI-5l8" firstAttribute="top" secondItem="3ha-uJ-yLd" secondAttribute="top" constant="15" id="5cO-Tx-juG"/>
-                <constraint firstItem="EkU-JU-3oM" firstAttribute="bottom" secondItem="K4D-AI-5l8" secondAttribute="bottom" constant="20" id="7FE-Wc-Dhc"/>
-                <constraint firstItem="hEg-3P-VMa" firstAttribute="leading" secondItem="K4D-AI-5l8" secondAttribute="trailing" constant="-16" id="AIG-b9-rO3"/>
-                <constraint firstItem="hEg-3P-VMa" firstAttribute="top" secondItem="K4D-AI-5l8" secondAttribute="bottom" constant="-15" id="CRr-OV-uNU"/>
                 <constraint firstItem="K4D-AI-5l8" firstAttribute="leading" secondItem="EkU-JU-3oM" secondAttribute="leading" constant="16" id="Mo2-8t-aSE"/>
                 <constraint firstItem="8C7-Ae-iey" firstAttribute="top" secondItem="3ha-uJ-yLd" secondAttribute="top" id="MzW-A1-yln"/>
                 <constraint firstItem="8C7-Ae-iey" firstAttribute="leading" secondItem="3ha-uJ-yLd" secondAttribute="leading" id="VUc-5h-gQl"/>
+                <constraint firstItem="hEg-3P-VMa" firstAttribute="top" secondItem="K4D-AI-5l8" secondAttribute="bottom" constant="-14" id="ZnM-Uy-yjy"/>
                 <constraint firstAttribute="trailing" secondItem="8C7-Ae-iey" secondAttribute="trailing" id="fVS-eJ-OMM"/>
-                <constraint firstItem="EkU-JU-3oM" firstAttribute="trailing" secondItem="BwD-yn-HZC" secondAttribute="trailing" constant="15.6" id="q0p-HV-NBj"/>
+                <constraint firstItem="hEg-3P-VMa" firstAttribute="leading" secondItem="K4D-AI-5l8" secondAttribute="trailing" constant="-15" id="kRS-4J-rxE"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="149.27536231884059" y="-273.88392857142856"/>
         </view>
     </objects>
     <resources>
-        <image name="blackRightButton" width="7.5" height="15"/>
         <image name="circle" width="29" height="29"/>
     </resources>
 </document>

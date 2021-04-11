@@ -20,31 +20,34 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="EY3-G0-3qy">
-                    <rect key="frame" x="16" y="15" width="29" height="29"/>
+                    <rect key="frame" x="16" y="15" width="22" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="29" id="Fra-do-RtS"/>
-                        <constraint firstAttribute="height" constant="29" id="lNK-Q7-eeO"/>
+                        <constraint firstAttribute="width" constant="22" id="Fra-do-RtS"/>
+                        <constraint firstAttribute="height" constant="21" id="lNK-Q7-eeO"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="찜한 잇팅 목록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iI3-6q-NXr">
-                    <rect key="frame" x="29" y="29" width="114" height="19"/>
+                    <rect key="frame" x="24" y="23" width="107.5" height="20"/>
                     <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info" id="3lC-K2-yWq">
-                    <rect key="frame" x="156" y="29" width="48" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUA-4u-zgL">
+                    <rect key="frame" x="142.5" y="22" width="18" height="22"/>
+                    <state key="normal" image="info"/>
+                    <connections>
+                        <action selector="expandToolTip:" destination="iN0-l3-epB" eventType="touchUpInside" id="rSN-Df-E7M"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
                 <constraint firstItem="EY3-G0-3qy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="18Y-nQ-qGG"/>
-                <constraint firstItem="iI3-6q-NXr" firstAttribute="leading" secondItem="EY3-G0-3qy" secondAttribute="trailing" constant="-16" id="5BS-ow-Uoz"/>
-                <constraint firstItem="3lC-K2-yWq" firstAttribute="leading" secondItem="iI3-6q-NXr" secondAttribute="trailing" constant="13" id="Bbq-z8-zLJ"/>
-                <constraint firstItem="iI3-6q-NXr" firstAttribute="top" secondItem="EY3-G0-3qy" secondAttribute="bottom" constant="-15" id="GeR-1n-35y"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="EY3-G0-3qy" secondAttribute="bottom" constant="20" id="MSM-rN-e4D"/>
-                <constraint firstItem="3lC-K2-yWq" firstAttribute="bottom" secondItem="iI3-6q-NXr" secondAttribute="bottom" id="lSa-Na-zh7"/>
+                <constraint firstItem="iI3-6q-NXr" firstAttribute="leading" secondItem="EY3-G0-3qy" secondAttribute="trailing" constant="-14" id="I6C-Kg-QP6"/>
+                <constraint firstItem="iI3-6q-NXr" firstAttribute="top" secondItem="EY3-G0-3qy" secondAttribute="bottom" constant="-13" id="JQx-he-xES"/>
+                <constraint firstItem="AUA-4u-zgL" firstAttribute="leading" secondItem="iI3-6q-NXr" secondAttribute="trailing" constant="11" id="LhU-1P-Pbp"/>
+                <constraint firstItem="AUA-4u-zgL" firstAttribute="centerY" secondItem="iI3-6q-NXr" secondAttribute="centerY" id="hlG-bs-EDt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="EY3-G0-3qy" secondAttribute="bottom" constant="28" id="s8C-eU-fKa"/>
                 <constraint firstItem="EY3-G0-3qy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="vVD-3g-PFZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

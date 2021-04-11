@@ -35,7 +35,59 @@ class PostFeedService {
             request.httpBody = data
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
-            networkManager.request(request, completion).resume()
+            networkManager.request(request, nil, completion).resume()
+        } catch {
+            completion(.failure(.urlError))
+        }
+    }
+
+    func updatePost(index: Int, category: Int, chatLink: String?, deliveryFeeByHost: Int, description: String, foodLink: String?, meetPlace: Int, memberCountLimit: Int, orderTime: String, title: String, completion: @escaping (Result<String, NetworkError>) -> Void) {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = Constant.schemeHttp
+        urlComponents.host = Constant.endpoint
+        urlComponents.path = "\(Constant.ApiId.post.rawValue)/\(index)"
+
+        var json = [String:Any]()
+        json["categoryIdx"] = category
+        json["chatLink"] = chatLink
+        json["deliveryFeeByHost"] = deliveryFeeByHost
+        json["description"] = description
+        json["foodLink"] = foodLink
+        json["meetPlace"] = meetPlace
+        json["memberCountLimit"] = memberCountLimit
+        json["orderTime"] = orderTime
+        json["title"] = title
+
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: [])
+            var request = URLRequest(url: URL(string: urlComponents.url!.absoluteString)!)
+            request.httpMethod = "PUT"
+            request.httpBody = data
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            networkManager.request(request, nil, completion).resume()
+        } catch {
+            completion(.failure(.urlError))
+        }
+    }
+
+    func updateMember(postIdx: Int, num: Int, completion: @escaping (Result<String, NetworkError>) -> Void) {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = Constant.schemeHttp
+        urlComponents.host = Constant.endpoint
+        urlComponents.path = "\(Constant.ApiId.changeMember.rawValue)/\(postIdx)"
+
+        var json = [String:Any]()
+        json["memberCount"] = num
+
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: [])
+            var request = URLRequest(url: URL(string: urlComponents.url!.absoluteString)!)
+            request.httpMethod = "PUT"
+            request.httpBody = data
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            networkManager.request(request, nil, completion).resume()
         } catch {
             completion(.failure(.urlError))
         }

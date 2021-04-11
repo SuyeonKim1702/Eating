@@ -28,16 +28,16 @@
                             <constraint firstAttribute="width" constant="23.399999999999999" id="xwb-Ey-j4I"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Nq-iG-fgM">
-                        <rect key="frame" x="62.5" y="26" width="20" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Nq-iG-fgM">
+                        <rect key="frame" x="62.5" y="35" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="16"/>
                         <color key="textColor" red="0.38039767740000002" green="0.38038221" blue="0.38039267059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rya-BN-xE6">
-                        <rect key="frame" x="99" y="14" width="221" height="42"/>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rya-BN-xE6">
+                        <rect key="frame" x="79" y="14" width="221" height="42"/>
                         <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="12"/>
-                        <state key="normal" title="제가 있는 곳까지 와줬어요!" backgroundImage="chatPlaceHolder">
+                        <state key="normal" backgroundImage="chatPlaceHolder">
                             <color key="titleColor" red="0.38039767740000002" green="0.38038221" blue="0.38039267059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </state>
                     </button>
@@ -54,6 +54,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="commentButton" destination="rya-BN-xE6" id="B4n-ah-7IK"/>
+                <outlet property="numOfCards" destination="2Nq-iG-fgM" id="aR1-zH-O1y"/>
+            </connections>
             <point key="canvasLocation" x="136" y="117"/>
         </tableViewCell>
     </objects>

@@ -22,7 +22,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9n-QR-WfH">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9n-QR-WfH">
                         <rect key="frame" x="23" y="17" width="9" height="16"/>
                         <fontDescription key="fontDescription" name="NanumSquareRoundOTFEB" family="NanumSquareRoundOTF" pointSize="14"/>
                         <nil key="textColor"/>
@@ -41,14 +41,19 @@
                 <constraints>
                     <constraint firstItem="MUS-Y9-Zwq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="1V0-WV-1gU"/>
                     <constraint firstAttribute="bottom" secondItem="ISn-N5-rOX" secondAttribute="bottom" constant="14" id="349-ij-c6i"/>
+                    <constraint firstItem="ISn-N5-rOX" firstAttribute="leading" secondItem="R9n-QR-WfH" secondAttribute="leading" constant="27" id="Vti-P4-dgB"/>
                     <constraint firstItem="ISn-N5-rOX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="XVx-3Q-nYi"/>
                     <constraint firstItem="R9n-QR-WfH" firstAttribute="leading" secondItem="MUS-Y9-Zwq" secondAttribute="trailing" constant="3" id="dW6-VK-5fa"/>
                     <constraint firstItem="MUS-Y9-Zwq" firstAttribute="centerY" secondItem="ISn-N5-rOX" secondAttribute="centerY" id="m1R-gF-yMk"/>
-                    <constraint firstItem="ISn-N5-rOX" firstAttribute="leading" secondItem="R9n-QR-WfH" secondAttribute="trailing" constant="18" id="snB-j5-RJI"/>
                     <constraint firstItem="R9n-QR-WfH" firstAttribute="centerY" secondItem="MUS-Y9-Zwq" secondAttribute="centerY" id="zXy-hZ-RaN"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="menuLabel" destination="ISn-N5-rOX" id="7oG-Z9-j8A"/>
+                <outlet property="rankingLabel" destination="R9n-QR-WfH" id="O58-IB-Mux"/>
+                <outlet property="starLabel" destination="MUS-Y9-Zwq" id="dIz-IV-H9A"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="87.723214285714278"/>
         </tableViewCell>
     </objects>

@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,15 +13,48 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBackgroundCircle" translatesAutoresizingMaskIntoConstraints="NO" id="KNU-I3-7sF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Mwn-H5-9fP">
+                                <rect key="frame" x="69.5" y="241" width="275" height="380"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="Amx-aN-75e"/>
+                                    <constraint firstAttribute="height" constant="380" id="L0Q-5l-po2"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="whiteCircle" translatesAutoresizingMaskIntoConstraints="NO" id="7Nl-PD-AW1">
+                                <rect key="frame" x="-19" y="341" width="43" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="whiteCircle" translatesAutoresizingMaskIntoConstraints="NO" id="O55-Q7-7mj">
+                                <rect key="frame" x="386" y="434" width="43" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.96998387580000001" green="0.86851567029999999" blue="0.31747785210000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="KNU-I3-7sF" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="0cK-z9-8sV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KNU-I3-7sF" secondAttribute="bottom" id="3M2-sa-ceT"/>
+                            <constraint firstItem="Mwn-H5-9fP" firstAttribute="centerX" secondItem="KNU-I3-7sF" secondAttribute="centerX" id="P4E-Mg-IDl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KNU-I3-7sF" secondAttribute="trailing" id="TZO-Qi-Z7x"/>
+                            <constraint firstItem="KNU-I3-7sF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xy9-H8-IJu"/>
+                            <constraint firstItem="Mwn-H5-9fP" firstAttribute="centerY" secondItem="KNU-I3-7sF" secondAttribute="centerY" id="m1q-uJ-Q11"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="-126.08695652173914" y="376.33928571428572"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="splashBackgroundCircle" width="375" height="667"/>
+        <image name="splashLogo" width="275" height="380.5"/>
+        <image name="whiteCircle" width="25.5" height="25.5"/>
+    </resources>
 </document>

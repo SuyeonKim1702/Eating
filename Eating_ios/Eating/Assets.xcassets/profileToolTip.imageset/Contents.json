@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "imChatBoxSugarContentExplain.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "imChatBoxSugarContentExplain@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "imChatBoxSugarContentExplain@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

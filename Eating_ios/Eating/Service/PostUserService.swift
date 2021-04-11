@@ -16,12 +16,11 @@ class PostUserService {
         urlComponents.host = Constant.endpoint
         urlComponents.path = Constant.ApiId.user.rawValue
         var json = [String:Any]()
-        json["nickname"] = "수연수연"
-        json["address"] = address
-        json["latitude"] = latitude
-        json["longitude"] = longitude
-        json["kakaoId"] = "asgwqg83j9w93"
-
+        json["nickname"] = nickname
+        json["address"] = address!
+        json["latitude"] = latitude!
+        json["longitude"] = longitude!
+        json["kakaoId"] = id
         /*
 
         let boundary = "Boundary-\(UUID().uuidString)"
@@ -52,7 +51,7 @@ class PostUserService {
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             //request.httpBody = bodyData as Data
             //request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-            networkManager.request(request, completion).resume()
+            networkManager.request(request, nil, completion).resume()
         } catch {
 
         }

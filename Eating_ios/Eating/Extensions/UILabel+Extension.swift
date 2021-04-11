@@ -8,10 +8,7 @@ extension UILabel {
             attributeString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style,
                                          range: NSMakeRange(0, attributeString.length))
             self.attributedText = attributeString
-
         }
-
     }
-
 }
 

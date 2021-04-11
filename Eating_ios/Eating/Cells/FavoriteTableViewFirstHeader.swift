@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol ChattingToolTipCellDelegate: AnyObject {
+    func chattingToolTipCellToggleSection()
+}
+
 class FavoriteTableViewFirstHeader: UITableViewHeaderFooterView {
+    weak var delegate: ChattingToolTipCellDelegate?
 
-    @IBOutlet var title: UILabel!
-
-    override class func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
     }
 
+    @IBAction func expandToolTip(_ sender: Any) {
+        delegate?.chattingToolTipCellToggleSection()
+    }
 }

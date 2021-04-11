@@ -41,6 +41,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         profileImageHolder?.layer.cornerRadius = 0.5 * (profileImageHolder?.bounds.size.width)!
     }
 
+    @objc private func showPrepareAlert() {
+        guard let prepareAlertViewController = storyboard?.instantiateViewController(withIdentifier: "PrepareAlertViewController") as? PrepareAlertViewController else { return }
+        prepareAlertViewController.modalPresentationStyle = .overCurrentContext
+        present(prepareAlertViewController, animated: true, completion: nil)
+    }
+
+
+    //카메라, 사진첩 띄우는 용도 -> 이번 버전에서는 x
     @objc private func showAlert() {
         guard let alertViewController = storyboard?.instantiateViewController(withIdentifier: "AlertViewController") else { return }
         alertViewController.modalPresentationStyle = .overCurrentContext
@@ -49,7 +57,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
 
     private func stylingViews() {
-        completeButton?.layer.cornerRadius = 32
         nicknameTextField?.layer.cornerRadius = 32
         nicknameTextField?.addLeftPadding()
     }

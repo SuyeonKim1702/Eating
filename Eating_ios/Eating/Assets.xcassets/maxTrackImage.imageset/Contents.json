@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "imBarYellow.png",
+      "filename" : "imSugarLineYellow.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "imBarYellow@2x.png",
+      "filename" : "imSugarLineYellow@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "imBarYellow@3x.png",
+      "filename" : "imSugarLineYellow@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

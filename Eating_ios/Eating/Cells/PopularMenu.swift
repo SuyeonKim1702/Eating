@@ -9,15 +9,21 @@ import UIKit
 
 class PopularMenu: UITableViewCell {
 
+    @IBOutlet var menuLabel: UILabel!
+    @IBOutlet var rankingLabel: UILabel!
+    @IBOutlet var starLabel: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func updateUI(rank: Int, menu: String) {
+        if rank > 3 {
+            starLabel.isHidden = true
+        } else {
+            starLabel.isHidden = false
+        }
+        menuLabel.text = menu
+        rankingLabel.text = "\(rank)"
     }
     
 }

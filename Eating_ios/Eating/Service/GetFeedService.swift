@@ -10,19 +10,22 @@ import UIKit
 class GetFeedService {
     let networkManager = NetworkManager()
 
-    func getFeedList(page: Int, completion: @escaping (Result<[Feed], NetworkError>) -> Void) {
+    func getFeedList(apiType: Constant.ApiId, page: Int, category: String = "0-1-2-3-4-5-6-7-8-9", distance: Int = 500, mine: Int, completion: @escaping (Result<[Feed], NetworkError>) -> Void) {
         var urlComponents = URLComponents()
         urlComponents.scheme = Constant.schemeHttp
         urlComponents.host = Constant.endpoint
-        urlComponents.path = Constant.ApiId.postList.rawValue
+        urlComponents.path = apiType.rawValue
         urlComponents.queryItems = [
             URLQueryItem(name: "size", value: "10"),
             URLQueryItem(name: "page", value: "\(page)"),
-            URLQueryItem(name: "category", value: "0-1-2-3-4-5-6-7-8-9")
+            URLQueryItem(name: "category", value: category),
+            URLQueryItem(name: "distance", value: "\(distance)"),
+            URLQueryItem(name: "mine", value: "\(mine)")
         ]
         guard let urlString = urlComponents.url?.absoluteString, let url = URL(string: urlString) else {
             return completion(.failure(.urlError))
         }
+        print(urlString)
         networkManager.request(url, completion, parseFeed(_:), nil).resume()
     }
 
@@ -30,10 +33,8 @@ class GetFeedService {
     func parseFeed(_ data: Data) -> (Result<[Feed], NetworkError>) {
         let decoder = JSONDecoder()
         do {
-            print("?")
-            print(String(data: data, encoding: .utf8))
             let response = try decoder.decode(Response.self, from: data)
-            let feeds = response.data.posts
+            let feeds = response.data
             return .success(feeds)
         } catch {
             return .failure(.decodingError)

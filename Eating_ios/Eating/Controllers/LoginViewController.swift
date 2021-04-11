@@ -12,26 +12,35 @@ import AuthenticationServices
 
 class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     var kakaoUserId: String?
+    @IBOutlet var kakaoStackView: UIStackView!
     @IBOutlet weak var kakaoLoginButton: UIButton?
     @IBOutlet weak var appleButtonPlaceHolder: UIView?
+    let loginService = LoginService()
     override func viewDidLoad() {
         super.viewDidLoad()
-        stylingButton()        
+        stylingButton()
+        addTapGesture()
+    }
+
+    private func addTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapKakaoLogInButton(_:)))
+        kakaoStackView.addGestureRecognizer(tapGesture)
     }
         
     private func stylingButton() {
-        kakaoLoginButton?.layer.cornerRadius = 5
+        kakaoLoginButton?.layer.cornerRadius = Constant.buttonConnerRadius
         if #available(iOS 13.0, *) {
             let appleLoginBtn = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
             appleLoginBtn.isUserInteractionEnabled = true
             appleLoginBtn.translatesAutoresizingMaskIntoConstraints = false
             appleButtonPlaceHolder?.addSubview(appleLoginBtn)
             appleLoginBtn.frame = appleButtonPlaceHolder!.bounds
+            appleLoginBtn.cornerRadius = Constant.buttonConnerRadius
             
             appleLoginBtn.addTarget(self, action: #selector(tapAppleLogInButton), for: .touchUpInside)
             appleLoginBtn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
             appleLoginBtn.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-            appleLoginBtn.heightAnchor.constraint(equalToConstant: 63).isActive = true
+            appleLoginBtn.heightAnchor.constraint(equalToConstant: 49).isActive = true
 
         } else {
             // Fallback on earlier versions
@@ -44,7 +53,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let userIdentifier = credential.user
             Constant.userId = userIdentifier
-            moveToNext()
+            callLoginApi(id: Constant.userId)
         }
     }
     
@@ -58,8 +67,6 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         if #available(iOS 13.0, *) {
             let appleIDProvider = ASAuthorizationAppleIDProvider()
             let request = appleIDProvider.createRequest()
-            request.requestedScopes = [.fullName, .email]
-            
             let authorizationController = ASAuthorizationController(authorizationRequests: [request])
             authorizationController.delegate = self
             authorizationController.presentationContextProvider = self
@@ -92,12 +99,35 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
                 if let user = user {
                     self?.kakaoUserId = String(user.id)
                     Constant.userId = self?.kakaoUserId ?? ""
+                    self?.callLoginApi(id: Constant.userId)
+                }
+            }
+        }
+    }
 
+    private func callLoginApi(id: String) {
+        loginService.postUserInfo(id: id) { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(Constant.userId, forKey: "kakaoId")
+                    UserDefaults.standard.set(data.address, forKey: "address")
+                    Constant.address = data.address
+
+                    UserDefaults.standard.set(data.longitude, forKey: "longitude")
+                    UserDefaults.standard.set(data.latitude, forKey: "latitude")
+                    Constant.latitude = data.latitude
+                    Constant.longitude = data.longitude
+
+                    self?.goToMainPage()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
                     self?.moveToNext()
                 }
             }
         }
-        
     }
     
     private func moveToNext() {
@@ -105,6 +135,17 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         signUpViewController.modalTransitionStyle = .coverVertical
         signUpViewController.modalPresentationStyle = .fullScreen
         present(signUpViewController, animated: true, completion: nil)
+    }
+
+    private func goToMainPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "UITabBarController") as? UITabBarController else { return }
+
+        tabBarController.modalTransitionStyle = .coverVertical
+        tabBarController.modalPresentationStyle = .fullScreen
+        tabBarController.tabBar.tintColor = .black
+
+        present(tabBarController, animated: true, completion: nil)
     }
 }
 

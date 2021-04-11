@@ -9,11 +9,19 @@ import UIKit
 
 class ReviewCell: UITableViewCell {
 
-    @IBOutlet var contentLabel: UILabel?
+    @IBOutlet var reviewContentsLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var nicknameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        contentLabel?.setLinespace(spacing: 10)
+        reviewContentsLabel?.setLinespace(spacing: 10)
+    }
+
+    func updateUI(review: Review) {
+        reviewContentsLabel.text = review.review
+        nicknameLabel.text = review.senderNickname
+        dateLabel.text = review.writeDate
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

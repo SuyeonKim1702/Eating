@@ -7,6 +7,19 @@
 
 import UIKit
 
-class FavoriteTableViewSecondHeader: UITableViewHeaderFooterView {
+protocol FavoriteToolTipCellDelegate: AnyObject {
+    func favoriteToolTipCellToggleSection()
+}
 
+class FavoriteTableViewSecondHeader: UITableViewHeaderFooterView {
+    weak var delegate: FavoriteToolTipCellDelegate?
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundColor = .green
+    }
+
+    @IBAction func expandToolTip(_ sender: Any) {
+        delegate?.favoriteToolTipCellToggleSection()
+    }
 }

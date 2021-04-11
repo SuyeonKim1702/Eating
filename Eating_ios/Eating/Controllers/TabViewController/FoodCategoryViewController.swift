@@ -10,6 +10,7 @@ import UIKit
 class FoodCategoryViewController: UIViewController {
     @IBOutlet var firstButtonStackView: UIStackView?
     @IBOutlet var secondButtonStackView: UIStackView?
+    @IBOutlet var completeButton: UIButton!
     var buttonsArray = [UIButton]()
 
     override func viewDidLoad() {
@@ -18,6 +19,7 @@ class FoodCategoryViewController: UIViewController {
     }
 
     private func setupButtons() {
+        completeButton.layer.cornerRadius = Constant.completeButtonCornerRadius
         let firstButtonArray = firstButtonStackView?.subviews.map{ $0 as! UIButton }
         let secondButtonArray = secondButtonStackView?.subviews.map{ $0 as! UIButton }
 
@@ -65,6 +67,7 @@ class FoodCategoryViewController: UIViewController {
                         self?.removeFromParent()
                        })
         (parent as? WritingViewController)?.visualEffect.isHidden = true
+        (parent as? WritingViewController)?.floatingButton.isHidden = false
     }
 
     private func setTabViewFrame (metrics: ViewFrame?, view: UIView) {

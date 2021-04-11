@@ -18,13 +18,13 @@ extension UISegmentedControl{
         self.setDividerImage(deviderImage, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
     }
 
-    func addUnderlineForSelectedSegment(){
+    func addUnderlineForSelectedSegment(_ margin: CGFloat = 72){
         removeBorder()
         let greyUnderlineWidth: CGFloat = self.bounds.size.width
         let greyUnderlineHeight: CGFloat = 1.0
-        let underlineWidth: CGFloat = self.bounds.size.width / CGFloat(self.numberOfSegments) - 72
+        let underlineWidth: CGFloat = self.bounds.size.width / CGFloat(self.numberOfSegments) - margin
         let underlineHeight: CGFloat = 4.0
-        let underlineXPosition = CGFloat(selectedSegmentIndex * Int(underlineWidth)) + 36
+        let underlineXPosition = CGFloat(selectedSegmentIndex * Int(underlineWidth)) + (margin / 2)
         let underLineYPosition = self.bounds.size.height - 8.0
         let greyUnderlineYPosition = underLineYPosition - 1.0
 
@@ -32,6 +32,9 @@ extension UISegmentedControl{
 
         let underlineFrame = CGRect(x: underlineXPosition, y: underLineYPosition, width: underlineWidth, height: underlineHeight)
         let underline = UIView(frame: underlineFrame)
+        underline.clipsToBounds = true
+        underline.layer.cornerRadius = 5
+        underline.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         underline.backgroundColor = UIColor(red: 253, green: 220, blue: 33)
         underline.tag = 1
         greyUnderline.backgroundColor = UIColor(red: 238, green: 238, blue: 238)
@@ -39,9 +42,9 @@ extension UISegmentedControl{
         self.addSubview(underline)
     }
 
-    func changeUnderlinePosition(){
+    func changeUnderlinePosition(_ margin: CGFloat = 72){
         guard let underline = self.viewWithTag(1) else {return}
-        let underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(selectedSegmentIndex) + 36
+        let underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(selectedSegmentIndex) + (margin / 2)
         UIView.animate(withDuration: 0.1, animations: {
             underline.frame.origin.x = underlineFinalXPosition
         })

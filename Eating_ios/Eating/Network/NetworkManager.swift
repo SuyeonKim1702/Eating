@@ -22,6 +22,10 @@ class NetworkManager {
         let session = URLSession.init(configuration: config)
         let successRange = 200..<300
         let dataTask = session.dataTask(with: request) { [weak self] data, response, error in
+            if data != nil {
+                print(String(data: data!, encoding: .utf8)!)
+            }
+
             guard self != nil else {
                 completion(.failure(.clientError))
                 return

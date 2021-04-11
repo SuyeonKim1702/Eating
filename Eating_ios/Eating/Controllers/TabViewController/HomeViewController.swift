@@ -9,40 +9,117 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet var feedTableView: UITableView?
+    @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var addressLabel: UILabel?
+    @IBOutlet var addressImageView: UIImageView!
     private let floatingImageView = UIImageView()
+    let favoriteService = FavoriteService()
     let feedService = GetFeedService()
     var feed = [Feed]()
+    var category = "0-1-2-3-4-5-6-7-8-9"
+    var distance: Int = 500
+    var currentPage = 1
+    var check = false
+    var count = 0
+    var reviewMembers = [ReviewMember]()
+    var addressService = AddressService()
+    var getReviewMemberService = GetReviewMemberService()
+    var sliderValue: Float = 200
+    var selectedButtonMenu = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        addressLabel?.text = Constant.address
+        Constant.check = true
+        if UserDefaults.standard.string(forKey: "address") != nil {
+            addressLabel?.text = UserDefaults.standard.string(forKey: "address")!
+            Constant.address = UserDefaults.standard.string(forKey: "address")!
+        } else {
+            addressLabel?.text = Constant.address
+        }
 
-        feedService.getFeedList(page: 0) {  [weak self] result in
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapUpperView))
+        addressImageView.addGestureRecognizer(tapGesture)
+        addressLabel?.addGestureRecognizer(tapGesture)
+        let tabBar = tabBarController?.tabBar
+        tabBar?.layer.masksToBounds = true
+        tabBar?.layer.cornerRadius = 27
+        tabBar?.layer.borderWidth = 1
+        tabBar?.layer.borderColor = UIColor(red: 232, green: 232, blue: 232).cgColor
+        tabBar?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        // 리뷰 대상자 api 호출!!!!!!!
+        callReviewMemberList()
+    }
+
+    private func callReviewMemberList() {
+        getReviewMemberService.getReviewMemberList { [weak self] result in
             switch result {
-            case .success(let feeds):
-                print("갯수",feeds.count)
+            case .success(let members):
+                self?.reviewMembers = members
                 DispatchQueue.main.async {
-                    for i in feeds{
-                        print(i.title)
-                    }
-                    self?.feed = feeds
-                    self?.feedTableView?.reloadData()
-
+                    self?.popupReviewPage()
                 }
             case .failure(let error):
-                print("여기")
                 print(error.localizedDescription)
             }
-
         }
+    }
+
+    private func popupReviewPage() {
+        if count < reviewMembers.count {
+            guard let reviewViewController = storyboard?.instantiateViewController(withIdentifier: "DefaultReviewViewController") as? DefaultReviewViewController else { return }
+            reviewViewController.modalTransitionStyle = .coverVertical
+            reviewViewController.modalPresentationStyle = .fullScreen
+            reviewViewController.nickname = reviewMembers[count].nickName
+            reviewViewController.userId = reviewMembers[count].kakaoId
+            reviewViewController.postIdx = reviewMembers[count].postId
+            present(reviewViewController, animated: true, completion: nil)
+            count += 1
+        }
+    }
+
+    @objc private func tapUpperView() {
+        goToMapPage()
+    }
+
+    private func goToMapPage() {
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: "MapViewController"), let mapViewController = viewController as? MapViewController else { return }
+
+        mapViewController.addressTextField.text = Constant.address
+        mapViewController.x = Constant.latitude
+        mapViewController.y = Constant.longitude
+
+        mapViewController.modalTransitionStyle = .coverVertical
+        mapViewController.modalPresentationStyle = .fullScreen
+        present(mapViewController, animated: true, completion: nil)
+    }
+
+    private func callFeedApi(_ page: Int) {
+            feedService.getFeedList(apiType: .postList, page: page, category: category, distance: distance, mine: 0) {  [weak self] result in
+                switch result {
+                case .success(let feeds):
+                    DispatchQueue.main.async { [self] in
+                        if feeds.count != 0 {
+                            print(feeds)
+                            self?.feed.append(contentsOf: feeds)
+                            self?.feedTableView?.reloadData()
+                        }
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        currentPage = 0
+        distanceLabel.text = "\(distance)M"
         attachFloatingImageView()
         addGestureRecognizer()
+        popupReviewPage()
+        callFeedApi(0)
+        feed = [Feed]()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -63,16 +140,13 @@ class HomeViewController: UIViewController {
         guard let filterViewController = storyboard?.instantiateViewController(withIdentifier: "FilterViewController") as? FilterViewController else { return }
         filterViewController.modalTransitionStyle = .coverVertical
         filterViewController.modalPresentationStyle = .fullScreen
+        filterViewController.homeViewController = self
+        filterViewController.sliderValue = sliderValue
+        filterViewController.toolTipText = distance
+        filterViewController.selectedButton = selectedButtonMenu
         present(filterViewController, animated: true, completion: nil)
     }
 
-    @IBAction func moveToSearchPage(_ sender: Any) {
-        guard let searchViewController = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else { return }
-        searchViewController.modalTransitionStyle = .coverVertical
-        searchViewController.modalPresentationStyle = .fullScreen
-        present(searchViewController, animated: true, completion: nil)
-
-    }
     @objc private func tapFloatingImage() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let writingViewController = storyboard.instantiateViewController(withIdentifier: "WritingViewController") as? WritingViewController else { return }
@@ -81,6 +155,10 @@ class HomeViewController: UIViewController {
         writingViewController.modalPresentationStyle = .fullScreen
         present(writingViewController, animated: true, completion: nil)
         
+    }
+
+    func tapFavoriteButton(_ sender: Any) {
+
     }
     
     private func attachFloatingImageView() {
@@ -105,14 +183,36 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        if feed.count == 0 {
+            tableView.setEmptyView()
+        } else {
+            tableView.restore()
+        }
+        return feed.count
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let feedCell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as? FeedCell else { return UITableViewCell() }
 
+        guard let feedCell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as? FeedCell else { return UITableViewCell() }
         guard let feed = feed[safe: indexPath.row] else { return feedCell }
         feedCell.updateUI(feed)
+        print(feed.title, feed.favorite)
+
+        feedCell.tapHeartButton = {
+            self.favoriteService.changeFavoriteState(postIdx: feed.postId, state: !feed.favorite) { [weak self] data in
+                switch data {
+                case .success(_):
+                    DispatchQueue.main.async {
+                        feedCell.heartButton?.isSelected = !(feedCell.heartButton!.isSelected)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+
+        }
+
 
         return feedCell
     }
@@ -120,13 +220,32 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let myFeedViewController = storyboard.instantiateViewController(withIdentifier: "MyFeedViewController") as? MyFeedViewController else { return }
+        myFeedViewController.index = feed[safe: indexPath.row]?.postId
+        myFeedViewController.distance = feed[safe: indexPath.row]?.distance ?? 0
+
         guard let otherFeedViewController = storyboard.instantiateViewController(withIdentifier: "OtherFeedViewController") as? OtherFeedViewController else { return }
+        otherFeedViewController.index = feed[safe: indexPath.row]?.postId
+        otherFeedViewController.distance = feed[safe: indexPath.row]?.distance ?? 0
 
-        // 피드가 내 피드인지 아닌지 확인하고 -> 맞는 vc 고르기
-        let selectedViewController = otherFeedViewController
-
+        let selectedViewController : UIViewController
+        if feed[safe: indexPath.row]?.mine == true {
+            selectedViewController = myFeedViewController
+        } else {
+            selectedViewController = otherFeedViewController
+        }
         selectedViewController.modalTransitionStyle = .coverVertical
         selectedViewController.modalPresentationStyle = .fullScreen
         present(selectedViewController, animated: true, completion: nil)
     }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+
+        if offsetY > contentHeight - scrollView.frame.height {
+            currentPage += 1
+            callFeedApi(currentPage)
+    }
+}
 }
