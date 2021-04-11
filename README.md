@@ -16,8 +16,8 @@
 ### 스크린샷
 
 <p>
-<img align="left" width="210" src = "https://user-images.githubusercontent.com/46915174/114313735-a858e400-9b32-11eb-9d12-55890f9af306.jpg">
-<img align="left" width="210" src = "https://user-images.githubusercontent.com/46915174/114313736-aa22a780-9b32-11eb-8783-21ff94bc2d98.jpg">
-<img align="left" width="210" src = "https://user-images.githubusercontent.com/46915174/114313737-ab53d480-9b32-11eb-94f4-6348f8a753d3.jpg">
-<img align="left" width="210" src = "https://user-images.githubusercontent.com/46915174/114313739-abec6b00-9b32-11eb-972d-52b1045ee602.jpg">
+<img align="left" width="270" src = "https://user-images.githubusercontent.com/46915174/114313735-a858e400-9b32-11eb-9d12-55890f9af306.jpg">
+<img align="left" width="270" src = "https://user-images.githubusercontent.com/46915174/114313736-aa22a780-9b32-11eb-8783-21ff94bc2d98.jpg">
+<img align="left" width="270" src = "https://user-images.githubusercontent.com/46915174/114313737-ab53d480-9b32-11eb-94f4-6348f8a753d3.jpg">
+<img align="left" width="270" src = "https://user-images.githubusercontent.com/46915174/114313739-abec6b00-9b32-11eb-972d-52b1045ee602.jpg">
 </p>
