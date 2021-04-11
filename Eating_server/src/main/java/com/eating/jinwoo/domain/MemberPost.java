@@ -22,4 +22,6 @@ public class MemberPost {
     @ManyToOne
     @JoinColumn
     private Post post;
+
+    private boolean sendReview = false;
 }

@@ -31,10 +31,16 @@ class PreferenceUtil(context: Context) {
         prefs.edit().putString(key, str).apply()
     }
 
+    fun setUserInfo2(address: String, latitude: String, longitude: String){
+        prefs.edit().putString("address", address).apply()
+        prefs.edit().putString("latitude", latitude).apply()
+        prefs.edit().putString("longitude", longitude).apply()
+    }
+
 
     //2: 회원가입 완료 -> MainActivity
     fun isRegister() = prefs.getBoolean("auth", false)
-    fun setRegister(value: Int){
+    fun setRegister(){
         prefs.edit().putBoolean("auth", true).apply()
     }
 }

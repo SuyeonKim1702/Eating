@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -26,10 +28,14 @@ public class Review extends BaseAuditEntity{
     private Member member; // 리뷰의 대상자
 
     private String review;
+    private LocalDate writeDate;
+    private int reviewScore;
 
-    public Review(Member sender, Member member, String review) {
+    public Review(Member sender, Member member, String review, LocalDate writeDate, int reviewScore) {
         this.sender = sender;
         this.member = member;
         this.review = review;
+        this.writeDate = writeDate;
+        this.reviewScore = reviewScore;
     }
 }

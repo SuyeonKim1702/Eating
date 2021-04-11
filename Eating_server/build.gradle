@@ -57,6 +57,11 @@ dependencies {
     // rds
     compile 'mysql:mysql-connector-java'
 
+
+    // s3
+//    implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
+//    implementation("commons-io:commons-io:jar:2.8.0")
+
 }
 
 def querydslSrcDir = 'src/main/generated'

@@ -20,15 +20,15 @@ public class PostController {
 
 //  게시글 작성 : POST (/post)
     @PostMapping("/post")
-//    @ApiOperation(value = "게시글 작성")
-    public ResponseDTO<String> writePost(@RequestBody PostDTO.getPost postInfo) {
+    @ApiOperation(value = "게시글 작성")
+    public ResponseDTO<String> writePost(@RequestBody PostDTO.writePost postInfo) {
         postService.writePost(postInfo);
         return new ResponseDTO<>(HttpStatus.OK, "게시글 작성 완료", null);
     }
 //  게시글 수정 : PUT (/post)
     @PutMapping("/post/{id}")
     @ApiOperation(value = "게시글 수정")
-    public ResponseDTO<String> editPost(@PathVariable("id") Long id, @RequestBody PostDTO.getPost postInfo) {
+    public ResponseDTO<String> editPost(@PathVariable("id") Long id, @RequestBody PostDTO.editPost postInfo) {
         postService.editPost(postInfo, id);
         return new ResponseDTO<>(HttpStatus.OK, "게시글 수정 완료", null);
     }
@@ -43,15 +43,15 @@ public class PostController {
 //  찜하기 : GET (/favorite/{postId})
     @GetMapping("/favorite/{postId}")
     @ApiOperation(value = "찜하기")
-    public ResponseDTO<String> setFavorite(@PathVariable("postID") Long id) {
+    public ResponseDTO<String> setFavorite(@PathVariable("postId") Long id) {
         postService.setFavorite(id);
         return new ResponseDTO<>(HttpStatus.OK, "찜하기 완료", null);
     }
 
-    //  찜 취소 : GET (/favorite/{postId})
+    //  찜 취소 : GET (/unfavorite/{postId})
     @GetMapping("/unfavorite/{postId}")
     @ApiOperation(value = "게시글 찜하기 취소")
-    public ResponseDTO<String> setUnFavorite(@PathVariable("postID") Long id) {
+    public ResponseDTO<String> setUnFavorite(@PathVariable("postId") Long id) {
         postService.setUnFavorite(id);
         return new ResponseDTO<>(HttpStatus.OK, "찜 취소 완료", null);
     }
@@ -63,4 +63,52 @@ public class PostController {
         return new ResponseDTO<>(HttpStatus.OK, "게시글 목록 가져오기", posts);
     }
 
+    @GetMapping("/posts/favorite")
+    @ApiOperation(value = "찜한 게시글 목록 가져오기")
+    public ResponseDTO<List<PostDTO.searchPost>> getFavoriteList() {
+        List<PostDTO.searchPost> posts = postService.getFavoriteOrParticipate(0);
+        return new ResponseDTO<>(HttpStatus.OK, "찜한 게시글 목록 가져오기", posts);
+    }
+
+    @GetMapping("/posts/participating")
+    @ApiOperation(value = "참여중인 목록 가져오기")
+    public ResponseDTO<List<PostDTO.searchPost>> getParticipatingList() {
+        List<PostDTO.searchPost> posts = postService.getFavoriteOrParticipate(1);
+        return new ResponseDTO<>(HttpStatus.OK, "참여중인 게시글 목록 가져오기", posts);
+    }
+
+    @GetMapping("/posts/participated")
+    @ApiOperation(value = "참여한 목록 가져오기")
+    public ResponseDTO<List<PostDTO.searchPost>> getParticipatedList() {
+        List<PostDTO.searchPost> posts = postService.getFavoriteOrParticipate(2);
+        return new ResponseDTO<>(HttpStatus.OK, "참여한 게시글 목록 가져오기", posts);
+    }
+
+    @GetMapping("/post/done/{postId}")
+    @ApiOperation(value = "게시글 상태 변경")
+    public ResponseDTO<String> setPostStatus(@PathVariable(value = "postId") Long id) {
+        postService.setPostStatus(id);
+        return new ResponseDTO<>(HttpStatus.OK, "게시글 상태 변경 완료", null);
+    }
+
+    @GetMapping("/post/join/{postId}")
+    @ApiOperation(value = "게시글 참여")
+    public ResponseDTO<String> joinPost(@PathVariable(value = "postId") Long id) {
+        postService.joinPost(id);
+        return new ResponseDTO<>(HttpStatus.OK, "게시글 참여 완료", null);
+    }
+
+    @GetMapping("post/{postId}")
+    @ApiOperation(value = "게시글 상세보기")
+    public ResponseDTO<PostDTO.getPost> getPostDetail(@PathVariable(value = "postId") Long id) {
+        PostDTO.getPost result = postService.getPostDetail(id);
+        return new ResponseDTO<>(HttpStatus.OK, "게시글 상세보기", result);
+    }
+
+    @PutMapping("post/membercount/{postId}")
+    @ApiOperation(value = "참가 인원 바꾸기")
+    public ResponseDTO<String> editMemberCount(@PathVariable(value = "postId") Long id, @RequestBody PostDTO.editMemberCount memberCount) {
+        postService.editMemberCount(id, memberCount);
+        return new ResponseDTO<>(HttpStatus.OK, "참가인원 바꾸기 완료", null);
+    }
 }

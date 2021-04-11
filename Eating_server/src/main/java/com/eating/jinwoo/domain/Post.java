@@ -31,12 +31,18 @@ public class Post extends BaseAuditEntity{
 
     private String foodLink; // 음식 링크
 
+    @Column(nullable = false)
     private LocalDateTime orderTime; // 주문할 시간
 
-    private boolean deliveryFeeByHost; // true면 호스트가 부담
+    private int deliveryFeeByHost; // true면 호스트가 부담
+
+    @Column(nullable = false)
+    private int currentMemberCount = 1;
 
     @Column(nullable = false)
     private int memberCountLimit; // 같이 먹을 사람 수(host 숫자를 포함한 수)
+
+    private boolean finished = false;
 
     // 게시글의 위도, 경도(host의 위도 경도로 설정하면 될 듯)
     @Column(nullable = false)
@@ -53,6 +59,6 @@ public class Post extends BaseAuditEntity{
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    @OneToMany(mappedBy = "post") // post와 member은 다대 다 관계이므로 MemberPost라는 중간 테이블을 생성함
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL) // post와 member은 다대 다 관계이므로 MemberPost라는 중간 테이블을 생성함
     private List<MemberPost> memberPosts = new ArrayList<>();
 }

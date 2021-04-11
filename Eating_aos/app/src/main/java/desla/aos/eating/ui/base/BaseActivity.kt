@@ -56,6 +56,7 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
         initStartView()
         initDataBinding()
         initAfterBinding()
+
     }
 
 

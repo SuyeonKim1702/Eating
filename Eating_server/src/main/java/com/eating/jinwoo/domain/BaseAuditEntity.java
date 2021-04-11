@@ -27,4 +27,6 @@ public abstract class BaseAuditEntity {
     private LocalDateTime updatedDate;
 
     private LocalDateTime deletedDate;
+
+    private LocalDateTime participateDate;
 }

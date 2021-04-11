@@ -19,10 +19,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import desla.aos.eating.data.model.AddressAPI
-import desla.aos.eating.data.model.GeoAPI
 import desla.aos.eating.data.model.MapSearch
-import desla.aos.eating.data.model.RequestRegister
 import desla.aos.eating.data.repositories.MapRepository
 import desla.aos.eating.ui.MyApplication
 import desla.aos.eating.ui.base.BaseViewModel
@@ -32,7 +29,6 @@ import desla.aos.eating.util.startMainActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import net.daum.mf.map.api.MapView
-import retrofit2.HttpException
 
 
 class MapViewModel(val repository: MapRepository) : BaseViewModel() {
@@ -47,6 +43,7 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
 
     var searchText = ""
 
+    var isRegister = false
 
     var kakao_id: String? = null
     var nickname: String? = null
@@ -72,29 +69,98 @@ class MapViewModel(val repository: MapRepository) : BaseViewModel() {
 
     }
 
-    fun startMainActivity(v: View){
-        v.context.getActivity()?.startMainActivity()
-    }
 
     fun sendRegister(v: View){
+
+        if(isRegister){
+            Log.i("eunjin", "전송" )
+
+            val params:HashMap<String, Any> = HashMap<String, Any>()
+            params["kakaoId"] = MyApplication.prefs.getString("id", "id")
+            params["nickname"] = MyApplication.prefs.getString("name", "name")
+            params["address"] = selectLocation.value?.Address!!
+            params["latitude"] = selectLocation.value?.x!!
+            params["longitude"] = selectLocation.value?.y!!
+
+            Log.i("eunjin", "${params}")
+
+            val disposable = repository.postRegister(
+                    params
+            )
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({
+                        if(it.isSuccessful){
+                            if(it.body()?.status == "OK"){
+                                MyApplication.prefs.setRegister()
+                                MyApplication.prefs.setUserInfo2(selectLocation.value?.Address!!,
+                                        selectLocation.value?.x!!.toString(), selectLocation.value?.y!!.toString())
+
+                                v.context.getActivity()?.startMainActivity()
+                                v.context.getActivity()?.finish()
+
+                            }else{
+                                Log.i("eunjin", "가입 실패1 ${it.body()?.status} ${it.body()?.message} ${params["nickname"]}" )
+                            }
+
+                        }else{
+                            Log.i("eunjin", "가입 실패2 ${it.errorBody().toString()}" )
+                        }
+
+                    }, {
+
+                        Log.i("eunjin", "가입 실패3  ${it.localizedMessage} 메세지 ${it.localizedMessage}" )
+                    })
+            addDisposable(disposable)
+        }else{
+
+
+            modifyAddress(v)
+
+
+        }
+
+
+
+    }
+
+
+    private fun modifyAddress(v: View){
         Log.i("eunjin", "전송" )
 
-        val disposable = repository.postRegister(
-            RequestRegister("hello", nickname, selectLocation.value?.Address, selectLocation.value?.x, selectLocation.value?.y)
+        val params:HashMap<String, Any> = HashMap<String, Any>()
+        params["address"] = selectLocation.value?.Address!!
+        params["latitude"] = selectLocation.value?.x!!
+        params["longitude"] = selectLocation.value?.y!!
+
+        Log.i("eunjin", "${params}")
+
+        val disposable = repository.modifyAdress(
+            params
         )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                if(it.isSuccessful){
+                    if(it.body()?.status == "OK"){
 
-                Log.i("eunjin", "${it.message} ${it.status}" )
-                startMainActivity(v)
+                        MyApplication.prefs.setUserInfo2(selectLocation.value?.Address!!,
+                            selectLocation.value?.x!!.toString(), selectLocation.value?.y!!.toString())
+                        v.context.getActivity()?.finish()
+
+                    }else{
+                        Log.i("eunjin", "주소 수정 실패1 ${it.body()?.status} ${it.body()?.message} ${params["nickname"]}" )
+                    }
+
+                }else{
+                    Log.i("eunjin", "주소 수정 실패2 ${it.code()} ${it.body()?.message}" )
+                }
 
             }, {
 
-                Log.i("eunjin", "결과 ${(it as HttpException).message()} ${(it as HttpException).code()}" )
+                Log.i("eunjin", "주소 수정 실패3  ${it.localizedMessage} 메세지 ${it.localizedMessage}" )
             })
         addDisposable(disposable)
-
     }
 
 

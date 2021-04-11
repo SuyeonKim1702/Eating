@@ -9,13 +9,14 @@
 - [ ] 활동 목록 : GET (/done_post)
 - [ ] 받은 후기 : GET (/reviews)
 - [ ] 후기 작성 : POST (/review)
-- [ ] 필터 설정 : PUT (/filter)
-- [ ] 게시글 작성 : POST (/post)
-- [ ] 게시글 수정 : PUT (/post)
-- [ ] 게시글 삭제 : DELETE (/post/{postId})
+- [x] 게시글 작성 : POST (/post)
+- [x] 게시글 수정 : PUT (/post)
+- [x] 게시글 삭제 : DELETE (/post/{postId})
 - [ ] 게시글 검색 : GET (/post?distance={dist}&category=0-2-4-6&page=0&size=10)
 - [ ] 게시글 세부 보기 : GET (/post/{postId})
-- [ ] 찜하기 : GET (/favorite/{postId})
+- [x] 찜하기 : GET (/favorite/{postId})
+- [ ] 찜한 목록 불러오기
+- [ ] 채팅중인 잇팅
 
 ## 1. 회원가입, 로그인 로그아웃
 

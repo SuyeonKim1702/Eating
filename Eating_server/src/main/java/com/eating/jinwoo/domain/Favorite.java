@@ -12,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Favorite {
     @Id
+    @Column(name = "favorite_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

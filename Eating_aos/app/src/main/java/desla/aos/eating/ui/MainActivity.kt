@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setVisibilityBottomNavigation(isShow: Boolean){
+        if(bottomNavView == null) return
         if(isShow) bottomNavView.visibility = View.VISIBLE
         else bottomNavView.visibility = View.GONE
     }

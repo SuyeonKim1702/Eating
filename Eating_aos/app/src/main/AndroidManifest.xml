@@ -23,8 +23,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eating">
-        <activity android:name=".ui.review.ReviewActivity"></activity>
-        <activity android:name=".ui.view.ViewActivity" />
+        <activity android:name=".ui.view.host.ViewHostActivity"></activity>
+        <activity android:name=".ui.review.ReviewActivity" />
+        <activity android:name=".ui.view.client.ViewActivity" />
         <activity android:name=".ui.post.PostActivity" />
         <activity android:name=".ui.map.MapActivity" />
         <activity

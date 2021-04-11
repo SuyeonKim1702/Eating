@@ -78,6 +78,7 @@
                         app:srcCompat="@drawable/ic_list_circle" />
 
                     <EditText
+                        android:text="@={VM.data.title}"
                         android:id="@+id/tv_post_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -118,6 +119,7 @@
                         app:srcCompat="@drawable/ic_list_circle" />
 
                     <EditText
+                        android:text="@={VM.data.foodLink}"
                         android:id="@+id/tv_post_link"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -158,6 +160,7 @@
                         app:srcCompat="@drawable/ic_list_circle" />
 
                     <EditText
+                        android:text="@={VM.data.chatLink}"
                         android:id="@+id/tv_post_chat_link"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -270,18 +273,23 @@
                         app:layout_constraintVertical_bias="0.0" />
 
                     <LinearLayout
+                        android:id="@+id/spinner_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_im_box_short_gray"
+                        android:background="@drawable/selector_post_spinner_clicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <Spinner
+                            android:fontFamily="@font/nanum_square_round_b"
+                            android:textSize="14sp"
+                            android:letterSpacing="0.01"
+                            android:lineSpacingExtra="2sp"
                             android:id="@+id/spinner"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/brown_grey"
+                            android:backgroundTint="@drawable/filter_button_tv_selector_selected"
                             android:overlapAnchor="false"
                             android:spinnerMode="dropdown" />
 
@@ -328,53 +336,53 @@
                         app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
-                        android:id="@+id/textView16"
+                        android:id="@+id/tv_dv_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
-                        android:background="@drawable/background_gray_rounded_tag"
+                        android:background="@drawable/selector_post_btn_clicked"
                         android:fontFamily="@font/nanum_square_round_r"
                         android:gravity="center"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="2sp"
                         android:text="본인부담"
-                        android:textColor="@color/brown_grey"
+                        android:textColor="@drawable/filter_button_tv_selector_selected"
                         android:textSize="14sp"
                         android:textStyle="normal"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/textView17"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_dv_0"
                         app:layout_constraintTop_toTopOf="parent" />
 
 
                     <TextView
-                        android:id="@+id/textView17"
+                        android:id="@+id/tv_dv_0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
-                        android:background="@drawable/background_gray_rounded_tag"
+                        android:background="@drawable/selector_post_btn_clicked"
                         android:fontFamily="@font/nanum_square_round_r"
                         android:gravity="center"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="2sp"
                         android:text="1/N"
-                        android:textColor="@color/brown_grey"
+                        android:textColor="@drawable/filter_button_tv_selector_selected"
                         android:textSize="14sp"
                         android:textStyle="normal"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/textView18"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_dv_2"
                         app:layout_constraintTop_toTopOf="parent" />
 
 
                     <TextView
                         android:gravity="center"
-                        android:id="@+id/textView18"
+                        android:id="@+id/tv_dv_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/background_gray_rounded_tag"
+                        android:background="@drawable/selector_post_btn_clicked"
                         android:fontFamily="@font/nanum_square_round_r"
                         android:textStyle="normal"
                         android:textSize="14sp"
-                        android:textColor="@color/brown_grey"
+                        android:textColor="@drawable/filter_button_tv_selector_selected"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="2sp"
                         android:text="없음"
@@ -422,23 +430,32 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
 
-                    <LinearLayout
+                    <TextView
+                        android:paddingHorizontal="8dp"
+                        android:fontFamily="@font/nanum_square_round_r"
+                        android:textSize="14sp"
+                        android:textColor="@drawable/filter_button_tv_selector_selected"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="2sp"
+                        android:gravity="center_vertical"
+                        android:id="@+id/tv_date"
+                        android:onClick="@{(v) -> VM.showTimeDialog(v)}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_im_box_short_gray"
+                        android:background="@drawable/selector_post_date_clicked"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"/>
 
-                        <Spinner
-                            android:id="@+id/spinner2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/brown_grey"
-                            android:overlapAnchor="false"
-                            android:spinnerMode="dropdown" />
-
-                    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_date"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_date"
+                        app:layout_constraintTop_toTopOf="@+id/tv_date"
+                        app:srcCompat="@drawable/ic_icon_arrow_drop_down_filled" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -480,53 +497,53 @@
                         app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
-                        android:id="@+id/textView19"
+                        android:id="@+id/tv_place_0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
-                        android:background="@drawable/background_gray_rounded_tag"
+                        android:background="@drawable/selector_post_btn_clicked"
                         android:fontFamily="@font/nanum_square_round_r"
                         android:gravity="center"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="2sp"
                         android:text="호스트 쪽"
-                        android:textColor="@color/brown_grey"
+                        android:textColor="@drawable/filter_button_tv_selector_selected"
                         android:textSize="14sp"
                         android:textStyle="normal"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/textView20"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_place_1"
                         app:layout_constraintTop_toTopOf="parent" />
 
 
                     <TextView
-                        android:id="@+id/textView20"
+                        android:id="@+id/tv_place_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/background_gray_rounded_tag"
+                        android:background="@drawable/selector_post_btn_clicked"
                         android:fontFamily="@font/nanum_square_round_r"
                         android:gravity="center"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="2sp"
-                        android:text="중간"
+                        android:text="중간 지점"
                         android:layout_marginRight="4dp"
-                        android:textColor="@color/brown_grey"
+                        android:textColor="@drawable/filter_button_tv_selector_selected"
                         android:textSize="14sp"
                         android:textStyle="normal"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/textView21"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_place_2"
                         app:layout_constraintTop_toTopOf="parent" />
 
 
                     <TextView
                         android:gravity="center"
-                        android:id="@+id/textView21"
+                        android:id="@+id/tv_place_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/background_gray_rounded_tag"
+                        android:background="@drawable/selector_post_btn_clicked"
                         android:fontFamily="@font/nanum_square_round_r"
                         android:textStyle="normal"
                         android:textSize="14sp"
-                        android:textColor="@color/brown_grey"
+                        android:textColor="@drawable/filter_button_tv_selector_selected"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="2sp"
                         android:text="장소협의"
@@ -557,6 +574,7 @@
                     android:hint="잇팅하면서 원하는 추가사항을 적어주세요~!\nEx)제가 있는 곳으로 와주셨으면 좋겠어요"
                     android:inputType="text"
                     android:lineSpacingExtra="12sp"
+                    android:text="@={VM.data.description}"
                     android:textColor="#bdbdbd"
                     android:textSize="12sp"
                     android:textStyle="normal"
@@ -591,6 +609,7 @@
             android:letterSpacing="0.02"
             android:lineSpacingExtra="5sp"
             android:text="완료"
+            android:onClick="@{(v)-> VM.sendWrite(v)}"
             android:textColor="#de000000"
             android:textSize="18sp"
             android:textStyle="normal"

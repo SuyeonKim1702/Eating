@@ -6,18 +6,27 @@ import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import desla.aos.eating.R
+import desla.aos.eating.data.network.KakaoMapApi
+import desla.aos.eating.data.network.ServerApi
+import desla.aos.eating.data.repositories.LoginRepository
+import desla.aos.eating.data.repositories.MapRepository
 import desla.aos.eating.databinding.ActivityLoginBinding
 import desla.aos.eating.ui.MainActivity
+import desla.aos.eating.ui.MyApplication
 import desla.aos.eating.ui.base.BaseActivity
 import desla.aos.eating.ui.map.MapActivity
+import desla.aos.eating.ui.map.MapViewModel
+import desla.aos.eating.ui.map.MapViewModelFactory
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
     override val layoutResourceId: Int
         get() = R.layout.activity_login
 
-    private val viewModel: LoginViewModel by viewModels()
+    private lateinit var factory: LoginViewModelFactory
+    private lateinit var viewModel: LoginViewModel
 
     private val loginFragment: LoginFragment =
             LoginFragment()
@@ -29,6 +38,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     val REQUEST_IMAGE_PICK = 11
 
     override fun initStartView() {
+
+        val server = ServerApi()
+        val repository = LoginRepository(server)
+        factory = LoginViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
+
         setFragment(loginFragment)
     }
 
@@ -39,23 +54,18 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     override fun initAfterBinding() {
         viewModel.isLogin.observe(this, Observer {isLogin ->
 
-            println("kakao " + isLogin)
-
             when(isLogin){
                 0 ->  setRegisterFragment()
                 1 -> {
-                    startActivity(Intent(this, MapActivity::class.java))
+                    MyApplication.prefs.setString("nickname", viewModel.nickname)
+                    val intent = Intent(this, MapActivity::class.java)
+                    intent.putExtra("isRegister", true)
+                    startActivity(intent)
                     finish()
                 }
                 2 -> {
-
-                    startActivity(Intent(this, MainActivity::class.java)
-                        .putExtra("kakao_id", viewModel.kakao_id)
-                        .putExtra("nickname", viewModel.nickname))
+                    startActivity(Intent(this, MainActivity::class.java))
                     finish()
-                }
-                else ->{
-
                 }
             }
 

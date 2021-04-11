@@ -37,3 +37,6 @@ out/
 ### VS Code ###
 .vscode/
 src/main/resources/application.properties
+src/main/resources/application.yml
+EatingKeyPair.pem
+passwd.txt

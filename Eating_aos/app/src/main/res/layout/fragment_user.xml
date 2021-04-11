@@ -114,6 +114,7 @@
                     android:layout_height="wrap_content">
 
 
+
                     <desla.aos.eating.ui.custom.CustomTextView
                         android:id="@+id/constraintLayout5"
                         android:layout_width="wrap_content"
@@ -135,7 +136,7 @@
                         app:srcCompat="@drawable/ic_im_box_m" />
 
                     <View
-                        android:id="@+id/imageView2"
+                        android:id="@+id/thumb"
                         android:layout_width="0dp"
                         android:layout_height="22dp"
                         android:layout_marginHorizontal="@dimen/horizontal_margin"
@@ -152,21 +153,39 @@
                         android:layout_height="22dp"
                         android:layout_marginEnd="16dp"
                         android:background="@drawable/background_sugar_yellow_rounded"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                        app:layout_constraintBottom_toBottomOf="@+id/thumb"
                         app:layout_constraintEnd_toEndOf="@id/red"
-                        app:layout_constraintStart_toStartOf="@+id/imageView2"
-                        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+                        app:layout_constraintStart_toStartOf="@+id/thumb"
+                        app:layout_constraintTop_toTopOf="@+id/thumb" />
 
                     <ImageView
                         android:id="@+id/red"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-                        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                        app:layout_constraintBottom_toBottomOf="@+id/thumb"
+                        app:layout_constraintEnd_toEndOf="@+id/thumb"
                         app:layout_constraintHorizontal_bias="0.72"
-                        app:layout_constraintStart_toStartOf="@+id/imageView2"
-                        app:layout_constraintTop_toTopOf="@+id/imageView2"
+                        app:layout_constraintStart_toStartOf="@+id/thumb"
+                        app:layout_constraintTop_toTopOf="@+id/thumb"
                         app:srcCompat="@drawable/ic_im_character_sugar_content" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/jalnan_otf"
+                        android:letterSpacing="0.02"
+                        android:lineSpacingExtra="3sp"
+                        android:text="40%"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="normal"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView12"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/imageView12"
+                        app:layout_constraintTop_toTopOf="@+id/imageView12" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

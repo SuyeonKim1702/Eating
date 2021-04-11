@@ -3,7 +3,6 @@ package com.eating.jinwoo.repository.postRepository;
 import com.eating.jinwoo.domain.Category;
 import com.eating.jinwoo.domain.Location;
 import com.eating.jinwoo.domain.Post;
-import com.eating.jinwoo.domain.QPost;
 import com.eating.jinwoo.dto.PostDTO;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.Tuple;

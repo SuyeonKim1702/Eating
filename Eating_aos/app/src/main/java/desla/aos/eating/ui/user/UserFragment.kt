@@ -2,6 +2,7 @@ package desla.aos.eating.ui.user
 
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import desla.aos.eating.R
 import desla.aos.eating.data.repositories.HomeRepository
 import desla.aos.eating.data.repositories.UserRepository
@@ -35,9 +36,9 @@ class UserFragment :  BaseFragment<FragmentUserBinding>() {
     override fun initDataBinding() {
 
         //임시
-
         viewDataBinding.btnSettingUser.setOnClickListener {
-            startActivity(Intent(it.context, ReviewActivity::class.java))
+            //startActivity(Intent(it.context, ReviewActivity::class.java))
+            findNavController().navigate(R.id.action_userFragment_to_settingFragment)
         }
     }
 

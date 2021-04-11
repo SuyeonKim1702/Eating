@@ -83,7 +83,9 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <EditText
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:onClick="@{(v)-> VM.showNoFuncDoialog(v)}"
                         android:id="@+id/etv_address"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -92,12 +94,9 @@
                         android:background="@android:color/transparent"
                         android:fontFamily="@font/nanum_square_round_eb"
                         android:hint="검색해보세요"
-                        android:imeOptions="actionSearch"
-                        android:inputType="text"
                         android:letterSpacing="0.01"
                         android:lineSpacingExtra="10sp"
                         android:maxLines="1"
-                        android:text="@={VM.searchText}"
                         android:textColor="@color/greyish_brown"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
